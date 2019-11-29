@@ -1,0 +1,7 @@
+<div class="btn-group btn-group-justified" ng-init="$ctrl.init()">
+  <div class="btn-group" role="group" ng-repeat="model in $ctrl.newModels track by model.id">
+    <button class="btn" role="button" href="" value="$ctrl.newModels[0].id"
+            ng-class="model.active ? 'btn-primary' : 'btn-default'"
+            ng-click="$ctrl.toggle(model.id)" ng-disabled="model.disabled">{{model.name}}</button>
+  </div>
+</div>

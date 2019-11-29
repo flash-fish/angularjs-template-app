@@ -1,0 +1,76 @@
+<!-- creat by calvin for stepProgress -->
+<div class="steps" ng-init="ctrl.init()">
+  <ul class="steps-container">
+    <li style="width:14%;" class="activated">
+      <div class="step">
+        <div class="step-image"><span></span></div>
+        <div class="step-current">申报</div>
+        <div class="step-description"></div>
+      </div>
+    </li>
+    <li style="width:14%;left: 14.2%" class="activated">
+      <div class="step">
+        <div class="step-image"><span></span></div>
+        <div class="step-current">审批</div>
+        <div class="step-description"></div>
+      </div>
+    </li>
+    <li style="width:14%;left: 28.4%" class="activated">
+      <div class="step">
+        <div class="step-image"><span></span></div>
+        <div class="step-current">建档</div>
+        <div class="step-description">{{ctrl.importDate}}</div>
+      </div>
+    </li>
+    <li style="width:14%;left: 42.6%" ng-class="{'activated': ctrl.firstSupplement || ctrl.firstSale || ctrl.firstDistribution || ctrl.firstOrderGoods}">
+      <div class="step">
+        <div class="step-image">
+          <span></span>
+        </div>
+        <div class="step-current">首次订货</div>
+        <div class="step-description">{{ctrl.firstOrderGoods}}</div>
+      </div>
+    </li>
+    <li style="width:14%;left: 56.8%" ng-class="{'activated': ctrl.firstSupplement || ctrl.firstSale || ctrl.firstDistribution}">
+      <div class="step">
+        <div class="step-image">
+          <span></span>
+        </div>
+        <div class="step-current">首次到货</div>
+        <div class="step-description">{{ctrl.firstDistribution}}</div>
+      </div>
+    </li>
+    <li style="width:14%;left: 71%" ng-class="{'activated': ctrl.firstSupplement || ctrl.firstSale}">
+      <div class="step">
+        <div class="step-image">
+          <span></span>
+        </div>
+        <div class="step-current">首次销售</div>
+        <div class="step-description">{{ctrl.firstSale}}</div>
+      </div>
+    </li>
+    <li style="width:14%;left: 85.2%" ng-class="{'activated': ctrl.firstSupplement}">
+      <div class="step">
+        <div class="step-image">
+          <span></span>
+        </div>
+        <div class="step-current">首次补货</div>
+        <div class="step-description">{{ctrl.firstSupplement}}</div>
+      </div>
+    </li>
+    <div class="step-bar" style="width: 8%;"></div>
+    <div class="step-bar" style="width: 14.2%; left: 8%"></div>
+    <div class="step-bar" style="width: 14.2%; left: 22.2%"></div>
+    <div class="step-bar"
+         ng-if="ctrl.firstSupplement || ctrl.firstSale || ctrl.firstDistribution || ctrl.firstOrderGoods"
+         style="width: 14.2%; left: 35.4%"></div>
+    <div class="step-bar"
+         ng-if="ctrl.firstSupplement || ctrl.firstSale || ctrl.firstDistribution"
+         style="width: 14.2%; left: 49.6%"></div>
+    <div class="step-bar" ng-if="ctrl.firstSupplement || ctrl.firstSale"
+         style="width: 14.2%; left: 63.8%"></div>
+    <div class="step-bar" ng-if="ctrl.firstSupplement"
+         style="width: 14.2%; left: 78%"></div>
+    <div class="step-bar" ng-if="ctrl.firstSupplement" style="width: 7.8%; left: 92.2%"></div>
+  </ul>
+</div>

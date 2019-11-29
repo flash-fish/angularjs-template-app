@@ -1,0 +1,26 @@
+<div ng-init="ctrl.init()">
+  <div class="image-container">
+    <img src="{{ctrl.img}}" alt="" class="image-cur"
+         ng-mouseenter="ctrl.mouseEnter()"
+         ng-mouseleave="ctrl.mouseLeave()"
+         ng-mousemove="ctrl.mouseMove($event)"
+         ng-mousedown="ctrl.mouseDown($event)"
+         ng-mouseup="ctrl.mouseUp($event)">
+
+  </div>
+  <div class="image-control">
+    <div>
+      <i class="fa fa-search-plus" ng-click="ctrl.bigit()"></i>
+    </div>
+    <div>
+      <i class="fa fa-search-minus" ng-click="ctrl.smallit()"></i>
+    </div>
+    <div>
+      <i class="fa fa-repeat" ng-click="ctrl.rotate()"></i>
+    </div>
+    <div>
+      <i class="fa fa-arrows-alt" ng-click="ctrl.fullScreen()"></i>
+    </div>
+  </div>
+  <div class="percent">当前比例:{{ctrl.total.toFixed(0)}}%</div>
+</div>

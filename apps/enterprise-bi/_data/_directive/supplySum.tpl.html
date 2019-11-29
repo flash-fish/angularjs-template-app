@@ -1,0 +1,13 @@
+<div class="row hs-subSupply" ng-init="ctrl.init()">
+  <div class="col-md-3" ng-repeat="curr in ctrl.initTemp">
+    <p class="area-value-one">
+      <span>{{curr.name}}</span>
+      <a style="position: relative; cursor: pointer" uib-popover-html="curr.icon" ng-if="curr.icon"
+         popover-trigger="mouseenter" popover-placement='bottom-left'>
+        <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+    </p>
+    <p class="area-value-two" title="{{curr.title}}">
+      {{curr.value ? curr.value : "-"}}
+    </p>
+  </div>
+</div>

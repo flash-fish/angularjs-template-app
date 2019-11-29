@@ -1,0 +1,38 @@
+<div class="subpage">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.com.fromTopParent"></sub-menu>
+  <div id="submain" class="subLack sub-main hs-container top-content-box" ng-init="ctrl.init()">
+    <section widget-grid id="widget-grid">
+      <div class="row condition">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>供应商加注缺品</span>
+            <company-infor supplier="ctrl.com.supplier"></company-infor>
+          </header>
+          <div class="body">
+            <div class="span detail-width">
+              <span>
+                商品：[{{ctrl.product.productCode}}]{{ctrl.product.name}}
+              </span>
+              <span class="date">日期：{{ctrl.com.date}}</span>
+              <button class="btn btn-primary" ng-click="ctrl.backTo()">返回</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header">
+            <span>加注缺品数据</span>
+          </header>
+          <div class="body popover-hover more-margin" ng-if="ctrl.com">
+            <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                   dt-instance="ctrl.instance"
+                   class="table table-trend hs-table" width="100%">
+            </table>
+            <empty-table show="ctrl.back.empty"></empty-table>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>

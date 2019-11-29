@@ -1,0 +1,19 @@
+<div ng-init="ctrl.init()" class="hs-container">
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header">
+        <span>品牌排名</span>
+      </header>
+      <div class="body popover-hover table-box" ng-if="ctrl.param">
+        <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+               dt-instance="ctrl.instance"
+               class="table table-trend hs-table" width="100%">
+        </table>
+        <empty-table show="ctrl.back.empty"></empty-table>
+      </div>
+    </article>
+  </div>
+</div>
+<script type="text/ng-template" id="popover.html">
+  <table-pop data="ctrl.popover" click="ctrl.tool.goTab(id, ctrl)"></table-pop>
+</script>

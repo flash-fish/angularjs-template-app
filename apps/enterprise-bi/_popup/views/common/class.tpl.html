@@ -1,0 +1,117 @@
+<div class="modal-content category" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" aria-hidden="true" ng-click="ctrl.cancel()">&times;</button>
+    <h1 class="modal-title" id="myModalLabel">品类组选择</h1>
+  </div>
+  <div class="modal-body">
+    <div ng-if="ctrl.isMulti" class="choose-content">
+      <div class="btn-group btn-group-justified modal-cat-level">
+        <div class="btn-group" role="group" ng-repeat="level in ctrl.catLevels">
+          <button class="btn btn-default" role="button" ng-class="{'btn-primary': level.id == ctrl.level}"
+                  ng-click="ctrl.toggle(level.id)"
+                  ng-disabled="(level.id < ctrl.curLevel || (ctrl.dis_level === 'true'  && level.id !== ctrl.param.level)) && level.id !== 0">
+            {{level.name}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div ng-if="(ctrl.isMulti && ctrl.level !== ctrl.initLevel && ctrl.level !== ctrl.curLevel && ctrl.level !== 0 || !ctrl.isMulti)"
+         ng-class="{'cat-tree': !ctrl.isMulti}">
+      <div>
+        <label class="modal-subTitle" ng-if="!ctrl.isMulti">按品类组结构选择</label>
+      </div>
+      <div class="container-fluid">
+        <div class="category_drags">
+          <div class="category_drag" ng-repeat="categoryItem in ctrl.categoryPath track by categoryItem.level">
+            <div class="category_drag_main">
+              <p class="text-center text-vo font-bold">
+                {{ctrl.categoryTitles[categoryItem.level - 1]}}</p>
+              <div class="category_drag_list_dp category_popup">
+                <ul>
+                  <li ng-repeat="cat in categoryItem.mtClassModels">
+                    <a href="javascript:void(0)" ng-click="ctrl.openCats(cat, categoryItem)" ng-class="{'line-none': !cat.classCode,
+                         'indexSelected': categoryItem.selectedCat == cat.className}">
+                      <span ng-show="cat.classCode!==undefined && cat.classCode!==null">[{{cat.classCode}}]</span>
+                      <span ng-class="{'all-cat': !cat.classCode}">{{:: cat.className }}</span>
+                      <span class="pull-right text-muted" ng-if="categoryItem.level < 5">
+                        <i class="fa fa-fw fa-angle-right text" ng-show="cat.classCode"></i>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="choose-warn-info col-md-12">
+      <div ng-if="ctrl.warnInfo" title="{{ctrl.warnInfo}}">{{ctrl.warnInfo}}</div>
+      <div ng-if="ctrl.errorInfo" class="errorInfo">{{ctrl.errorInfo}}</div>
+    </div>
+
+    <div>
+      <div class="row input-area">
+        <!-- <div class="col-md-1">
+          <label class="modal-subTitle" style="float: left;">{{ctrl.isMulti ? '分类选择' : '按检索分类选择'}}</label>
+        </div> -->
+        <div class="col-md-3">
+          <input auto-focus limit-length  max-length="1200" class="form-control input-cat" type="text"
+                 placeholder="{{ctrl.level === 0 ? '请输入品类组代码（多个用,分割）' : '请输入关键字搜索品类组'}}" ng-model="ctrl.search" ng-change="ctrl.change()" />
+        </div>
+      </div>
+      <div class="show-area">
+        <div class="show-area-header">
+          <span class="show-area-title">品类组列表</span>
+          <span class="show-area-count">（共有 {{ctrl.total ? ctrl.total : 0}} 条）</span>
+          <span class="checked-button" ng-if="ctrl.isMulti">
+            <button class="btn btn-default" ng-click="ctrl.reverseChoose()">
+              <i class="fa fa-check"></i>反选</button>
+            <button class="btn btn-default" ng-click="ctrl.allChoose()">
+              <i class="fa fa-check"></i>全选</button>
+          </span>
+        </div>
+        <div class="show-area-body">
+          <span loading show="ctrl.loading"></span>
+          <div class="col-sm-3" ng-show="!ctrl.loading" ng-repeat="cat in ctrl.initList"
+               ng-click="ctrl.choose(cat, ctrl.initList)">
+            <div ng-class="{selectLike: ctrl.isMulti
+                          ? cat.selected === true
+                          : ctrl.initList.selected == cat.className}">
+              <div title="{{cat.levelName + ' - [' + cat.classCode + ']' + cat.className}}">
+                {{cat.levelName + ' - [' + cat.classCode + ']' + cat.className}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="show-area-page">
+          <hs-pager curr="ctrl.curr" total="ctrl.total" key="ctrl.key"></hs-pager>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid margin-top">
+      <div class="row selected-box">
+        <div class="col-md-1">
+          <p>当前选择品类组:</p>
+          <p>(已选 {{ctrl.selected.length}} 条)</p>
+        </div>
+        <div class="col-md-9 pad-right-none">
+          <select multiple chosen class="form-control m-r-xs" ng-model="ctrl.selected"
+                  ng-options="cat as cat.name for cat in ctrl.selected track by cat.code"
+                  ng-change="ctrl.updateSelected()" width="'100%'"
+                  no_results_text="' '" placeholder-text-multiple="' '">
+          </select>
+        </div>
+        <div class="col-md-1 pad-left-none">
+          <button type="button" class="btn btn-sm" ng-class="{'disabled':ctrl.catArrs.length==0,'btn-primary':ctrl.catArrs.length>0}"
+                  ng-click="ctrl.reset()">清除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+  </div>
+</div>

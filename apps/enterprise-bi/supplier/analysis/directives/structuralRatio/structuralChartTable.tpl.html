@@ -1,0 +1,28 @@
+<div ng-init="ctrl.init()">
+  <div class="row">
+    <article class="col-sm-12">
+      <header class="header">
+        <span>供应商结构占比（按供应商/小类）</span>
+      </header>
+      <div class="body popover-hover more-margin">
+        <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+               dt-instance="ctrl.instance"
+               class="table table-trend hs-table" width="100%">
+        </table>
+      </div>
+    </article>
+  </div>
+
+  <div class="row" style="margin-top: 10px">
+    <article class="col-sm-12">
+      <header class="header">
+        <span>供应商结构占比分布图</span>
+      </header>
+      <div class="body hs-chart-box">
+        <div class="hs-chart" style="margin-top: 0">
+          <chart option="ctrl.structuralPct" load="ctrl.loadChart" class="hs-trend"></chart>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "supplierName": "佳洁士长效清新薄荷健康专家防蛀修护牙膏",
+        "supplierCode": 215761,
+        "Amount": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "潘婷乳液修复洗发露",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "海飞丝丝质柔滑型去屑洗发露(优惠装)",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "潘婷排浊赋能洗护组合",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装2",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装4",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      },
+      {
+        "supplierName": "沙宣修护水养洗护尊享装",
+        "supplierCode": 215761,
+        "skuLack": 56,
+        "avgDay": 3.23,
+        "APercent": 0.23
+      }
+    ],
+    "summary": {
+      "supplierName": "",
+      "supplierCode": "",
+      "skuLack": 56,
+      "avgDay": 3.23,
+      "APercent": 0.23
+    },
+    "total": 12
+  }
+}

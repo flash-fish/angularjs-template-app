@@ -1,0 +1,69 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">业态选择</h1>
+  </div>
+  <div class="modal-body">
+    <div>
+      <!--<div class="input-area row choose-content">-->
+        <!--<div class="col-md-6">-->
+          <!--<input auto-focus class="form-control" type="text" placeholder="请输入关键字搜索业态"-->
+                 <!--ng-model="ctrl.search" ng-change="ctrl.change()"/>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="show-area">
+        <div class="show-area-header">
+          <span class="show-area-title">业态列表</span>
+          <span class="show-area-count">（共有 {{ctrl.initList.length}} 条）</span>
+          <span class="checked-button" ng-if="ctrl.isMulti">
+            <button class="btn btn-default"
+                    ng-click="ctrl.reverseChoose()"><i class="fa fa-check"></i>反选</button>
+            <button class="btn btn-default"
+                    ng-click="ctrl.allChoose()"><i class="fa fa-check"></i>全选</button>
+          </span>
+
+          <span class="checked-button" ng-if="ctrl.isMulti">
+            <button class="btn btn-default" ng-repeat="item in ctrl.commonOperation"
+                    ng-click="ctrl.commonChoose(item)">{{item.name}}</button>
+          </span>
+        </div>
+        <div class="show-area-body">
+          <span loading show="ctrl.loading"></span>
+          <div class="col-sm-3" ng-show="!ctrl.loading"
+               ng-repeat="curr in ctrl.initList track by $index"
+               ng-click="ctrl.choose(curr, ctrl.initList)">
+            <div ng-class="{selectLike: ctrl.isMulti
+                        ? curr.selected === true
+                        : ctrl.initList.selected === curr[ctrl.type.title]}">
+              <div title="{{'[' + curr[ctrl.type.code] + ']' + curr[ctrl.type.title]}}">
+                [{{curr[ctrl.type.code]}}]{{curr[ctrl.type.title]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid margin-top">
+      <div class="row selected-box">
+        <div class="col-md-1">
+          <p>当前选择业态:</p><p>(已选 {{ctrl.selected.length}} 条)</p>
+        </div>
+        <div class="col-md-9 pad-right-none">
+          <select multiple chosen class="form-control m-r-xs" ng-model="ctrl.selected"
+                  ng-options="curr as curr.name for curr in ctrl.selected track by curr.code"
+                  ng-change="ctrl.updateSelected()"
+                  width="'100%'" no_results_text="' '" placeholder-text-multiple="' '">
+          </select>
+        </div>
+        <div class="col-md-1 pad-left-none">
+          <button type="button" class="btn btn-info btn-sm" ng-click="ctrl.reset()">清除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+  </div>
+</div>

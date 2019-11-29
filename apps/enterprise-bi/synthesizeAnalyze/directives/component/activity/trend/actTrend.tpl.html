@@ -1,0 +1,86 @@
+<div ng-init="ctrl.init()" class="hs-container">
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header">
+        <span>合计</span>
+        <div class="header-right" ng-if="ctrl.keys.haveSaleWayPct">
+          <sale-way-pct field="ctrl.field.chart.first" param="ctrl.param"></sale-way-pct>
+        </div>
+      </header>
+      <div class="body">
+        <act-sums asum="ctrl.sum" sum="ctrl.detailSum" changes= "ctrl.trend_sum" default = "ctrl.judge"></act-sums>
+        <!--<hs-sale-sum sum="ctrl.sum"></hs-sale-sum>-->
+      </div>
+    </article>
+  </div>
+  <div class="row" ng-show="ctrl.keys.show">
+    <article class="col-md-12">
+      <header class="header" style="display: flex;">
+        <span>{{ctrl.keys.page.title}}趋势图表</span>
+        <date-crumb crumb="ctrl.crumb" param="ctrl.param"></date-crumb>
+        <div style="display: flex; align-items: center; margin-left: auto" class="hs-chart-button hs-chart-box">
+          <div class="hs-chart-function">
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showLineLabel" key="{type: 'line', zoom: ctrl.zoom, img: 'chart_label_line.svg'}"
+            ></chart-toggle>
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showBarLabel" key="{type: 'bar', zoom: ctrl.zoom}"
+            ></chart-toggle>
+          </div>
+        </div>
+      </header>
+      <div class="body hs-chart-box">
+        <div class="hs-chart">
+          <chart option="ctrl.sale" event="ctrl.key.addEvent" load="ctrl.loadChart" class="hs-trend" id="rectChart"></chart>
+        </div>
+        <div ng-if="ctrl.keys.haveStock" ng-hide="ctrl.isStockLatest">
+          <div class="hs-chart" ng-if="ctrl.showStock">
+            <chart option="ctrl.stock" event="null" load="ctrl.loadChart" class="hs-trend"></chart>
+          </div>
+          <div>
+            <toggle-button show="ctrl.showStock" name="'库存图表'"></toggle-button>
+          </div>
+        </div>
+        <!--<div class="hs-chart-function">-->
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showBarLabel" key="{type: 'bar', zoom: ctrl.zoom}"-->
+          <!--&gt;</chart-toggle>-->
+
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showLineLabel" key="{type: 'line', zoom: ctrl.zoom, img: 'chart_label_line.svg'}"-->
+          <!--&gt;</chart-toggle>-->
+        <!--</div>-->
+      </div>
+    </article>
+  </div>
+  <div class="row" ng-show="ctrl.keys.show">
+    <article class="col-md-12">
+      <header class="header">
+        <span>趋势数据</span>
+      </header>
+      <div class="body popover-hover" ng-if="ctrl.param">
+        <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+               dt-instance="ctrl.instance"
+               class="table table-trend hs-table" width="100%">
+        </table>
+        <empty-table show="ctrl.back.empty"></empty-table>
+      </div>
+    </article>
+  </div>
+
+  <div class="row" ng-show="!ctrl.keys.show">
+    <p class="dateNoRight">活动日期与对比日期的天数不一致，没有趋势信息</p>
+  </div>
+</div>
+<style>
+  .dateNoRight {
+    font-size: 14px;
+    color: #808080;
+    text-align: center;
+    padding-top: 10px
+  }
+</style>

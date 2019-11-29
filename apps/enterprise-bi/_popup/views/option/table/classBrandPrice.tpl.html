@@ -1,0 +1,100 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">指标选择</h1>
+  </div>
+  <div class="modal-body popup-option-table">
+    <div class="hs-field first-border-pop">
+      <div class="pop-option" ng-repeat="(k, v) in ctrl.field track by k">
+        <p>
+          <span>{{v.key.name}}</span>
+          <label>
+            <input type="checkbox" class="checkbox"
+                   ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, ctrl.field)">
+            <span>全选</span>
+          </label>
+        </p>
+        <div class="row">
+          <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+            <label>
+              <input type="checkbox" class="checkbox"
+                     ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                     ng-click="ctrl.selectOne(l, k, ctrl.field)"/>
+              <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+              <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                   popover-placement="top-right" popover-trigger="mouseenter"><i class="glyphicon glyphicon-info-sign"></i></a>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <same-ring-setting options="ctrl.options" ng-if="!ctrl.context.noShowSetting"></same-ring-setting>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <span class="hs-red error" ng-if="ctrl.showError">至少指定一个指标, 请选择</span>
+    <span class="hs-red error" ng-if="ctrl.showManyError">最多指定十个指标, 请减少一些指标</span>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>
+
+
+<!--平均销售额-->
+<script type="text/ng-template" id="sale_one.html">
+  <div class="hs-popover-box">
+    <span>
+      新品平均销售额->新品销售额/新品有售SKU数
+      <br>
+      商品平均销售额->商品销售额/新品有售SKU数
+    </span>
+  </div>
+</script>
+<!--平均毛利额-->
+<script type="text/ng-template" id="sale_two.html">
+  <div class="hs-popover-box">
+    <span>
+      新品平均毛利额->新品毛利额/新品有售SKU数
+      <br>
+      商品平均毛利额->商品毛利额/新品有售SKU数
+    </span>
+  </div>
+</script>
+<!--平均铺货门店数-->
+<script type="text/ng-template" id="sale_thr.html">
+  <div class="hs-popover-box">
+    新品平均铺货门店数->各新品铺货门店数的合计/新品个数
+    <br>
+    商品平均铺货门店数->各商品铺货门店数的合计/商品个数
+  </div>
+</script>
+
+<!--单品销售额-->
+<script type="text/ng-template" id="brandOneSalesPop.html">
+  <div class="hs-popover-box">
+    销售额/有售SKU数
+  </div>
+</script>
+
+<!--单品毛利额-->
+<script type="text/ng-template" id="brandOneProfitPop.html">
+  <div class="hs-popover-box">
+    毛利额/有售SKU数
+  </div>
+</script>
+
+<!--单品-->
+<script type="text/ng-template" id="brandOneContributePop.html">
+  <div class="hs-popover-box">
+    (销售额*40%+毛利额*30%+销售数*30%)/有售SKU数
+  </div>
+</script>
+
+<!--单品销售额-->
+<script type="text/ng-template" id="brandRateOfPinPop.html">
+  <div class="hs-popover-box">
+    有售SKU数/可售SKU数
+  </div>
+</script>

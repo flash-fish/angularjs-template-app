@@ -1,0 +1,46 @@
+<div class="systemNotice" ng-show="data.length">
+  <a href="" class="closeFlag" ng-click="isShow()"></a>
+  <ul>
+    <li ng-repeat="curr in data track by $index">
+      <i class="fa fa-exclamation-circle"></i>{{curr}}
+    </li>
+  </ul>
+
+  <style>
+    .systemNotice {
+      background: #fef6f7;
+      padding: 12px 20px;
+      line-height: 20px;
+      font-size: 12px;
+      color: #ea5b66;
+      border-bottom: 1px solid #ea5b66;
+      position: relative;
+    }
+
+    .systemNotice b {
+      font-weight: normal;
+      color: #ea5b66 !important;
+    }
+
+    .systemNotice .fa-exclamation-circle {
+      color: #ea5b66;
+      padding-right: 5px;
+    }
+
+    .systemNotice li {
+      font-weight: bolder;
+    }
+
+    .systemNotice .closeFlag {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -15px;
+      width: 30px;
+      height: 30px;
+      background: url(/styles/img/icon_close_red.png) no-repeat 50% 50%;
+    }
+
+  </style>
+
+</div>

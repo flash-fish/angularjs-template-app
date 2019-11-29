@@ -1,0 +1,298 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section ng-if="ctrl.inited">
+    <!--<div class="row">-->
+      <!--<header class="header top home-margin-top">-->
+        <!--<span>新品概况</span>-->
+      <!--</header>-->
+
+      <!--<div class="body" style="background-color: white;">-->
+        <!--<div style="height: 40px;">-->
+          <!--<div style="height: 14px;line-height: 14px; width: 8%; float: left; margin-left: 15px">-->
+            <!--<p style="font-size: 13px; font-family: 'Microsoft YaHei'; color: #2A80D8">数据权限</p>-->
+          <!--</div>-->
+          <!--<div style="width: 92%">-->
+            <!--<div class="col-md-5" ng-repeat="list in ctrl.power" ng-if="list.data.length>0"-->
+                 <!--style="height: 14px;line-height: 14px">-->
+              <!--<p style="width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">-->
+                <!--<span style="font-size: 13px">{{list.name}}:</span>-->
+                <!--<span style="font-size: 13px" title="{{list.data}}">{{list.data}}</span>-->
+              <!--</p>-->
+            <!--</div>-->
+            <!--<div class="col-md-6" ng-if="ctrl.anyPower" style="height: 14px;line-height: 14px;">-->
+              <!--<p style="font-size: 13px">全部</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>新品概况</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.keys.finish"></hs-search>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div id="newItem-home">
+
+      <div class="row" style="background-color: white">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+            <!---->
+            <span>{{ctrl.year}}年新品概况(年至今01/01-{{ctrl.now}})</span>
+          </header>
+
+          <div class="body product-survey">
+            <div style="border-top: 1px solid #CCCCCC;" class="newItem_no_padding_right">
+              <a ng-click="ctrl.jump('saleStock')"
+                 style="font-size: 15px; position: absolute; top: 5px; right: 15px;z-index:2;"
+                 ng-if="ctrl.saleStockMore">
+                更多
+              </a>
+
+              <div class="col-md-3" ng-repeat="list in ctrl.temp" style="border-bottom: 1px solid #CCCCCC;"
+                   ng-class="{'newItem_border_right' : list.line}">
+                <p class="area-value-one">
+                  <span>
+                    <img src="styles\img\icon\sale.png" ng-if="list.isSale"/>
+                    <img src="styles\img\icon\inv.png" ng-if="!list.isSale"/>
+                  </span>
+                  <span>{{list.name}}</span>
+                </p>
+                <p>
+                  <span class="now-sale" ng-if="list.isSale" title="{{list.data[7]}}元">{{list.data[0]}}</span>
+                  <span class="now-sale" ng-if="!list.isSale">{{list.data[0]}}</span>
+                </p>
+                <p class="area-value-three">
+                  <span class="item-Title" ng-if="list.isSale" title="{{list.data[8]}}元">同比: {{ list.data[1]}}</span>
+                  <span class="item-Title" ng-if="!list.isSale">同比: {{ list.data[1]}}</span>
+                  <span ng-if="list.data[4]" up-down change="list.data[4]" style="margin-left: 5px"></span>
+                  <span ng-if="list.data[4]"
+                        ng-class="{'scale-red-icon': list.data[4] >= 0, 'scale-green-icon' : list.data[4] < 0}">{{list.data[2]}}</span>
+                </p>
+
+                <p class="area-value-one">
+                  <span>
+                    <img src="styles\img\icon\sale.png" ng-if="list.isSale"/>
+                    <img src="styles\img\icon\inv.png" ng-if="!list.isSale"/>
+                  </span>
+                  <span>{{list.percent}}</span>
+
+                <p style="margin-bottom: 10px">
+                  <span class="now-sale">{{list.data[3]}}</span>
+                </p>
+              </div>
+            </div>
+            <div>
+              <a ng-click="ctrl.jump('saleState')"
+                 style="font-size: 15px; position: absolute; top: 170px; right: 15px; z-index:1;"
+                 ng-if="ctrl.saleStateMore">
+                更多
+              </a>
+              <div ng-repeat="list in ctrl.temp2" style="margin-top: 10px; float: left; width: 16%">
+                <p>
+                  <span>{{list.name}}</span>
+                  <a style="position: relative; cursor: pointer" uib-popover-template="'{{list.prompt + '.html'}}'"
+                     popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt">
+                    <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                </p>
+                <p style="margin-bottom: 10px; margin-top: 3px">
+                  <span class="now-sale">{{list.data}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top" style="display: flex">
+
+            <span>新品与去年对比(01/01-{{ctrl.now}})</span>
+            <div style="margin-left: auto;display: -webkit-box;" class="hs-chart-box">
+              <div class="home-model" style="margin-right: unset">
+                <marketing model="ctrl.last_name" models="ctrl.lastYearMarketing"></marketing>
+              </div>
+              <div class="hs-chart-function" style="margin-right: 30px">
+                <chart-toggle first="ctrl.chart_bar_Unit" show-label="ctrl.label" key="{controlCharts: 'chart_bar'}"
+                              second="ctrl.chart_bar_Amount" third="ctrl.chart_bar_GPM"></chart-toggle>
+              </div>
+            </div>
+
+          </header>
+          <div class="body" style="background-color: white">
+            <div class="row survey-span">
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">引入新品SKU数</span>
+                </div>
+                <div style="height: 264px; width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_Unit" class="trend chart_bar" load="ctrl.chartLoadOne"
+                         style="height: 264px; width: 100%"></chart>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">新品销售额</span>
+                </div>
+                <div style="height: 264px; width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_Amount" load="ctrl.chartLoadOne" class="trend chart_bar"
+                         style="height: 264px; width: 100%"></chart>
+
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">新品毛利额</span>
+                </div>
+                <div style="height: 264px; width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_GPM" load="ctrl.chartLoadOne" class="trend chart_bar"
+                         style="height: 264px; width: 100%"></chart>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+            <span>新品结构分析(01/01-{{ctrl.now}})</span>
+          </header>
+          <div class="body" style="background-color: white">
+            <div class="row survey-span">
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">
+                    引入新品SKU结构
+                    <a style="cursor: pointer" uib-popover-template="'importProducts.html'"
+                       popover-trigger="mouseenter" popover-placement='bottom-left'>
+                    <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+
+                </div>
+
+                <div style="height: 350px; margin-top: 5px; width: 100%">
+                  <chart option="ctrl.chart_Pie_Unit" click-event="ctrl.clickEvent" class="trend"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadTwo"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">新品销售结构</span>
+                </div>
+                <div style="min-height: 350px; margin-top: 5px; width: 100%">
+                  <chart option="ctrl.chart_Pie_Amount" click-event="ctrl.clickEvent" class="trend"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadTwo"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">新品毛利结构</span>
+                </div>
+                <div style="height: 350px; margin-top: 5px; width: 100%">
+                  <chart option="ctrl.chart_Pie_GPM" click-event="ctrl.clickEvent" class="trend"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadTwo"></chart>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+
+            <span>{{ctrl.year}}年新品销售趋势(最近30天)</span>
+            <a ng-click="ctrl.jump('sale')" class="all-more" ng-if="ctrl.saleStockMore">更多</a>
+          </header>
+
+          <!--<div class="hs-chart-function">-->
+          <!--<chart-toggle first="ctrl.chart_bar_new" show-label="ctrl.trendLabel"></chart-toggle>-->
+          <!--</div>-->
+          <div class="hs-chart-box">
+            <div class="hs-chart-function float-right" style="margin-right: 30px">
+              <chart-toggle first="ctrl.chart_bar_new" show-label="ctrl.trendLabel" key="{controlCharts: 'chart_bar_new'}"></chart-toggle>
+            </div>
+          </div>
+
+          <div class="body hs-chart-box" style="margin-bottom: 30px">
+            <div class="hs-chart no-position">
+              <chart option="ctrl.chart_bar_new" event="ctrl.clickEvent" load="ctrl.chartLoadThree"
+                     class="hs-trend chart_bar_new"></chart>
+            </div>
+            <!--<div class="hs-chart-function">-->
+              <!--<chart-toggle first="ctrl.chart_bar_new" show-label="ctrl.trendLabel"></chart-toggle>-->
+            <!--</div>-->
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<style>
+  .survey-span .hs-chart-function {
+    position: relative;
+    bottom: 6px;
+    left: -12px;
+  }
+
+  .float-right.hs-chart-function .chart-toggle-box {
+    float: right;
+    z-index: 999;
+  }
+
+
+  .hs-chart.no-position .chart-div {
+    position: unset !important;
+  }
+</style>

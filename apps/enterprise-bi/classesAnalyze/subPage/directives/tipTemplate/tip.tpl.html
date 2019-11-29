@@ -1,0 +1,77 @@
+<style>
+  .tip {
+    width: 110%;
+    max-width: 220px;
+    height: 100%;
+    z-index: 999;
+    /*background: #fafafa;*/
+  }
+  .tip span{
+    font-size: 13px;
+  }
+  .storeTitle {
+    font-weight: 600;
+  }
+  h2{
+    width: 100%;
+    text-align:center;
+    font-size: 15px;
+    padding:10px;
+    font-weight:600;
+  }
+</style>
+<div ng-init="ctrl.init()" class="subpage"> <!--tooltip-class="inner"-->
+  <a class="prompt-box"
+     class="hs-popover-link"
+     uib-popover-template="'{{ctrl.data.tplName}}'"
+     popover-placement="bottom-right" popover-trigger="mouseenter">
+    <i class="fa fa-exclamation-circle"></i>
+  </a>
+</div>
+
+<script type="text/ng-template" id="abcType.html">
+  <div class="tip">
+    <h2>整体ABC</h2>
+    <p>
+      <span>由整体综合贡献额计算得出商品的ABC标签</span>
+    </p>
+    <p>
+      <span>(累积：0%-80%:A；80%-95%:B；95%以上:C)</span>
+    </p>
+    <h2>平均ABC</h2>
+    <p>
+      <span>由平均综合贡献额(整体综合贡献额/铺设门店数)计算得出商品的ABC标签</span>
+    </p>
+    <p>
+      <span>(公式同上)</span>
+    </p>
+  </div>
+</script>
+<script type="text/ng-template" id="storeType1.html">
+  <div class="tip">
+    <p>
+      <span class="storeTitle">金牛商品：</span><span>平均经营门店A类，各业态平均 为A类、铺市门店数大于等于70的商品</span>
+    </p>
+  </div>
+</script>
+<script type="text/ng-template" id="storeType2.html">
+  <div class="tip">
+    <p>
+      <span class="storeTitle">明星商品：</span><span>平均经营门店A类，各业态平均 为A类、铺市门店数小于70的商品</span>
+    </p>
+  </div>
+</script>
+<script type="text/ng-template" id="storeType3.html">
+  <div class="tip">
+    <p>
+      <span class="storeTitle">问题商品：</span><span>平均经营门店C类，各业态平均 为B、C类、铺市门店数小于70的商品</span>
+    </p>
+  </div>
+</script>
+<script type="text/ng-template" id="storeType4.html">
+  <div class="tip">
+    <p>
+      <span class="storeTitle">瘦狗商品：</span><span>平均经营门店C类，各业态平均 为B、C类、铺市门店数大于等于70的商品</span>
+    </p>
+  </div>
+</script>

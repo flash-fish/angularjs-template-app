@@ -1,0 +1,44 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "fromDate": "20180101",
+        "endDate": "20180110",
+        "Days": 10,
+        "price": 1342.34
+      },
+      {
+        "fromDate": "20180101",
+        "endDate": "20180110",
+        "Days": 10,
+        "price": 1342.34
+      },
+      {
+        "fromDate": "20180101",
+        "endDate": "20180110",
+        "Days": 10,
+        "price": 1342.34
+      },
+      {
+        "fromDate": "20180101",
+        "endDate": "20180110",
+        "Days": 10,
+        "price": 1342.34
+      },
+      {
+        "fromDate": "20180101",
+        "endDate": "20180110",
+        "Days": 10,
+        "price": 1342.34
+      }
+    ],
+    "summary": {
+      "fromDate": "",
+      "endDate": "",
+      "Days": 10,
+      "price": 1342.34
+    },
+    "total": 5
+  }
+}

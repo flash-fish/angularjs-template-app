@@ -1,0 +1,111 @@
+<style>
+  .bottomPadding {
+    padding-bottom: 20px;
+  }
+
+  #columntabletreeGrid {
+    height: 100% !important;
+  }
+</style>
+<div ng-init="ctrl.init()" class="abc-chart">
+  <!--按品类组部分代码-->
+  <div>
+    <div class="row" ng-if="ctrl.keys.active!=6">
+      <article class="col-md-12">
+        <header class="header">
+          <span>合计</span>
+        </header>
+        <div class="body">
+          <abc-sum sum="ctrl.newSum" ng-if="ctrl.sum.length!=0"></abc-sum>
+          <!--<hs-sale-sum sum="ctrl.sum"></hs-sale-sum>-->
+        </div>
+      </article>
+    </div>
+    <div class="row" ng-if="ctrl.keys.active!=6">
+      <article class="col-md-12">
+        <header class="header current-parent-box">
+          <span ng-if="ctrl.keys.active==2">品类组{{ctrl.keys.page.title}}图表</span>
+          <span ng-if="ctrl.keys.active==3">类别{{ctrl.keys.page.title}}分析图</span>
+          <span ng-if="ctrl.keys.active==1">{{ctrl.keys.page.title}}分析图</span>
+          <span ng-if="ctrl.keys.active==4">品牌{{ctrl.keys.page.title}}分析图</span>
+          <span ng-if="ctrl.keys.active==5">门店{{ctrl.keys.page.title}}分析图</span>
+          <span ng-if="ctrl.keys.active==7 ">业态群{{ctrl.keys.page.title}}分析图</span>
+          <span ng-if="ctrl.keys.active==8">新旧品{{ctrl.keys.page.title}}分析图</span>
+          <div class="hs-breadcrumbs" ng-if="!ctrl.hideTree">
+            <breadcrumbs data="ctrl.categoryTree" click="ctrl.getParent(code, level, name)"></breadcrumbs>
+          </div>
+          <div class="tool-box" ng-if="ctrl.keys.active==2||ctrl.keys.active==3">
+            <select class="form-control" ng-model="ctrl.currCatType" ng-change="ctrl.changeLevel()">
+              <option value="{{s.id}}" ng-repeat="s in ctrl.catType track by s.id">{{s.name}}</option>
+            </select>
+          </div>
+        </header>
+        <div class="body hs-chart-box">
+          <!-- 叠堆柱状图 饼图 切换-->
+          <div class="tab" ng-if="ctrl.keys.active==2||ctrl.keys.active==3||ctrl.keys.active==1">
+            <select-module is-show="ctrl.isStackShow"></select-module>
+          </div>
+
+          <div class="title text-center">
+            {{ctrl.keys.title}}
+          </div>
+
+          <!--柱状(折线)图-->
+          <div class="hs-chart" ng-if="ctrl.isStackShow">
+            <div class="hs-chart-function">
+            </div>
+            <chart ng-show="ctrl.sale" option="ctrl.sale" event="ctrl.key.addEvent" load="ctrl.loadChart"
+                   class="hs-trend"></chart>
+            <div class="hs-chart-function"
+                 ng-if="ctrl.keys.active != 1&&ctrl.keys.active != 7 && ctrl.keys.active != 8">
+              <chart-pager page="ctrl.chartPage" init-page="ctrl.back.tablePage"
+                           total="ctrl.back.total" is-pager="ctrl.clickChartPage"></chart-pager>
+            </div>
+          </div>
+          <!--饼图-->
+          <div class="hs-chart row" ng-if="!ctrl.isStackShow && ctrl.keys.active != 4&&ctrl.showPie2">
+            <div class="col-md-6" ng-show="ctrl.pie1">
+              <chart option="ctrl.pie1" event="ctrl.key.addEvent" load="ctrl.loadChart" class="hs-trend"></chart>
+            </div>
+            <div class="col-md-6" ng-show="ctrl.pie1">
+              <chart option="ctrl.pie2" event="ctrl.key.addEvent" load="ctrl.loadChart" class="hs-trend"></chart>
+            </div>
+          </div>
+          <!--饼图-->
+          <div class="hs-chart row" ng-if="!ctrl.isStackShow && ctrl.keys.active != 4&&!ctrl.showPie2">
+            <div class="col-md-12">
+              <chart option="ctrl.pie1" ng-show="ctrl.pie1" event="ctrl.key.addEvent" load="ctrl.loadChart"
+                     class="hs-trend"></chart>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div ng-class="(ctrl.keys.active==1||ctrl.keys.active==7||ctrl.keys.active==8)? 'row hide-table-footer':'row'">
+      <article class="col-md-12 bottomPadding">
+        <header class="header">
+          <span ng-if="ctrl.keys.active==2">品类组排名</span>
+          <span ng-if="ctrl.keys.active==3">类别{{ctrl.keys.page.title}}构成图</span>
+          <span ng-if="ctrl.keys.active==4">品牌{{ctrl.keys.page.title}}数据</span>
+          <span ng-if="ctrl.keys.active==5">门店{{ctrl.keys.page.title}}数据</span>
+          <span ng-if="ctrl.keys.active==6">商品排名</span>
+          <span ng-if="ctrl.keys.active==7">业态群{{ctrl.keys.page.title}}数据</span>
+          <span ng-if="ctrl.keys.active==8">新旧品{{ctrl.keys.page.title}}数据</span>
+          <span ng-if="ctrl.keys.active==1">{{ctrl.keys.page.title}}数据</span>
+        </header>
+        <div class="body popover-hover " ng-if="ctrl.param">
+          <tree-grid style="width:100%;height:100%" table="ctrl.tableTreeData" key="ctrl.tableTreeConfige"></tree-grid>
+          <table ng-show="false" datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</div>
+<!--<script type="text/ng-template" id="popover.html">-->
+<!--<table-pop data="ctrl.popover" click="ctrl.goTab(id, ctrl)"></table-pop>-->
+<!--</script>-->

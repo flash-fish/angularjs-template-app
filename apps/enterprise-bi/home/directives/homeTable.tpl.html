@@ -1,0 +1,25 @@
+<div ng-init="ctrl.init()" style="height: 230px" class="home-margin-left home-margin-right">
+  <p class="home-gray-p">
+    <span>{{ctrl.title}}</span>
+    <span ng-if="ctrl.subTitle" style="margin-left: 25px; color: #007ADB">{{ctrl.subTitle}}</span>
+  </p>
+  <table style=" width: 100%" border="0" cellspacing="0" cellpadding="0">
+    <tr style="height: 30px; border-bottom: 1px solid #CCCCCC">
+      <th class="home-table-font" style="width: 12%;">排名</th>
+      <th class="home-table-font" style="width: 40%">{{ctrl.title}}</th>
+      <th class="home-table-font" style="width: 21%; text-align: right; cursor: pointer;" ng-click="ctrl.reloadData('allAmount')">{{ctrl.tableField.curr.name}} <img src="styles\img\sort_desc.png" ng-if="ctrl.des === 'allAmount'"/></th>
+      <th class="home-table-font" style="width: 27%; text-align: right; cursor: pointer;" ng-click="ctrl.reloadData('allAmountYoY')">{{ctrl.tableField.yoy.name}} <img src="styles\img\sort_desc.png" ng-if="ctrl.des === 'allAmountYoY'"/></th>
+    </tr>
+
+    <tr ng-repeat="list in ctrl.tableDataArray" style="height: 30px" ng-class="{'home-have-line': list.line}" ng-if="ctrl.tableDataArray">
+      <td class="home-table-font" style="width: 12%;">{{list.num}}</td>
+      <td class="home-table-font" style="width: 40%; cursor: pointer;"><span style="color: #368bf8;" ng-click="ctrl.rowCallback(list.num)">{{list.type}}</span></td>
+      <td class="home-table-font" style="width: 21%; text-align: right;" title="{{list.allAmountY}}元">{{list.allAmount}}</td>
+      <td class="home-table-font" style="width: 27%; text-align: right;">
+        {{list.allAmountYoYC}}
+        <span ng-if="list.allAmountYoY" up-down change="list.allAmountYoY" class="home-margin-left"></span>
+      </td>
+    </tr>
+  </table>
+</div>
+

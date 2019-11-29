@@ -1,0 +1,82 @@
+<div class="hs-container index-complete top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>指标达成（营运）</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2 select">
+              <div class="select-chosen">
+                <select class="form-control year" chosen disable-search="true"
+                        ng-model="ctrl.yearSelect" ng-change="ctrl.setMonth()">
+                  <!--<option value="" disabled>请选择</option>-->
+                  <option value="{{y.id}}" ng-repeat="y in ctrl.years">{{y.name}}年</option>
+                </select>
+              </div>
+
+              <div class="select-chosen month">
+                <select class="form-control" chosen disable-search="true"
+                        ng-model="ctrl.monthStartSelect" ng-change="ctrl.selectChange(ctrl.monthStartSelect, 0)">
+                  <!--<option value="" disabled>请选择</option>-->
+                  <option value="{{m.id}}" ng-repeat="m in ctrl.monthStart">{{m.name}}月</option>
+                </select>
+              </div>
+
+              <span>至</span>
+
+              <div class="select-chosen month">
+                <select class="form-control" chosen disable-search="true" ng-model="ctrl.monthEndSelect"
+                        ng-change="ctrl.selectChange(ctrl.monthEndSelect, 1)">
+                  <!--<option value="" disabled>请选择</option>-->
+                  <option value="{{m.id}}" ng-repeat="m in ctrl.monthEnd">{{m.name}}月</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreGroup()" data="ctrl.com.storeGroup.val" key="'店群'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.key.finish"></hs-search>
+            <div class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-sm-12">
+        <header class="header">
+          <span>指标达成（营运）</span>
+        </header>
+        <div class="body">
+          <div>
+            <index-class-tree param="ctrl.copyCom" field="ctrl.field" keys="ctrl.key"
+                              name="ctrl.interfaceName"></index-class-tree>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

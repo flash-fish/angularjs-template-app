@@ -1,0 +1,43 @@
+<div class="row basic-message" ng-init="ctrl.init()">
+  <div class="col-md-5 text-left">
+    <div class="_heigh">
+      <span class="change-data">新品名称：</span>
+      <span>{{ctrl.basic.productName || '-'}}</span>
+    </div>
+    <div class="_heigh">
+      <span class="change-data">联华码：</span>
+      <span>{{ctrl.basic.productCode || '-'}}</span>
+    </div>
+    <div class="_heigh">
+      <span class="change-data" style="width: 125px;">最新铺货门店数：</span>
+      <span>{{ctrl.door_Numbers || '-'}}</span>
+    </div>
+  </div>
+  <div class="col-md-7 text-left">
+    <div class="_heigh">
+      <span class="change-data">所属类别：</span>
+      <span>{{ctrl.new_type || '-'}}</span>
+    </div>
+    <div class="_heigh">
+      <span class="change-data">条形码：</span>
+      <span>{{ctrl.basic.barcodeId || '-'}}</span>
+    </div>
+    <div class="_heigh">
+      <span class="change-data">新品状态：</span>
+      <span>{{ctrl.basic.statusName || '-'}}</span>
+    </div>
+  </div>
+
+  <style>
+    .basic-message.row {
+      margin: 0;
+    }
+
+    ._heigh {
+      height: 30px;
+      line-height: 30px;
+      margin: 5px 0;
+    }
+
+  </style>
+</div>

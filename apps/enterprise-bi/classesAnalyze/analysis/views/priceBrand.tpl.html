@@ -1,0 +1,23 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="tab-top-box">
+      <header class="header top">
+        <span>价格带</span>
+      </header>
+      <div class="tab-top">
+        <uib-tabset active="ctrl.key.active">
+          <uib-tab index="1" heading="概况" ng-if="!ctrl.key.onlyShowStore" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 1">
+              <bra-survey param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></bra-survey>
+            </div>
+          </uib-tab>
+          <uib-tab index="2" heading="按价格带" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 2" >
+              <bra-price param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></bra-price>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+  </section>
+</div>

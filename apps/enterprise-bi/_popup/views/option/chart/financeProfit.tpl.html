@@ -1,0 +1,122 @@
+<div class="modal-content finProfit-popup-chart" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">指标选择</h1>
+  </div>
+  <div class="modal-body profit-chart">
+    <ul class="nav nav-tabs" ng-show="ctrl.showTab">
+      <li ng-repeat="one in ctrl.tabTypes" ng-model="ctrl.currTab" ng-click="ctrl.tabChange(one)"
+          ng-class="{active: one.active}">
+        <a href="">{{one.name}}</a>
+      </li>
+    </ul>
+    <div class="tab-content" style="margin-bottom: 10px;">
+      <div ng-if="ctrl.currJob === ctrl.jobs.all && '17'.includes(ctrl.currTab.id)">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.all track by k">
+            <p>
+              <span>{{v.key.title}}</span>
+              <label ng-if="v.key.last">
+                <input type="checkbox" ng-model="v.key.last.active" class="checkbox" ng-disabled="v.key.last.disable">
+                <span>{{v.key.last.name}}</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="s in v.list track by $index">
+                <label>
+                  <input type="radio" name="{{'boss_' + k}}" class="radiobox"
+                         ng-checked="s.check" ng-value="s" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.all)" ng-if="!v.key.checkbox"/>
+
+                  <input type="checkbox" name="{{'boss_' + k}}" class="checkbox"
+                         ng-model="s.check" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.all)" ng-if="v.key.checkbox"/>
+                  <span ng-style="{opacity: s.name ? 1 : 0}">{{s.name}}</span>
+                  <span ng-if="s.icon" class="{{s.icon ? s.icon : ''}}">
+                    <a href="" class="hs-popover-link" uib-popover-template="'{{s.icon + '.html'}}'"
+                       popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" style="margin-bottom: 10px;">
+      <div ng-if="ctrl.currJob === ctrl.jobs.buyer || (ctrl.currJob === ctrl.jobs.all && ctrl.currTab.id === '2')">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.buyer track by k">
+            <p>
+              <span>{{v.key.title}}</span>
+              <label ng-if="v.key.last">
+                <input type="checkbox" ng-model="v.key.last.active" class="checkbox" ng-disabled="v.key.last.disable">
+                <span>{{v.key.last.name}}</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="s in v.list track by $index">
+                <label>
+                  <input type="radio" name="{{'buyer_' + k}}" class="radiobox"
+                         ng-checked="s.check" ng-value="s" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.buyer)" ng-if="!v.key.checkbox"/>
+
+                  <input type="checkbox" name="{{'buyer_' + k}}" class="checkbox"
+                         ng-model="s.check" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.buyer)" ng-if="v.key.checkbox"/>
+                  <span ng-style="{opacity: s.name ? 1 : 0}">{{s.name}}</span>
+                  <span ng-if="s.icon" class="{{s.icon ? s.icon : ''}}">
+                    <a href="" class="hs-popover-link" uib-popover-template="'{{s.icon + '.html'}}'"
+                       popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" style="margin-bottom: 10px;">
+      <div ng-if="ctrl.currJob === ctrl.jobs.store || (ctrl.currJob === ctrl.jobs.all && ctrl.currTab.id === '5')">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.store track by k">
+            <p>
+              <span>{{v.key.title}}</span>
+              <label ng-if="v.key.last">
+                <input type="checkbox" ng-model="v.key.last.active" class="checkbox" ng-disabled="v.key.last.disable">
+                <span>{{v.key.last.name}}</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="s in v.list track by $index">
+                <label>
+                  <input type="radio" name="{{'store_' + k}}" class="radiobox"
+                         ng-checked="s.check" ng-value="s" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.store)" ng-if="!v.key.checkbox"/>
+
+                  <input type="checkbox" name="{{'store_' + k}}" class="checkbox"
+                         ng-model="s.check" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.option.store)" ng-if="v.key.checkbox"/>
+                  <span ng-style="{opacity: s.name ? 1 : 0}">{{s.name}}</span>
+                  <span ng-if="s.icon" class="{{s.icon ? s.icon : ''}}">
+                    <a href="" class="hs-popover-link" uib-popover-template="'{{s.icon + '.html'}}'"
+                       popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                  <!--<span ng-style="{opacity: s.name ? 1 : 0}">{{v.key.get && !s.own ? ctrl.currBar.name + "-" + s.name : s.name}}</span>-->
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <span class="hs-red error" ng-if="ctrl.showManyError">
+      <span class="hs-red" ng-if="ctrl.errors.length">【{{ ctrl.errors.join(' , ') }}】</span>折线图最多指定两个指标, 请减少一些指标</span>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "name": "aassee",
+        "duration": 1243423,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aassee",
+        "duration": 12342323,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aassee",
+        "duration": 1234223,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aassee",
+        "duration": 123,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aassee",
+        "duration": 123,
+        "task": 123,
+        "percentage": 0.3
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "productName": "佳洁士长效清新薄荷健康专家防蛀修护牙膏",
+        "productCode": 215761,
+        "spec": "140g",
+        "statusName": "正常",
+        "arrivalRate": "94.34%",
+        "nonarrivedCost": 1169293.03,
+        "avgDays": 3.25,
+        "returnRate": "0.24%"
+      },
+      {
+        "productName": "潘婷乳液修复洗发露",
+        "productCode": 215761,
+        "spec": "140g",
+        "statusName": "正常",
+        "arrivalRate": "94.34%",
+        "nonarrivedCost": 1169293.03,
+        "avgDays": 3.25,
+        "returnRate": "0.24%"
+      },
+      {
+        "productName": "海飞丝丝质柔滑型去屑洗发露(优惠装)",
+        "productCode": 215761,
+        "spec": "140g",
+        "statusName": "正常",
+        "arrivalRate": "94.34%",
+        "nonarrivedCost": 1169293.03,
+        "avgDays": 3.25,
+        "returnRate": "0.24%"
+      },
+      {
+        "productName": "潘婷排浊赋能洗护组合",
+        "productCode": 215761,
+        "spec": "140g",
+        "statusName": "正常",
+        "arrivalRate": "94.34%",
+        "nonarrivedCost": 1169293.03,
+        "avgDays": 3.25,
+        "returnRate": "0.24%"
+      },
+      {
+        "productName": "沙宣修护水养洗护尊享装",
+        "productCode": 215761,
+        "spec": "140g",
+        "statusName": "正常",
+        "arrivalRate": "94.34%",
+        "nonarrivedCost": 1169293.03,
+        "avgDays": 3.25,
+        "returnRate": "0.24%"
+      }
+    ],
+    "summary": {
+      "productName": "",
+      "productCode": "",
+      "spec": "",
+      "statusName": "",
+      "arrivalRate": "94.34%",
+      "nonarrivedCost": 1169293.03,
+      "avgDays": 3.25,
+      "returnRate": "0.24%"
+    },
+    "total": 5
+  }
+}

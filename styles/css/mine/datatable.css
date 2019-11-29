@@ -1,0 +1,341 @@
+/**
+  表格的基础样式
+ */
+.hs-table {
+  width: 100%;
+  margin: 0 !important;
+  /* border-spacing: 0;
+   border-collapse: collapse;
+   border-width: 0 0 1px 0 !important;*/
+  border: 1px solid #ECECEC;
+}
+
+.table-box {
+  min-height: 510px;
+}
+
+/*
+  表格内容默认左对齐
+ */
+.hs-table th,
+.hs-table td {
+  text-align: left;
+  font-weight: normal;
+  font-size: 12px;
+  box-sizing: content-box;
+  vertical-align: middle !important;
+  border-color: #ECECEC !important;
+}
+
+.hs-table thead > tr {
+  height: 45px;
+}
+
+.hs-table tbody > tr {
+  height: 35px !important;
+}
+
+.hs-table > tbody > tr > td,
+.hs-table > thead > tr > th {
+  white-space: nowrap;
+}
+
+.hs-table > thead > tr > th {
+  border-bottom: 1px solid #ddd;
+}
+
+.hs-table > td,
+.hs-table > th {
+  border-top: 1px solid #ddd !important;
+}
+
+.hide-border {
+  border: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.add-row {
+  height: 35px;
+  margin: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 7px;
+  text-align: center;
+  line-height: 35px;
+}
+
+.add-row:hover {
+  cursor: pointer;
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.add-row span > i {
+  padding-right: 5px;
+}
+
+.edit-table .buttons .btn-default {
+  color: #333;
+}
+
+.edit-table input[disabled] {
+  background: #fff;
+  cursor: default !important;
+}
+
+.edit-table .select-top {
+  border: 0;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  position: absolute;
+  top: 8px;
+  background: #fff;
+}
+
+.edit-table tbody td:nth-child(2) {
+  position: relative;
+}
+
+/**
+  基于dataTable的样式处理
+ */
+.hide-table-footer .dt-toolbar-footer {
+  display: none;
+}
+
+.dt-toolbar-footer {
+  padding: 5px 1px;
+}
+
+.dataTable tbody .odd {
+  background-color: #fff !important;
+}
+
+.dataTable tbody .even {
+  background-color: #fafcfe !important;
+}
+
+/* 不允许排序的列 统一样式 */
+.dataTable .sorting_disabled {
+  background-image: unset !important;
+}
+
+.dataTable .sorting_disabled:hover {
+  cursor: text;
+  font-weight: normal !important;
+}
+
+/*
+  没有数据的样式
+ */
+.dataTables_empty {
+  text-align: center !important;
+  font-size: 14px !important;
+}
+
+/*
+  固定列的场合，当手动调用DataTable Columns Resizing时，
+  需要将固定列的各种初始化表格模块隐藏掉
+ */
+.dataTables_length,
+.dataTables_filter,
+.DTFC_LeftWrapper .dataTables_info,
+.DTFC_LeftWrapper .dataTables_paginate,
+.DTFC_LeftHeadWrapper .dataTable tbody {
+  display: none;
+}
+
+/* IE样式问题 */
+
+.DTFC_LeftBodyWrapper {
+  min-height: 35px !important;
+  border: 1px solid #ECECEC;
+  border-top: none;
+}
+
+.DTFC_LeftBodyLiner table {
+  overflow: hidden;
+}
+
+/* 固定列样式修正 */
+.DTFC_LeftHeadWrapper table {
+  margin-top: 0 !important;
+}
+
+.DTFC_LeftBodyLiner {
+  width: 100%;
+}
+
+.DTFC_LeftBodyWrapper,
+.DTFC_LeftBodyLiner {
+  position: static !important;
+}
+
+.DTFC_LeftHeadWrapper,
+.DTFC_LeftBodyWrapper {
+  background-color: #fff;
+}
+
+.dataTables_scrollHead {
+  /*overflow: visible !important;*/
+  /*overflow-x: hidden !important;*/
+}
+
+.dataTables_scrollHead table thead th {
+  position: relative;
+}
+
+.dataTables_scrollBody .dynamic-icon-box {
+  display: none;
+}
+
+.dataTables_scrollBody {
+  border-bottom: 1px solid #ececec;
+}
+
+table.dataTable thead .sorting_asc {
+  font-weight: bold;
+  background-color: #f5f5f5 !important;
+}
+
+table.dataTable thead {
+  background-color: #fff !important;
+}
+
+.dataTables_scrollHead table > thead > tr {
+  background: #fff !important;
+}
+
+table.dataTable thead > tr > th.sorting_disabled,
+.dataTables_scrollBody tbody > tr > td,
+.dataTables_scrollBody tbody > tr > th {
+  padding-right: 18px !important;
+}
+
+.dataTable > tbody td,
+.dataTable > tbody th {
+  padding: 5px 8px !important;
+}
+
+.dt-toolbar {
+  display: none;
+  border: none;
+  background: #fff;
+  position: absolute;
+  top: 160px;
+}
+
+/*
+  对表格的页脚信息统一样式
+ */
+.dataTables_info {
+  padding-top: 9px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  color: #6b6a6a !important;
+}
+
+.all-selected {
+  width: 20px;
+}
+
+.dataTable .dataTables_scrollHead .all-selected input[type="checkbox"] {
+  width: unset;
+}
+
+/**
+  以下内容用于定制化table
+ */
+
+/*
+  对表格进行条纹处理(hs-table-striped)
+ */
+.hs-table-striped > tbody > tr:nth-of-type(even) {
+  /*background-color: #f9f9f9;*/
+}
+
+/*
+  增加表格hover效果(hs-table-hover)
+ */
+.hs-table-hover > tbody > tr:hover {
+  background-color: #ecf3f8;
+}
+
+/*表格th背景颜色改为一致*/
+.hs-table-striped thead th {
+  background-color: #f5f5f5;
+}
+
+/*表格title上下距离调整与datatable一致*/
+.hs-table-title {
+  margin: 30px 0 20px;
+}
+
+/*根据设计要求修改样式*/
+
+/*表格头部样式添加背景颜色*/
+.hs-table > thead:first-child > tr:first-child > th {
+  background-color: #f5f5f5;
+}
+
+/*自定义table*/
+.self-table {
+  overflow-x: auto;
+}
+
+.self-table table {
+  width: 100%;
+  margin: 0;
+  border: 1px solid #ECECEC;
+}
+
+.self-table .row-span, .self-table .col-span {
+  text-align: center;
+}
+
+.self-table.table-layout-fixed table {
+  table-layout: fixed;
+}
+
+.self-table table th {
+  background-color: #f5f5f5;
+  border: 1px solid #ececec;
+  padding: 5px 18px;
+  min-width: 100px;
+  vertical-align: middle;
+}
+
+.self-table table thead tr {
+  height: 45px;
+}
+
+.self-table tbody > tr {
+  height: 45px;
+}
+
+.self-table tbody tr td {
+  padding: 5px 18px;
+  border: 1px solid #ececec;
+  vertical-align: middle;
+}
+
+.self-table tbody tr td span.right {
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+  display: block;
+}
+
+.self-table tbody tr td.resize1, .self-table thead tr th.resize1 {
+  max-width: 180px;
+  min-width: 100px;
+}
+
+.self-table thead tr th.span-resize {
+  width: 100px;
+}
+

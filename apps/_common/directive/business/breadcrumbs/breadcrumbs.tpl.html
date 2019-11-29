@@ -1,0 +1,6 @@
+<ul class="breadcrumb" ng-init="ctrl.init()">
+  <li ng-repeat="s in ctrl.list">
+    <a href="" ng-click="ctrl.click(s)" ng-if="!s.active">{{s.name}}</a>
+    {{s.active ? s.name : ""}}
+  </li>
+</ul>

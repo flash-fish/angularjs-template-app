@@ -1,0 +1,253 @@
+<div ng-init="ctrl.init()" class="hs-container hs-sale-item">
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header">
+        <span>门店总体表现</span>
+      </header>
+      <div class="body">
+        <div class="col-md-5 P_L">
+          <div class="hs-chart">
+            <div class="body hs-chart-box" ng-hide="ctrl.hideChart">
+              <!--chart引入-->
+              <chart option="ctrl.radarChart" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 P_R">
+          <table class="table table-bordered" cellspacing="0" width="60%">
+            <!--colspan中必须指定要合并的列数目，是两列还是三列等等-->
+            <thead>
+              <tr>
+                <th class="vertical-left" rowspan="2">KPI</th>
+                <th class="text-center" colspan="2">
+                    {{ ctrl.com.firstStore ? ctrl.com.firstStore : '对标对象1'}}
+                </th>
+                <th class="text-center" colspan="2">
+                    {{ ctrl.com.secondStore ? ctrl.com.secondStore : '对标对象2'}}
+                </th>
+              </tr>
+              <tr>
+                <th class="text-center">当期值</th>
+                <th class="text-center">同比增幅(增长)</th>
+                <th class="text-center">当期值</th>
+                <th class="text-center">同比增幅(增长)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>零售额(万元)</td>
+                <td class="text-right" title="{{ctrl.a_retail ? ctrl.a_retail+'元' : '-'}}">{{ctrl.retailAmount ? ctrl.retailAmount : '-'}}</td>
+                <td class="text-right" ng-style="retailAmountYoY">{{ctrl.init_Data.retailAmountYoY ? ctrl.init_Data.retailAmountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.a_CompareRetail ? ctrl.a_CompareRetail + '元' : '-'}}">{{ctrl.compareRetailAmount ? ctrl.compareRetailAmount : '-'}}</td>
+                <td class="text-right" ng-style="compareRetailAmountYoY">{{ctrl.init_Data.compareRetailAmountYoY ? ctrl.init_Data.compareRetailAmountYoY : '-'}}</td>
+              </tr>
+              <tr class="back_color">
+                <td>销售额(万元)</td>
+                <td class="text-right" title="{{ctrl.a_allAmount ? ctrl.a_allAmount + '元' : '-'}}">{{ctrl.allAmount ? ctrl.allAmount : '-'}}</td>
+                <td class="text-right" ng-style="allAmountYoY">{{ctrl.init_Data.allAmountYoY ? ctrl.init_Data.allAmountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.a_CompareAllAmount ? ctrl.a_CompareAllAmount + '元' : '-'}}">{{ctrl.compareAllAmount ? ctrl.compareAllAmount : '-'}}</td>
+                <td class="text-right" ng-style="compareAllAmountYoY">{{ctrl.init_Data.compareAllAmountYoY ? ctrl.init_Data.compareAllAmountYoY : '-'}}</td>
+              </tr>
+              <tr >
+                <td>单位经营面积销售额(元)</td>
+                <td class="text-right" title="{{ctrl.operateSizeAllAmount ? ctrl.operateSizeAllAmount + '元' : '-'}}">{{ctrl.operateSizeAllAmount ? ctrl.operateSizeAllAmount : '-'}}</td>
+                <td class="text-right" ng-style="operateSizeAllAmountYoY">{{ctrl.init_Data.operateSizeAllAmountYoY ? ctrl.init_Data.operateSizeAllAmountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareOperateSizeAllAmount ? ctrl.compareOperateSizeAllAmount + '元' : '-'}}">{{ctrl.compareOperateSizeAllAmount ? ctrl.compareOperateSizeAllAmount : '-'}}</td>
+                <td class="text-right" ng-style="compareOperateSizeAllAmountYoY">{{ctrl.init_Data.compareOperateSizeAllAmountYoY ? ctrl.init_Data.compareOperateSizeAllAmountYoY : '-'}}</td>
+              </tr>
+              <tr class="back_color">
+                <td>毛利额(万元)</td>
+                <td class="text-right" title="{{ctrl.a_allBuss ? ctrl.a_allBuss + '元' : '-'}}">{{ctrl.allProfit ? ctrl.allProfit : '-'}}</td>
+                <td class="text-right" ng-style="allProfitYoY">{{ctrl.init_Data.allProfitYoY ? ctrl.init_Data.allProfitYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.a_compareAbuss ? ctrl.a_compareAbuss + '元' : '-'}}">{{ctrl.compareAllProfit ? ctrl.compareAllProfit : '-'}}</td>
+                <td class="text-right" ng-style="compareAllProfitYoY" >{{ctrl.init_Data.compareAllProfitYoY ? ctrl.init_Data.compareAllProfitYoY : '-'}}</td>
+              </tr>
+              <tr>
+                <td>单位经营面积毛利额(元)</td>
+                <td class="text-right" title="{{ctrl.operateSizeAllProfit  ? ctrl.operateSizeAllProfit + '元': '-'}}">{{ctrl.operateSizeAllProfit ? ctrl.operateSizeAllProfit : '-'}}</td>
+                <td class="text-right" ng-style="operateSizeAllProfitYoY">{{ctrl.init_Data.operateSizeAllProfitYoY ? ctrl.init_Data.operateSizeAllProfitYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareOperateSizeAllProfit  ? ctrl.compareOperateSizeAllProfit + '元': '-'}}">{{ctrl.compareOperateSizeAllProfit ? ctrl.compareOperateSizeAllProfit : '-'}}</td>
+                <td class="text-right" ng-style="compareOperateSizeAllProfitYoY" >{{ctrl.init_Data.compareOperateSizeAllProfitYoY ? ctrl.init_Data.compareOperateSizeAllProfitYoY : '-'}}</td>
+              </tr>
+              <tr class="back_color">
+                <td>毛利率</td>
+                <td class="text-right">{{ctrl.allProfitRate ? ctrl.allProfitRate : '-'}}</td>
+                <td class="text-right" ng-style="allProfitRateYoYInc">{{ctrl.allProfitRateYoYInc ? ctrl.allProfitRateYoYInc : '-'}}</td>
+                <td class="text-right">{{ctrl.compareAllProfitRate ? ctrl.compareAllProfitRate : '-'}}</td>
+                <td class="text-right" ng-style="compareAllProfitRateYoYInc">{{ctrl.compareAllProfitRateYoYInc ? ctrl.compareAllProfitRateYoYInc : '-'}}</td>
+              </tr>
+              <tr>
+                <td>客单数</td>
+                <td class="text-right" title="{{ctrl.flowCnt ? ctrl.init_Data.flowCnt : '-'}}">{{ctrl.flowCnt ? ctrl.flowCnt : '-'}}</td>
+                <td class="text-right" ng-style="flowCntYoY" >{{ctrl.init_Data.flowCntYoY ? ctrl.init_Data.flowCntYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareFlowCnt ? ctrl.compareFlowCnt : '-'}}">{{ctrl.compareFlowCnt ? ctrl.compareFlowCnt : '-'}}</td>
+                <td class="text-right" ng-style="compareFlowCntYoY" >{{ctrl.init_Data.compareFlowCntYoY ? ctrl.init_Data.compareFlowCntYoY : '-'}}</td>
+              </tr>
+              <tr class="back_color">
+                <td>零售客单价(元)</td>
+                <td class="text-right" title="{{ctrl.retailFlowAmount ? ctrl.retailFlowAmount + '元' : '-'}}">{{ctrl.retailFlowAmount ? ctrl.retailFlowAmount : '-'}}</td>
+                <td class="text-right" ng-style="retailFlowAmountYoY" >{{ctrl.init_Data.retailFlowAmountYoY ? ctrl.init_Data.retailFlowAmountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareRetailFlowAmount ? ctrl.compareRetailFlowAmount + '元' : '-'}}">{{ctrl.compareRetailFlowAmount? ctrl.compareRetailFlowAmount : '-'}}</td>
+                <td class="text-right" ng-style="compareRetailFlowAmountYoY">{{ctrl.init_Data.compareRetailFlowAmountYoY ? ctrl.init_Data.compareRetailFlowAmountYoY : '-'}}</td>
+              </tr>
+              <tr>
+                <td>经销周转天数</td>
+                <td class="text-right" title="{{ctrl.saleDays ? ctrl.saleDays : '-'}}">{{ctrl.saleDays ? ctrl.saleDays : '-'}}</td>
+                <td class="text-right" ng-style="saleDaysYoYInc" >{{ctrl.saleDaysYoYInc ? ctrl.saleDaysYoYInc : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareSaleDays ? ctrl.compareSaleDays : '-'}}">{{ctrl.compareSaleDays ? ctrl.compareSaleDays : '-'}}</td>
+                <td class="text-right" ng-style="compareSaleDaysYoYInc">{{ctrl.compareSaleDaysYoYInc ? ctrl.compareSaleDaysYoYInc : '-'}}</td>
+              </tr>
+              <tr class="back_color">
+                <td>通道收益额(万元)</td>
+                <td class="text-right" title="{{ctrl.a_channelRealAmount ? ctrl.a_channelRealAmount + '元' : '-'}}">{{ctrl.channelRealAmount ? ctrl.channelRealAmount : '-'}}</td>
+                <td class="text-right" ng-style="storeChannelSettleAmountYoY" >{{ctrl.init_Data.storeChannelSettleAmountYoY ? ctrl.init_Data.storeChannelSettleAmountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.a_compareStoreChannelSettleAmount ? ctrl.a_compareStoreChannelSettleAmount + '元': '-'}}">{{ctrl.compareStoreChannelSettleAmount ? ctrl.compareStoreChannelSettleAmount : '-'}}</td>
+                <td class="text-right" ng-style="compareStoreChannelSettleAmountYoY">{{ctrl.init_Data.compareStoreChannelSettleAmountYoY ? ctrl.init_Data.compareStoreChannelSettleAmountYoY : '-'}}</td>
+              </tr>
+              <tr>
+                <td>有售SKU数</td>
+                <td class="text-right" title="{{ctrl.saleSkuCount ? ctrl.saleSkuCount : '-'}}">{{ctrl.saleSkuCount ? ctrl.saleSkuCount : '-'}}</td>
+                <td class="text-right" ng-style="saleSkuCountYoY" >{{ctrl.sku_Data.saleSkuCountYoY ? ctrl.sku_Data.saleSkuCountYoY : '-'}}</td>
+                <td class="text-right" title="{{ctrl.compareSaleSkuCount ? ctrl.compareSaleSkuCount : '-'}}">{{ctrl.compareSaleSkuCount ? ctrl.compareSaleSkuCount : '-'}}</td>
+                <td class="text-right" ng-style="compareSaleSkuCountYoY">{{ctrl.sku_Data.compareSaleSkuCountYoY ? ctrl.sku_Data.compareSaleSkuCountYoY : '-'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article class="col-md-12">
+      <div class="body">
+        <div class="col-md-6 chart_border" ng-if="ctrl.pie_Result">
+          <span class="header_T_One">{{ctrl.com.firstStore}}</span>
+          <span class="header_T_Two">{{ctrl.com.secondStore}}</span>
+          <span class="title-i title_span">
+            <img src="styles\img\round.png" class="home-round">
+            销售方式占比图
+          </span>
+          <div class="col-md-12 hs-chart">
+            <div class="body hs-chart-box m_T">
+              <chart option="ctrl.cakeFirstChartOne" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+            </div>
+          </div>
+          <div class="MarkeTings">
+            <marketing model="ctrl.models_Tans" models="ctrl.init_Tans"></marketing>
+          </div>
+        </div>
+        <div class="col-md-6 chart_padding" ng-if="ctrl.pie_Another">
+          <span class="header_T_One">{{ctrl.com.firstStore}}</span>
+          <span class="header_T_Two">{{ctrl.com.secondStore}}</span>
+          <span class="title-i title_span">
+            <img src="styles\img\round.png" class="home-round">
+            品类部门占比图
+          </span>
+          <div class="col-md-12 hs-chart">
+            <div class="body hs-chart-box m_T">
+              <chart option="ctrl.cakeSecondChartOne" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  .back_color{
+    background: #fafcfe;
+  }
+  .header_T_One{
+    position: absolute;
+    left: 10%;
+    top: 120px;
+    font-weight: bold;
+    color: #007adb;
+  }
+  .header_T_Two{
+    position: absolute;
+    left: 60%;
+    top: 120px;
+    font-weight: bold;
+    color: #007adb;
+  }
+  .MarkeTings {
+    position: absolute;
+    width: 240px;
+    right: 5px;
+    top: 5px;
+  }
+
+  .title_span{
+    position: absolute;
+    left: 15px;
+    top: 32px;
+  }
+
+  table tr th{
+    background: #f5f5f5;
+  }
+  .span_color{
+    color: #007adb;
+    font-size: 7px;
+    font-weight: bold;
+  }
+
+  .m_T{
+    margin-top: 2px;
+  }
+
+  .chart_padding{
+    padding-top: 30px;
+    padding-left: 0;
+    border: 1px #ECECEC solid;
+  }
+  .chart_border{
+    padding-top: 30px;
+    padding-left: 0;
+    border: 1px #ECECEC solid;
+    border-right: none;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .vertical-align{
+    text-align: center;
+    vertical-align: middle !important;
+  }
+
+   .vertical-left{
+    text-align: left;
+    vertical-align: middle !important;
+  }
+
+   .P_L{
+     padding-left: 0;
+   }
+
+   .P_R{
+     padding-right: 0;
+   }
+
+   .table-bordered{
+     border-color: #ECECEC !important;
+   }
+
+  .text-left{
+    text-align: left;
+  }
+
+  .text-right{
+    text-align: left;
+  }
+
+</style>
+
+
+
+
+
+

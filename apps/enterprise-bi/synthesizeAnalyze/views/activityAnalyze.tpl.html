@@ -1,0 +1,382 @@
+<div class="top-content-box hs-container" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>活动分析</span>
+          <span class="mid_r">
+          存在未来日期的情况下，对比增幅指标 按除去未来日期来计算
+          <a href="" class="hs-popover-link" uib-popover-template="'tip.html'"
+             popover-placement="bottom-right" popover-trigger="mouseenter"><i class="glyphicon glyphicon-info-sign"></i></a>
+        </span>
+        </header>
+        <div class="body">
+          <div class="row input-choose row_M">
+            <div class="header-w">
+              <div class="radio_L mid_l">
+                <div class="mid_l mid-check">
+                  <label>
+                    <input class="radiobox" id="usuD" type="radio" ng-model="ctrl.com.other.endDaY" name="stores" ng-value="'usualDay'">
+                    <span></span>
+                  </label>
+                </div>
+                <span>
+                  <label ng-class="{true:'mid_text', false:'mid_false_Text'}[ctrl.com.other.endDaY == 'usualDay']" for="usuD">
+                    常用节假日
+                  </label>
+                </span>
+                <div class="mid_one">
+                  <select class="form-control year" ng-model="ctrl.com.other.vintage" ng-change="ctrl.ChangeYear()" ng-disabled="ctrl.com.other.endDaY !== 'usualDay'">
+                    <option value="{{y.id}}" ng-repeat="y in ctrl.allVintage">{{y.year}}</option>
+                  </select>
+                </div>
+                <div class="mid_usual">
+                  <select class="form-control year" ng-model="ctrl.com.other.holiday" ng-change="ctrl.WatchHoliday()" ng-disabled="ctrl.com.other.endDaY !== 'usualDay'">
+                    <option value="{{y.holidayId}}" ng-repeat="y in ctrl.allHoliday">{{y.holidayName}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="radio_L mid_l" style="margin-left: 22px">
+                <div class="mid_l mid-check">
+                  <label>
+                    <input class="radiobox" id="weekDay" type="radio" ng-model="ctrl.com.other.endDaY" name="stores" ng-value="'weekDay'">
+                    <span></span>
+                  </label>
+                </div>
+                <span>
+                  <label ng-class="{true:'mid_text', false:'mid_false_Text'}[ctrl.com.other.endDaY == 'weekDay']" for="weekDay">
+                    周选择
+                  </label>
+                </span>
+                <div class="weekShow">
+                  <select class="form-control year" ng-model="ctrl.com.other.weekDay" ng-change="ctrl.dateChange(ctrl.com.other.weekDay)" ng-disabled="ctrl.com.other.endDaY !== 'weekDay'">
+                    <option value="{{y.date}}" ng-repeat="y in ctrl.baseDateArray">{{y.id + '(' + y.date + ')'}}</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="radio_R mid_l">
+                <div class="mid_l mid-check">
+                  <label>
+                    <input class="radiobox" id="ownD" type="radio" ng-model="ctrl.com.other.endDaY" name="stores" ng-value="'defineDay'">
+                    <span></span>
+                  </label>
+                </div>
+                <span ng-class="{true:'mid-a',false:'mid_b'}[ctrl.com.other.endDaY == 'defineDay']" >
+                  <label for="ownD">自定义日期</label>
+                </span>
+              </div>
+            </div>
+
+            <div class="header-w header-M">
+              <div class="mid_l actL">
+                <span class="mid_text">活动日期</span>
+                <div class="mid_r dayOne actM">
+                  <input date-custom-picker class="form-control hs-d-picker month-picker" type="text"
+                         opts="ctrl.dateOptionOne" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                         ng-click="ctrl.tool.dateRange_click($event)" ng-disabled="ctrl.com.other.endDaY == 'usualDay' || ctrl.com.other.endDaY == 'weekDay'" />
+                </div>
+              </div>
+              <div class="mid_l mid_com dayOne">
+                <div class="mid_l mid-check">
+                  <label>
+                    <input type="checkbox" class="checkbox" ng-model="ctrl.com.other.com_check" ng-change="ctrl.change()">
+                    <span></span>
+                  </label>
+                </div>
+                <span ng-class="{true:'mid_false_Text',false:'mid_text'}[!ctrl.com.other.com_check || (ctrl.com.other.com_check && !ctrl.com.other.com_check)]" >对比日期</span>
+                <div class="mid_l input-w">
+                  <input date-custom-picker class="form-control hs-d-picker month-picker" type="text"
+                         opts="ctrl.dateOptionTwo" ng-model="ctrl.dateM" placeholder="日期" required readonly
+                         ng-click="ctrl.tool.dateRange_click($event)"
+                         ng-disabled="ctrl.com.other.endDaY == 'usualDay' || ctrl.com.other.endDaY == 'weekDay' || (!ctrl.com.other.com_check && ctrl.com.other.endDaY == 'defineDay')" />
+                </div>
+                <div class="mid_l input-w m-c">
+                  <contrast-store param="ctrl.com" curr="ctrl.com.comparableStores"></contrast-store>
+                </div>
+              </div>
+              <!--<div class="warn">-->
+                <!--<span ng-if="ctrl.showWarn && ctrl.com.other.com_check">-->
+                  <!--活动日期与对比日期的天数应该保持一致！-->
+                <!--</span>-->
+              <!--</div>-->
+
+            </div>
+          </div>
+
+          <!-- 下拉框 -->
+          <div class="row input-choose" ng-show="ctrl.show">
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreGroup()" data="ctrl.com.storeGroup.val" key="'店群'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openItem()" data="ctrl.com.product.val" key="'商品'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+            <!-- chart图表排序 -->
+          </div>
+
+          <div class="input-choose">
+            <split-line show="ctrl.show"></split-line>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <button class="btn btn-primary hs-meBtn"
+                    ng-click="ctrl.search()"> 查询
+            </button>
+            <div class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+              <button class="btn setting-btn" ng-click="ctrl.getChartOption()">图表设定</button>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </div>
+    <div class="row">
+      <article class="col-sm-12">
+        <uib-tabset active="ctrl.key.active">
+          <uib-tab index="1" heading="按趋势" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 1 && ctrl.tabFinish">
+              <act-trend param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></act-trend>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="2" heading="按品类组" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 2 && ctrl.tabFinish">
+              <act-cat-group param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></act-cat-group>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="3" heading="按类别" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 3 && ctrl.tabFinish">
+              <act-cat param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></act-cat>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="4" heading="按品牌" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 4 && ctrl.tabFinish">
+              <sale-brand param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-brand>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="5" heading="按门店" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 5 && ctrl.tabFinish">
+              <sale-store param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-store>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="6" heading="按商品" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 6 && ctrl.tabFinish">
+              <sale-item param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-item>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="7" heading="按供应商" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 7 && ctrl.tabFinish">
+              <new-provider param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"
+                             table-info="ctrl.tableInfo"></new-provider>
+            </div>
+          </uib-tab>
+
+        </uib-tabset>
+      </article>
+    </div>
+
+  </section>
+</div>
+
+<style>
+  /*css 控制 dataTable 线条消失*/
+  .dataTables_scrollHeadInner>table>thead>tr .compare-border-one{
+    border-right-color: #f5f5f5 !important;
+  }
+  .dataTables_scrollBody>table>tbody>tr .compare-border-one{
+    border-right: none !important;
+  }
+
+  .mid_l{
+    float: left;
+  }
+
+  .mid_r{
+    float: right;
+  }
+
+  .header-w{
+    max-width: 1025px;
+    float: left;
+  }
+
+  .radio_R{
+    margin-left: 39px;
+  }
+
+  .hs-meBtn{
+    width: 80px;
+  }
+
+  .mid_text{
+    float: left;
+    height: 29px;
+    padding-top: 6px;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .mid_false_Text{
+    float: left;
+    height: 29px;
+    padding-top: 6px;
+    font-size: 13px;
+  }
+
+  .mid_com{
+    margin-left: 22px;
+  }
+
+  .input-w{
+    width: 185px;
+    margin-left: 5px;
+  }
+
+  .mid-check{
+    height: 29px;
+    padding-top:6px;
+  }
+
+  .mid_one{
+    float: left;
+    width: 80px;
+    margin-left: 5px;
+  }
+
+  .actL{
+    margin-left: 26px;
+  }
+
+  .mid_usual{
+    float: left;
+    width: 100px;
+    margin-left: 9px;
+  }
+
+  .header-M{
+    max-width: 1025px;
+  }
+
+  .row_M{
+    max-width: 1025px !important;
+  }
+
+  .warn{
+    float: left;
+    margin-left: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    height: 29px;
+    padding-top:10px;
+  }
+
+  .mid-a > label{
+    float: left;
+    margin-left: 0;
+    height: 29px;
+    padding-top: 6px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .mid_b > label{
+    float: left;
+    margin-left: 0;
+    height: 29px;
+    padding-top: 6px;
+    font-size: 15px;
+  }
+
+  .actM{
+    margin-left: 19px;
+    width: 189px;
+  }
+
+  .hs-d-picker{
+    background: #fff;
+    height: 29px;
+  }
+
+  .form-control[readonly]{
+    background-color: #fff;
+    opacity: 1;
+  }
+
+  .form-control[disabled]{
+    background-color: #eee;
+    opacity: 1;
+  }
+
+  .dayOne .form-control[disabled]{
+    background-color: #fff !important;
+    opacity: 1;
+  }
+
+  /*时间插件红色提示样式重构*/
+  .daterangepicker .warnStyle {
+    position: absolute;
+    height: 20px;
+    top: 212px;
+    left: 9px;
+    color: #ff0705;
+  }
+
+  .weekShow{
+    float: left;
+    width: 240px;
+    margin-left: 18px;
+  }
+
+  .m-c{
+    margin-left: 20px !important;
+  }
+</style>
+
+
+<script type="text/ng-template" id="tip.html">
+  <div class="hs-popover-box">
+    <span>例如:</span>
+    <div>
+      <p>当前日期:2/3</p>
+      <p>活动日期:2/1-2/10（其中2/4-2/10是未来日期）</p>
+      <p>对比日期:1/1-1/10</p>
+      <p>那么，对比增幅按照 2/1-2/3，对比 1/1-1/3 来算</p>
+    </div>
+  </div>
+</script>

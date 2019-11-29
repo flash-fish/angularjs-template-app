@@ -1,0 +1,42 @@
+<div class="e-chart-page" style="margin-top: 50px" ng-init="ctrl.init()" ng-if="ctrl.params&&ctrl.isNotNull">
+  <uib-tabset active="ctrl.section.active">
+    <uib-tab index="1" heading="按整体">
+      <div ng-if="ctrl.section.active === 1 && ctrl.show">
+        <chart option="ctrl.radar" style=" height:500px; width: 100%;"></chart>
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="按趋势" ng-if="ctrl.params.condition.date.from != ctrl.params.condition.date.to">
+      <div
+        ng-if="ctrl.section.active === 2 && ctrl.show && ctrl.params.condition.date.from != ctrl.params.condition.date.to">
+        <div style="display: flex; align-items: center" class="hs-chart-button hs-chart-box">
+          <select class="form-control year" ng-model="ctrl.select" ng-change="ctrl.changeTrend()" style="width: 300px;">
+            <option value="{{y.id}}" ng-repeat="y in ctrl.trendSelect">{{y.name}}</option>
+          </select>
+          <div class="hs-chart-function" style="margin-left: auto; margin-right: 15px;">
+            <chart-toggle
+              first="ctrl.trend"
+              show-label="ctrl.showLineLabel" key="{type: 'line', img: 'chart_label_line.svg'}"
+            ></chart-toggle>
+          </div>
+        </div>
+        <div class="hs-chart-box">
+          <div class="indexComplete-chart-title">{{ctrl.radarTitle}} 趋势图</div>
+          <chart option="ctrl.trend" style=" height:450px; width: 100%;"></chart>
+          <!--<div class="hs-chart-function">-->
+
+          <!--<chart-toggle-->
+          <!--first="ctrl.trend"-->
+          <!--show-label="ctrl.showLineLabel" key="{type: 'line', img: 'chart_label_line.svg'}"-->
+          <!--&gt;</chart-toggle>-->
+          <!--</div>-->
+        </div>
+
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>
+<style>
+  .chart-toggle-box {
+    top: -5px
+  }
+</style>

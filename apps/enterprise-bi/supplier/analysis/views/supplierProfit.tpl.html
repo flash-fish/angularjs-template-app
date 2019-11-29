@@ -1,0 +1,72 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>供应商收益分析</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.store">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+              <hide-condition show="ctrl.haveStoreRelate" name="'品类组'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+          </div>
+          <div class="row input-choose" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.buyer">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'业态'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'地区'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'门店'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreGroup()" data="ctrl.com.storeGroup.val" key="'店群'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.back.outFinish"></hs-search>
+            <div class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-sm-12">
+        <header class="header">
+          <span>供应商排名</span>
+        </header>
+        <div class="body" ng-if="ctrl.com.date && ctrl._table_show">
+          <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+          <empty-table show="ctrl.back.empty"></empty-table>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+

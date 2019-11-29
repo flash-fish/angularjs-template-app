@@ -1,0 +1,475 @@
+/**
+  模态框自定义大小
+ */
+.modal-md-s {
+  width: 700px;
+}
+
+.modal-md-m {
+  width: 750px;
+}
+
+.modal-md-l {
+  width: 800px;
+}
+
+.modal-md-xl {
+  width: 850px;
+}
+
+.modal-md-xxl {
+  width: 900px;
+}
+
+/*解决打开modal无法滚动问题*/
+body.special.modal-open {
+  overflow: auto !important;
+}
+
+.modal .chosen-container .chosen-choices {
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+/**
+  模态框基础样式
+ */
+.modal {
+  top: 30px;
+}
+
+.modal .modal-footer {
+  padding: 10px 17px !important;
+}
+
+.modal .modal-footer .error {
+  float: left;
+  padding-left: 10px;
+}
+
+.modal .modal-dialog {
+  max-width: 1000px;
+}
+
+.modal .modal-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-left: 0;
+}
+
+.modal .licence-show-content {
+  height: 671px;
+  padding: 0;
+}
+
+.modal .modal-body > .info-content {
+  margin: 0;
+}
+
+.modal .modal-body > .info-content > div {
+  height: 570px;
+}
+
+.modal .modal-body > .row .info-header-content {
+  min-width: 150px;
+  border-right: 1px solid #e5e5e5;
+  padding-top: 12px;
+}
+
+.modal .modal-body > .row .info-header-content p.title {
+  font-weight: bolder;
+}
+
+.modal .modal-body .info-header {
+  height: 40px;
+  padding: 8px 0;
+  font-size: 16px;
+  width: 100%;
+}
+
+.modal .modal-body .info-body {
+}
+
+.modal .modal-body .info-body > div {
+  padding: 8px 0;
+}
+
+.modal .modal-body .info-body > div > p:nth-child(2) {
+  padding-top: 6px;
+}
+
+.modal .modal-body .tab {
+  border-top: 1px solid #e5e5e5;
+  margin: 0;
+}
+
+/**
+  选择门店 分类 商品等页面样式
+ */
+.modal .input-area {
+  margin: 20px 0 5px 0;
+}
+
+.modal .input-area > div {
+  padding-left: 0;
+}
+
+.modal .choose-warn-info {
+  padding: 5px 60px 0 0;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 100%;
+  height: 25px;
+  overflow: hidden;
+  line-height: 25px;
+  color: #ff9400;
+}
+
+.modal .choose-warn-info > div {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal .category .choose-warn-info {
+  position: relative;
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+.modal .choose-warn-info .errorInfo{
+  color: #ea5b66;
+}
+
+.modal .show-area {
+  height: 300px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal .show-area .show-area-header,
+.modal .show-area .show-area-body {
+  border: 1px solid #e5e5e5;
+}
+
+.modal .show-area-page {
+  height: 50px;
+  position: absolute;
+  padding-top: 8px;
+  right: 0;
+}
+
+.modal .show-area-page .pagination {
+  margin: 0;
+}
+
+.modal .show-area-header {
+  height: 40px;
+  padding: 5px 0 0 5px;
+  color: #656565;
+  background-color: #f5f5f7;
+}
+
+.modal .input-area .input-cat {
+  width: 300px;
+  display: inline-block;
+}
+
+.modal .show-area-header .checked-button {
+  float: right;
+  padding-right: 18px;
+}
+
+.modal .show-area-header .checked-button button {
+  margin: 0 5px;
+  border: 0;
+  background-color: #f5f5f7;
+  box-shadow: none;
+  color: #000;
+}
+
+.modal .show-area-header .checked-button button:hover {
+  border: 1px solid #e6e6e6;
+  box-shadow: 1px 1px 2px #888888;
+  color: #000;
+}
+
+.modal .show-area-header .checked-button button i {
+  color: #3a8bf6;
+}
+
+.modal .show-area-count,
+.modal .show-area-warn {
+  padding: 0 10px;
+}
+
+.modal .show-area-warn {
+  color: red;
+}
+
+.modal .show-area-title {
+  margin: 0;
+  width: 50px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+.modal .show-area-body {
+  width: 100%;
+  height: 210px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal .show-area-body > div {
+  padding: 5px 10px;
+  color: #7f7f7f;
+}
+
+.modal .show-area-body > div > div {
+  height: 40px;
+  padding-left: 5px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  line-height: 40px;
+}
+
+.modal .show-area-body > div > div > div {
+  position: relative;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal .show-area-body > div > .not-hover:hover {
+  background: #fff;
+  color: #7f7f7f;
+  cursor: default;
+}
+
+.modal .show-area-body > div > div:hover {
+  position: relative;
+  background: #00c6e2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal .show-area-body .loading-info {
+  padding-top: 20px;
+  width: 100%;
+}
+
+.modal .container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.modal .container-fluid .row {
+  margin: 0;
+  height: 100%;
+}
+
+.modal .container-fluid .row > div {
+  height: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.modal .selected-box {
+  background: #fff;
+  top: 2px;
+  position: relative;
+}
+
+.modal .selected-box .col-md-1:nth-child(1) {
+  width: 95px;
+}
+
+.modal .selected-box .btn-info {
+  background: #8c8c8c;
+  height: 29px;
+  margin-left: 10px;
+}
+
+.modal .selected-box span {
+  color: #545454;
+}
+
+.modal .selectLike {
+  background: #3a8bf6;
+  color: #fff !important;
+}
+
+.modal .show-area-body .hover-title {
+  background: #fff;
+  border: 1px solid #767676;
+  padding: 0 2px;
+  color: #575757;
+  max-width: 300px;
+  height: auto !important;
+  line-height: unset;
+  overflow: hidden;
+  z-index: 100;
+  border-radius: unset;
+  font-size: 12px;
+  display: block
+}
+
+.modal .show-area-body .hover-title .popover-inner {
+  height: auto;
+  background: unset !important;
+  color: unset !important;
+  padding: 0;
+}
+
+.modal .show-area-body .hover-title .popover-content {
+  white-space: unset;
+  height: auto;
+  text-overflow: unset;
+  line-height: 1.5;
+  padding: 0 !important;
+}
+
+.modal .show-area-body .popover.bottom {
+  margin-top: 2px;
+}
+
+/**
+  禁用modal框进入 飞出效果
+ */
+.modal .modal-dialog {
+  transition: unset !important;
+  transform: unset !important;
+}
+
+/**
+  模态框 指标表格的样式
+ */
+
+.modal .hs-field .pop-option {
+  padding: 10px 0;
+}
+
+.modal .hs-field .pop-option > p {
+  margin-bottom: 8px;
+}
+
+.modal .hs-field .pop-option > p > label {
+  margin: 0 0 0 18px;
+}
+
+.modal .hs-field .pop-option > p > span {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.modal .hs-field .pop-option .row {
+  margin: 0;
+}
+
+.modal .hs-field .pop-option .row > div {
+  padding: 0 0 3px 0;
+  min-height: 26px;
+}
+
+.modal .hs-field .pop-option .row > div .field-only-title {
+  position: relative;
+  top: 7px;
+  color: #A7A7A7;
+}
+
+/**
+  销售库存页面 chart popup样式
+ */
+.modal .sale-stock-chart .nav-tabs > li {
+  width: 60px;
+  text-align: center;
+}
+
+.modal .sale-stock-chart .tab-content {
+  padding-top: 5px;
+  min-height: 300px;
+}
+
+.modal .sale-stock-chart .sale-types,
+.modal .gross-profit-chart .sale-types,
+.modal .profit-popup-table .sale-types {
+  width: 290px;
+}
+
+.modal .sale-stock-chart .tab-content > .tab-pane:nth-child(1) .row > div {
+  width: 30%;
+}
+
+.modal .sale-stock-chart .sale-tab .pop-option .row > div:nth-child(6) {
+  width: 40%;
+}
+
+.modal .first-border-pop.hs-field > div:first-child {
+  border-bottom: 1px solid #ccc;
+}
+
+/**
+  可比门店页面 样式
+ */
+.modal-contrast-store .date {
+  margin-bottom: 10px;
+}
+
+.modal-contrast-store .date > .first {
+  margin-right: 15px;
+}
+
+.modal-contrast-store .field {
+  margin: 10px 0;
+}
+
+.modal-contrast-store .field > span {
+  float: left;
+}
+
+.storeEnterClass {
+  max-width: 890px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.storeEnterClass:hover {
+  max-height: 100px;
+  overflow: auto;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+/* 收益popup table */
+.profit-popup-table .pop-option > div > div:nth-child(8) {
+  width: 36%;
+}
+
+.profit-popup-table .pop-option > div > div:nth-child(9) {
+  width: 30%;
+}
+
+.finProfit-popup-table {
+  width: 850px;
+}
+
+.finProfit-popup-chart {
+  width: 850px;
+}
+
+.buy-out {
+  padding: 0 !important;
+}

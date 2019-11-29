@@ -1,0 +1,9 @@
+<div class="store-tab" ng-init="ctrl.init()">
+  <ul class="nav nav-tabs">
+    <li ng-repeat="tab in ctrl.tabs"
+        ng-click="ctrl.click({id: tab})"
+        ng-class="{active: tab.active, disabled: ctrl.isDisable(tab)}">
+      <a href="">{{tab.name}}</a>
+    </li>
+  </ul>
+</div>

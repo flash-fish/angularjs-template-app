@@ -1,0 +1,17 @@
+<input ng-init="$ctrl.init()"
+       type="text"
+       ng-model="$ctrl.selected"
+       ng-change="$ctrl.showDrop()"
+       ng-blur="$ctrl.clearError()"
+       ng-keydown="$ctrl.clearText($event)"
+       uib-typeahead="item as item.newProduct for item in $ctrl.productList | filter:{newProduct:$viewValue}"
+       typeahead-wait-ms="500"
+       typeahead-editable="false"
+       typeahead-no-results="$ctrl.noResults"
+       class="form-control product-typeahead"
+       placeholder="{{$ctrl.name}}"
+       title="{{$ctrl.selected.newProduct}}"
+       style="height: 29px !important;">
+<div ng-show="$ctrl.noResults">
+  <i class="glyphicon glyphicon-remove"></i> 未匹配到商品
+</div>

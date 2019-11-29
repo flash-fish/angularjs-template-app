@@ -1,0 +1,37 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "name": "ddddd",
+        "duration": 343,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "ddddd",
+        "duration": 1254543,
+        "task": 15423,
+        "percentage": 0.3
+      },
+      {
+        "name": "ddddd",
+        "duration": 134223,
+        "task": 1123123,
+        "percentage": 0.3
+      },
+      {
+        "name": "ddddd",
+        "duration": 1224323,
+        "task": 1223423,
+        "percentage": 0.3
+      },
+      {
+        "name": "ddddd",
+        "duration": 15345323,
+        "task": 12553,
+        "percentage": 0.3
+      }
+    ]
+  }
+}

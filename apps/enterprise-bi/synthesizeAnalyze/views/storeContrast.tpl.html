@@ -1,0 +1,168 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-md-12">
+        <header class="header top">
+          <span>门店对比</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.opts" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2" ng-class="{true:'label_true',false:'label_false'}[ctrl.com.store.val.length == 0]">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose" ng-show="ctrl.show">
+            <div class="col-md-2">
+              <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openItem()" data="ctrl.com.product.val" key="'商品'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+          </div>
+
+          <div class="input-choose">
+            <split-line show="ctrl.show"></split-line>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.com.store.val.length !== 0"></hs-search>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row supOverlap-Chart supOverlap" ng-if="ctrl.chartShow">
+      <article class="col-md-12">
+        <header class="header">
+          <span>门店KPI比较</span>
+        </header>
+        <div style="min-height: 400px;">
+          <div class="row">
+            <div class="col-md-2 select-width-store">
+              <div class="col-md-2">
+                <span class="span">X轴</span>
+              </div>
+              <div class="col-md-10">
+                <select class="form-control" ng-model="ctrl.supTrendTypeX">
+                  <option value="{{s.id}}" ng-repeat="s in ctrl.selectX track by s.id">{{s.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2 select-width-store">
+              <div class="col-md-2">
+                <span class="span">Y轴</span>
+              </div>
+              <div class="col-md-10">
+                <select class="form-control" ng-model="ctrl.supTrendTypeY">
+                  <option value="{{s.id}}" ng-repeat="s in ctrl.selectY track by s.id">{{s.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2 select-width-store">
+              <div class="col-md-2">
+                <span class="span">气泡</span>
+              </div>
+              <div class="col-md-10">
+                <select class="form-control" ng-model="ctrl.supTrendTypeBubble">
+                  <option value="{{s.id}}" ng-repeat="s in ctrl.selectBubble track by s.id">{{s.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <chart option="ctrl.chart_bar_supply" event="ctrl.event" load="ctrl.loadChart"
+                   class="hs-trend graphic-style" id="graphicChart" resize="ctrl.resizeContainer(chart)"
+            ></chart>
+          </div>
+
+        </div>
+        <div class="row similar">
+          <button class="btn btn-primary sure" ng-click="ctrl.ok()">选择完成</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="row supOverlap" ng-if="ctrl.tableShow" ng-style="{opacity: ctrl.emptyArea ? 0 : 1}">
+      <article class="col-md-12">
+        <header class="header">
+          <span>门店列表</span>
+        </header>
+        <div class="body popover-hover">
+          <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <div class="row supOverlap supOverlap-Chart" ng-if="ctrl.tableShow && !ctrl.emptyArea">
+      <article class="col-md-12">
+        <header class="header">
+          <span>门店对比图</span>
+        </header>
+        <div style="min-height: 400px;" class="hs-chart-box">
+          <div class="row hs-chart-button hs-chart-box" style="margin-bottom: 20px; display: flex;align-items: baseline">
+            <div class="col-md-2 select-width-store">
+              <div class="col-md-10">
+                <select class="form-control" type="text"
+                        ng-model="ctrl.supTrendTypeNorm"
+                        ng-change="ctrl.lineChange()"
+                        ng-options="sto as sto.name for sto in ctrl.lineSelectList">
+                </select>
+              </div>
+            </div>
+            <div class="hs-chart-function" style="margin-left: auto; margin-right: 30px">
+              <chart-toggle
+                first="ctrl.chart_line_store" show-label="ctrl.showLineLabel"
+                key="{type: 'line', img: 'chart_label_line.svg'}"
+              ></chart-toggle>
+            </div>
+          </div>
+          <chart option="ctrl.chart_line_store" load="ctrl.loadChartLine"
+                 class="hs-trend" width="100%"></chart>
+          <!--<div class="hs-chart-function">-->
+            <!--<chart-toggle-->
+              <!--first="ctrl.chart_line_store" show-label="ctrl.showLineLabel"-->
+              <!--key="{type: 'line', img: 'chart_label_line.svg'}"-->
+            <!--&gt;</chart-toggle>-->
+          <!--</div>-->
+        </div>
+      </article>
+    </div>
+
+  </section>
+</div>
+<style>
+
+  .label_true {
+    border: 1px red solid;
+  }
+
+  .label_false {
+    border: none;
+  }
+</style>

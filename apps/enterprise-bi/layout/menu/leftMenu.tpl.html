@@ -1,0 +1,44 @@
+<div>
+  <ul ng-init="ctrl.init()" class="left-menu-box">
+    <li data-ui-sref-active="active" ng-repeat="item in leftMenu"
+        ng-class="{open: ctrl.root.from_route_p == item.id}"
+        flag="{{item.children.length > 0 ? 'data-menu-collapse' : 'data-menu-no'}}">
+      <a ng-if='item.resUrl != "#"' data-ui-sref="{{item.resUrl}}" ng-click="ctrl.setCurSelected(item.resUrl)">
+        <i class="fa fa-lg fa-fw {{item.resIcon}}"></i>
+        <span class="menu-item-parent">{{item.resName}}</span>
+      </a>
+      <a href="javascript:void(0)" ng-if='item.resUrl == "#"'>
+        <i class="fa fa-lg fa-fw {{item.resIcon}}"></i>
+        <span class="menu-item-parent">{{item.resName}}</span>
+        <b class="collapse-sign">
+          <em class="fa fa-angle-right" ng-class="{'fa-angle-down': ctrl.root.from_route_p == item.id}"></em>
+        </b>
+      </a>
+      <ul ng-if="item.children.length" ng-class="{'childMenu-fix-height' : item.children.length > 6}">
+        <li ng-class="{active: ctrl.root.from_route == sub.resUrl}" ng-repeat="sub in item.children">
+          <a data-ui-sref="{{sub.resUrl}}" ng-click="ctrl.click()">
+            <i class="fa fa-lg fa-fw"></i>
+            <span>{{sub.resName}}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <style>
+    .left-menu-box li a:hover,
+    .left-menu-box .open.active > a:hover {
+      background: #5e6166;
+    }
+
+    nav ul li a:active,
+    nav ul li li.active a:hover {
+      background: #53b3cb;
+    }
+
+    nav ul .active > a {
+      background: #53b3cb;
+    }
+  </style>
+</div>
+
+

@@ -1,0 +1,40 @@
+<div class="chart-pager-box">
+  <button ng-repeat="curr in ctrl.buttons"
+          ng-class="{active: curr.active}"
+          ng-disabled="curr.disable"
+          ng-mouseup="ctrl.up($index)" ng-mousedown="ctrl.down($index)"
+          ng-click="ctrl.click($index)">
+    <i class="{{curr.i}}"></i>
+  </button>
+  <style>
+    .chart-pager-box {
+      width: 100px;
+    }
+
+    .chart-pager-box button {
+      width: 26px;
+      height: 25px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .chart-pager-box button:hover {
+      background: #F8F8F8;
+    }
+
+    .chart-pager-box button[disabled] {
+      background: #F8F8F8;
+      cursor: not-allowed;
+    }
+
+    .chart-pager-box button > i {
+      color: #6b6b6b;
+    }
+
+    .chart-pager-box button:first-child {
+      margin-right: 8px;
+    }
+
+  </style>
+</div>

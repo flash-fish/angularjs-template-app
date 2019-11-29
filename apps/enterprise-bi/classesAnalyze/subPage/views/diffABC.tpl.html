@@ -1,0 +1,252 @@
+<style>
+  .aLink {
+    text-decoration: underline;
+    color: #007ADB;
+  }
+
+  .bottomPadding {
+    padding-bottom: 20px;
+  }
+
+  .aLink:hover {
+    cursor: pointer;
+  }
+
+  .jqx-grid-header .head-render-box {
+    height: 85%;
+    padding-top: 15%;
+    overflow: hidden;
+    line-height: 0;
+    text-overflow: ellipsis;
+    margin-right: 0 !important;
+  }
+
+  .label_true {
+    border: 1px red solid;
+  }
+
+  .label_false {
+    border: none;
+  }
+</style>
+<div class="subpage abc-analyze">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.fromSession"></sub-menu>
+  <div class="sub-main hs-container top-content-box" ng-init="ctrl.init()">
+    <section ng-if="ctrl.inited">
+      <div class="row condition">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>经销业态对比分析</span>
+          </header>
+          <div class="body">
+            <div class="row">
+              <div class="col-sm-12 sub-title">
+                筛选条件
+              </div>
+            </div>
+            <div class="row input-choose">
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.years" selected="ctrl.activeYear"
+                               keys="{id: 'id', title: 'name', all: false, name: '年份'}"></hs-new-select>
+              </div>
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.months" selected="ctrl.activeMonth"
+                               keys="{id: 'id', title: 'name', all: false, name: '月份'}"></hs-new-select>
+              </div>
+            </div>
+            <div class="row input-choose">
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.abcOperationStore" selected="ctrl.com.activeOperationStore"
+                               keys="{id: 'id', title: 'name', name: '对比类'}"></hs-new-select>
+              </div>
+              <div class="col-md-2" ng-if="ctrl.com.activeOperationStore != 'storeContrast'">
+                <hs-new-select options="ctrl.operation1" selected="ctrl.com.activeOperation1"
+                               keys="{id: 'id', title: 'name', name: '业态1'}"></hs-new-select>
+              </div>
+              <div class="col-md-2" ng-if="ctrl.com.activeOperationStore != 'storeContrast'">
+                <hs-new-select options="ctrl.operation2" selected="ctrl.com.activeOperation2"
+                               keys="{id: 'id', title: 'name', name: '业态2'}"></hs-new-select>
+              </div>
+              <div class="col-md-2" ng-class="{true:'label_true',false:'label_false'}[ctrl.com.store.val.length == 0]"
+                   ng-if="ctrl.com.activeOperationStore == 'storeContrast'">
+                <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val"
+                            key="{target:'门店',title:'门店1'}"></search-box>
+              </div>
+              <div class="col-md-2" ng-class="{true:'label_true',false:'label_false'}[ctrl.com.store2.val.length == 0]"
+                   ng-if="ctrl.com.activeOperationStore == 'storeContrast'">
+                <search-box click="ctrl.openStoreList2()" data="ctrl.com.store2.val"
+                            key="{target:'门店',title:'门店2'}"></search-box>
+              </div>
+            </div>
+            <div class="row input-choose" ng-show="ctrl.show">
+              <div class="col-md-2">
+                <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+              </div>
+              <div class="col-md-2">
+                <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+              </div>
+            </div>
+            <div class="row input-choose" ng-show="ctrl.show">
+              <div class="col-md-2">
+                <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+              </div>
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.newProductList" selected="ctrl.com.newProductYear"
+                               keys="{id: 'id', title: 'name', all: 1, name: '新品'}"></hs-new-select>
+              </div>
+            </div>
+            <div class="input-choose">
+              <split-line show="ctrl.show"></split-line>
+            </div>
+            <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+              <search-result-box keys="ctrl.sortCom"></search-result-box>
+            </div>
+            <div class="hs-search-box">
+              <search-show show="ctrl.showSearchRes"></search-show>
+              <hs-search search="ctrl.search()" finish="ctrl.key.finish"></hs-search>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" ng-if="ctrl.sum[0]">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>合计</span>
+          </header>
+          <div class="body sum row">
+            <!--<abc-sum sum="ctrl.sum" ng-if="ctrl.sum.length!=0"></abc-sum>-->
+            <ul class="row">
+              <li class="col-sm-12 col-lg-4 col-md-6" style="height: 100px;overflow: hidden" ng-repeat="s in ctrl.sum">
+                <p ng-hide="s.hide">{{s.name}}</p>
+                <p class="row" style="display: inline-block;margin: 0px;font-size:15px;font-weight:600;color:#007adb"
+                   title="{{s.hoverData}}" ng-hide="s.hide">{{s.total}}</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>业态对比ABC分析图</span><span class="dateRange-trend">{{ctrl.com.date}}</span>
+          </header>
+          <div class="body row" id="chartTable">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+              <chart option="ctrl.diff" event="ctrl.addEvent" load="ctrl.loadChart" class="hs-trend"
+                     style="height:550px; width: 100%;"></chart>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 self-table" ng-if="ctrl.chartTableData.length">
+              <table style="height: 550px;">
+                <thead>
+                <tr>
+                  <th>KPI</th>
+                  <th class="text-right">{{ctrl.charTableTitle1}}</th>
+                  <th class="text-right">{{ctrl.charTableTitle2}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in ctrl.chartTableData">
+                  <td>{{item.name}}</td>
+                  <td class="resize1 text-right" colspan="{{item.name == '有售sku数' ? 2 : 1}}">
+                    <span ng-class="item.f1!='-'?'aLink':''" ng-if="item.name == '有售sku数'"
+                          ng-click="ctrl.goUrl(0,item.f1)">
+                      <span class="right" style="text-align: center;font-size: 18px">{{item.f1}}</span>
+                      <span class="right" style="text-align: center;font-size: 18px" ng-hide="item.f1Pct == '-'">({{item.f1Pct}})</span>
+                      </span>
+                    <div ng-if="item.name != '有售sku数'">
+                      <span class="right" title="{{item.f1Title ? item.f1Title : item.f1}}">{{item.f1}}</span>
+                      <span class="right" ng-hide="item.f1Pct == '-'">({{item.f1Pct}})</span></div>
+                  </td>
+                  <td class="resize1 text-right" ng-hide="item.name == '有售sku数'">
+                    <span class="right" title="{{item.f2Title ? item.f2Title : item.f2}}">{{item.f2}}</span>
+                    <span class="right" ng-hide="item.f2Pct == '-'">({{item.f2Pct}})</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="row" ng-if="ctrl.summary.length">
+        <article class="col-sm-12">
+          <header class="header">
+            <span>业态对比状况数据</span>
+          </header>
+          <div class="body self-table">
+            <table border="1" width="100%">
+              <thead>
+              <tr>
+                <th rowspan="2" class="row-span">{{ctrl.rowTitle}}</th>
+                <th colspan="2" class="col-span">{{ctrl.colTitle}}A类商品</th>
+                <th colspan="2" class="col-span">{{ctrl.colTitle}}B类商品</th>
+                <th colspan="2" class="col-span">{{ctrl.colTitle}}C 类商品</th>
+                <th colspan="2" class="col-span">合计</th>
+              </tr>
+              <tr>
+                <th class="text-right">有售sku</th>
+                <th class="text-right">占比</th>
+                <th class="text-right">有售sku</th>
+                <th class="text-right">占比</th>
+                <th class="text-right">有售sku</th>
+                <th class="text-right">占比</th>
+                <th class="text-right">有售sku</th>
+                <th class="text-right">占比</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="item in ctrl.tableData">
+                <td>{{item.name}}</td>
+                <td class="text-right">
+                   <span ng-class="item.sale0!='-'?'aLink':''" ng-click="ctrl.goUrl($index+10,item.sale0)">
+                     {{item.sale0}}
+                   </span>
+                </td>
+                <td class="text-right">{{item.pct0}}</td>
+                <td class="text-right">
+                  <span ng-class="item.sale1!='-'?'aLink':''" ng-click="ctrl.goUrl($index+20,item.sale1)">
+                    {{item.sale1}}
+                   </span>
+                </td>
+                <td class="text-right">{{item.pct1}}</td>
+                <td class="text-right">
+                  <span ng-class="item.sale2!='-'?'aLink':''" ng-click="ctrl.goUrl($index+30,item.sale2)">
+                    {{item.sale2}}
+                   </span>
+                </td>
+                <td class="text-right">{{item.pct2}}</td>
+                <td class="text-right">
+                  <span ng-class="item.saleSum!='-'?'aLink':''" ng-click="ctrl.goUrl($index+40,item.saleSum)">
+                    {{item.saleSum}}
+                   </span></td>
+                <td class="text-right">{{item.pctSum}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+      <div class="row">
+        <article class="col-sm-12 ">
+          <header class="header">
+            <span>业态对比详细数据</span>
+            <!-- <div class="setting-box">
+               <button class="btn btn-primary hs-search" ng-click="ctrl.getTableOption()">
+                 数据设定
+               </button>
+             </div>-->
+          </header>
+          <div class="body bottomPadding">
+            <div>
+              <abc-diff-tree param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key" name="ctrl.interfaceName"
+                             data="ctrl.data" summary="ctrl.summary"></abc-diff-tree>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+

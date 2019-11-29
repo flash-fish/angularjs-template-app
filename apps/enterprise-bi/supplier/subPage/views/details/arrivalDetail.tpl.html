@@ -1,0 +1,46 @@
+<div class="subpage">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.com.fromTopParent" ng-if="ctrl.initShow"></sub-menu>
+  <div id="submain" class="subLack sub-main hs-container top-content-box" ng-init="ctrl.init()">
+    <section>
+      <div class="row condition">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>供货明细</span>
+            <company-infor supplier="ctrl.com.supplier"></company-infor>
+          </header>
+          <div class="body">
+            <div class="span">
+              <span>
+                商品：[{{ctrl.product.productCode}}]{{ctrl.product.name}}
+              </span>
+              <span class="date">日期：{{ctrl.com.date}}</span>
+              <button class="btn btn-primary" ng-click="ctrl.backTo()">返回商品列表</button>
+            </div>
+            <div class="span">
+              <div class="" ng-if="curr.value" ng-repeat="curr in ctrl.stores track by $index">
+                <span class="title" title="{{curr.value}}">{{curr.name}}：{{curr.value}}</span>
+              </div>
+              <div class="" ng-if="ctrl.style">
+                <span>配送方式：{{ctrl.style}}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header">
+            <span class="title">到货数据</span>
+          </header>
+          <div class="body popover-hover more-margin" ng-if="ctrl.com">
+            <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                   dt-instance="ctrl.instance"
+                   class="table table-trend hs-table" width="100%">
+            </table>
+            <empty-table show="ctrl.back.empty"></empty-table>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>

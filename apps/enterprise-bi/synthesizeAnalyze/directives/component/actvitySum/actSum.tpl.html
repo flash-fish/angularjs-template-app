@@ -1,0 +1,48 @@
+<div class="hs-sum">
+  <div class="field-box">
+    <div class="one-field" ng-repeat="s in ctrl.showList" ng-style="{'min-width': ctrl.minWidth + 'px'}">
+      <p>{{s.name}}</p>
+      <p title="{{s.hoverData}}">{{s.data}}{{s.key.unit ? s.key.unit : ''}}</p>
+    </div>
+  </div>
+
+  <div class="field-box">
+    <div class="one-field" ng-repeat="s in ctrl.endSumList" ng-style="{'min-width': ctrl.minWidth + 'px'}">
+      <p>{{s.name}}</p>
+      <p title="{{s.hovers}}{{s.unit ? s.unit : ''}}">{{s.val}}{{s.ty ? s.ty : ''}}</p>
+    </div>
+  </div>
+
+  <div ng-show="ctrl.showMore">
+    <toggle-button show="ctrl.toggleHide" name="'更多数据'" local="null"></toggle-button>
+  </div>
+</div>
+
+
+<style>
+  .hs-sum {
+    min-height: 80px;
+    padding-left: 10px;
+  }
+
+  .hs-sum > .row {
+    margin: 0;
+  }
+
+  .hs-sum > .row > div {
+    padding: 0;
+    margin: 8px 0;
+  }
+
+  .hs-sum .one-field p:first-child {
+    font-size: 11px;
+    color: #808080;
+  }
+
+  .hs-sum .one-field p:nth-child(2) {
+    padding: 5px 0;
+    color: #404040;
+    font-size: 17px;
+    font-weight: bold;
+  }
+</style>

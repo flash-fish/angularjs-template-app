@@ -1,0 +1,19 @@
+<div ng-init="sub.init()" class="sub-menu" ng-hide="sub.hide" ng-class="{closed: sub.close}">
+  <div ng-click="sub.toggle()" class="{{sub.close ? 'left toggle' : 'right toggle'}}">
+    <span ng-show="!sub.close"><i class="fa fa-angle-double-left"></i></span>
+    <span ng-show="sub.close"><i class="fa fa-angle-double-right"></i></span>
+  </div>
+  <div class="static-title-box">
+    <span class="static-title" ng-if="sub.info.noReturn">{{sub.info.title}}</span>
+    <a ng-click="sub.goToUrl()" class="title" ng-if="!sub.info.noReturn">
+      <i class="fa fa-angle-left"></i><span>返回</span>
+    </a>
+  </div>
+  <ul>
+    <li ng-repeat="m in sub.menu.list"
+        ng-click="sub.click(m)"
+        ng-class="{active: m.active, cursor: sub.singleMenu}">
+      <a ui-sref="{{m.r}}">{{m.t}}</a>
+    </li>
+  </ul>
+</div>

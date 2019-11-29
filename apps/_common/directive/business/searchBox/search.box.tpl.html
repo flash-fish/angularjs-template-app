@@ -1,0 +1,21 @@
+<div style="height: 100%;">
+  <div class="condition-box" ng-init="ctrl.init()" ng-click="ctrl.$scope.click()">
+    <span class="condition-name" ng-hide="ctrl.$scope.data.length > 0">{{ctrl.name}}</span>
+    <div ng-bind="ctrl.list" class="condition-content"
+         ng-class="{'add-width': ctrl.count > ctrl.info.count}"
+         ng-mouseenter="ctrl.enter()"
+         ng-mouseleave="ctrl.leave()">
+    </div>
+    <div class="condition-del"
+         ng-click="ctrl.delete($event)"
+         ng-hide="ctrl.hideDel && ctrl.count > ctrl.info.count">
+      X
+    </div>
+  </div>
+  <div class="hide-condition" ng-show="ctrl.$scope.disable">
+    <input type="text" disabled />
+    <span>{{ctrl.info.name}}</span>
+  </div>
+</div>
+
+

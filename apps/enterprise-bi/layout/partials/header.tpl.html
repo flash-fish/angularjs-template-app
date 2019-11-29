@@ -1,0 +1,27 @@
+<header id="header">
+  <a href="/" class="logo"></a>
+  <div class="topLink">
+    <div class="link">
+      <div class="name" ng-click="show = !show">
+        <span>{{user.username}} <i class="fa fa-caret-down"></i></span>
+      </div>
+      <ul ng-show="show">
+        <li><a href="" ng-click="logout()"><i class="fa fa-power-off"></i>退出系统</a></li>
+      </ul>
+    </div>
+    <div class="link job" ng-class="{'cursor-text': !jobs.length}">
+      <div class="name" ng-click="showRoles()">
+        <span>{{currentJob.name}}<i class="fa fa-caret-down" ng-if="jobs.length" style="padding-left: 5px"></i></span>
+      </div>
+      <ul ng-show="showJob && jobs.length" style="width: 120px">
+        <li ng-repeat="job in jobs" title="{{job.name}}">
+          <a href=""
+             style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"
+             ng-click="changeRole(job.id)">{{job.name}}</a></li>
+      </ul>
+    </div>
+    <div class="link">
+      <a class="download"  style=" line-height: unset" href="files/产品使用说明书.docx" download="产品使用说明书">产品使用说明书</a>
+    </div>
+  </div>
+</header>

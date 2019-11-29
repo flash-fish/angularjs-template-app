@@ -1,0 +1,204 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">指标选择</h1>
+  </div>
+  <div class="modal-body popup-option-table">
+    <ul class="nav nav-tabs" ng-show="ctrl.showTab">
+      <li ng-repeat="one in ctrl.tabTypes" ng-model="ctrl.currTab" ng-click="ctrl.tabChange(one)"
+          ng-class="{active: one.active}">
+        <a href="">{{one.name}}</a>
+      </li>
+    </ul>
+    <div class="tab-content" style="margin-bottom: 10px;">
+      <div ng-if="ctrl.currJob === ctrl.jobs.all && '17'.includes(ctrl.currTab.id)">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.all track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'all', ctrl.option.all)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.all, 'all')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.all"></same-ring-setting>
+        </div>
+      </div>
+      <div ng-if="ctrl.currTab.id === '2'">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.buyer track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'buyer', ctrl.option.buyer)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.buyer, 'buyer')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.buyer"></same-ring-setting>
+        </div>
+      </div>
+      <div ng-if="ctrl.currTab.id === '20' && ctrl.currJob === ctrl.jobs.store">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.storeOther track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'storeOther', ctrl.option.storeOther)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.storeOther, 'storeOther')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.storeOther"></same-ring-setting>
+        </div>
+      </div>
+      <div ng-if="ctrl.currTab.id === '5'">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.store track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'store', ctrl.option.store)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.store, 'store')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.store"></same-ring-setting>
+        </div>
+      </div>
+      <div ng-if="ctrl.context.costCodeTab && '8'.includes(ctrl.currTab.id) && ctrl.currJob !== ctrl.jobs.store">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.costCodeForBuyer track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'costCodeForBuyer', ctrl.option.costCodeForBuyer)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.costCodeForBuyer, 'costCodeForBuyer')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.costCodeForBuyer"></same-ring-setting>
+        </div>
+      </div>
+      <div ng-if="ctrl.context.costCodeTab && '9'.includes(ctrl.currTab.id) && ctrl.currJob !== ctrl.jobs.buyer">
+        <div class="hs-field">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.option.costCodeForStore track by k">
+            <p>
+              <span>{{v.key.name}}</span>
+              <label>
+                <input type="checkbox" class="checkbox"
+                       ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, 'costCodeForStore', ctrl.option.costCodeForStore)">
+                <span>全选</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+                <label>
+                  <input type="checkbox" class="checkbox"
+                         ng-model="l.model" ng-value="l.id" ng-disabled="l.disable || v.disable"
+                         ng-click="ctrl.selectOne(l, k, ctrl.option.costCodeForStore, 'costCodeForStore')"/>
+                  <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+                  <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                  <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                     popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i
+                    class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <same-ring-setting options="ctrl.YoYToTSettingTabs.costCodeForStore"></same-ring-setting>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <span class="hs-red error" ng-if="ctrl.zeroError.length > 0">{{ctrl.showError}}</span>
+    <span class="hs-red error" ng-if="ctrl.manyError.length > 0">{{ctrl.showManyError}}</span>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>
+

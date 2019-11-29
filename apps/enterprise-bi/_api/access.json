@@ -1,0 +1,71 @@
+{
+  "code": "0",
+  "data": {
+    "username": "袁碧玉",
+    "userCode": "00000410",
+    "admin": true,
+    "jobs": [
+      {
+        "id": 1,
+        "name": "采购文员"
+      },
+      {
+        "id": -1,
+        "name": "管理员"
+      }
+    ],
+    "currentJobId": -1,
+    "moduleDataAccesses": [
+      {
+        "moduleId": 5,
+        "dataAccesses": [
+          {
+            "dataAccessCode": "4",
+            "accesses": [
+              {
+                "code": "310",
+                "name": "妙喵城事业部",
+                "level": 3
+              },
+              {
+                "code": "311",
+                "name": "食品部",
+                "level": 3
+              },
+              {
+                "code": "312",
+                "name": "洗化美妆部",
+                "level": 3
+              },
+              {
+                "code": "313",
+                "name": "自有品牌事业部",
+                "level": 3
+              }
+            ]
+          },
+          {
+            "dataAccessCode": "2",
+            "accesses": [
+              {
+                "code": "100",
+                "name": "饮料",
+                "level": 2
+              },
+              {
+                "code": "101",
+                "name": "烟酒",
+                "level": 2
+              },
+              {
+                "code": "102",
+                "name": "休闲食品",
+                "level": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

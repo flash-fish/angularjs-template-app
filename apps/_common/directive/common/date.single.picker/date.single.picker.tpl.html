@@ -1,0 +1,14 @@
+<div class="dropdown single-date-picker-box" ng-init="ctrl.init()">
+  <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target=".dropdown" href="#">
+    <div class="input-group">
+      <input type="text" id="date" name="date" class="form-control" data-ng-model="ctrl.value" disabled>
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <datetimepicker ng-model="ctrl.pickerDate"
+                    data-on-set-time="ctrl.dateChange()"
+                    data-before-render="ctrl.beforeRender($view, $dates)"
+                    datetimepicker-config="ctrl.config"></datetimepicker>
+  </ul>
+</div>

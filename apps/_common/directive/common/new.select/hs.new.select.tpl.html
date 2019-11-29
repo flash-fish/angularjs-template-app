@@ -1,0 +1,37 @@
+<style>
+  .new-select .custom-select {
+    border-top: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    position:absolute;
+    text-align: center;
+    height: 100%;
+    width:30%;
+    line-height:29px;
+    top:0px;
+    left: 0px;
+    z-index:99;
+  }
+  .new-select .select2 {
+    position:absolute;
+    font-size: 13px;
+    color: #000;
+    left: 30%;
+    height: 100%;
+    line-height:23px;
+    padding-left: 7px;
+}
+</style>
+<div ng-init="ctrl.init()" class="new-select" >
+
+    <div style="position: relative;height: 29px" ng-if="ctrl.isShow">
+        <div class="custom-select">{{ctrl.keys.name}}</div>
+        <select  type="text" class="select2" data-smart-select style="width:70%"
+                ng-model="ctrl.selected"
+                ng-options="sto[ctrl.id] as sto[ctrl.title] for sto in ctrl.options">
+        </select>
+
+    </div>
+</div>
+
+

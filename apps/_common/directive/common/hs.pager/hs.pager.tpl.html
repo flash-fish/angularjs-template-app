@@ -1,0 +1,15 @@
+<div ng-init="ctrl.init()" ng-if="ctrl.show">
+  <uib-pagination
+    total-items="ctrl.total"
+    ng-model="ctrl.curr"
+    ng-change="ctrl.change()"
+    items-per-page="ctrl.per"
+    first-text="第一页"
+    previous-text="上一页"
+    next-text="下一页"
+    last-text="最后一页"
+    boundary-links="true"
+    boundary-link-numbers="true"
+    max-size="ctrl.max"
+  ></uib-pagination>
+</div>

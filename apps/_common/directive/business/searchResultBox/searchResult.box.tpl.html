@@ -1,0 +1,19 @@
+<div ng-init="ctrl.init()">
+  <div class="search-result-box">
+    <div class="search-result-header clearfix">
+      <span class="title fl">搜索条件</span>
+      <label style="margin-left: 15px;" ng-show="ctrl.isShowCode">
+        <input type="checkbox" class="checkbox" ng-model="ctrl.isUseCode">
+        <span>按代码显示</span>
+      </label>
+    </div>
+    <div class="search-result-body" ng-if="ctrl.list.length">
+      <div ng-repeat="p in ctrl.list track by $index">
+        <div class="cell">{{p.title}}：{{ ctrl.isUseCode && p.codes ? p.codes : p.content}}</div>
+      </div>
+    </div>
+    <div class="search-result-body" ng-if="!ctrl.list.length">
+      --
+    </div>
+  </div>
+</div>

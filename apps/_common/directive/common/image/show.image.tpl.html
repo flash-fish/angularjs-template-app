@@ -1,0 +1,15 @@
+<div ng-init="hs.init()">
+  <div ng-repeat="img in hs.images track by $index">
+    <div class="show-image-container">
+      <div class="show-image">
+        <img ngf-src="img" alt="" class="image-cur">
+        <!--<uib-progressbar value="hs.progress" type="success" ng-hide="hs.show">{{hs.progress}}%</uib-progressbar>-->
+        <div class="edit-image-container">
+          <a href="javascript:void(0);" ng-click="hs.rotate($index)"><i class="fa fa fa-repeat"></i></a>
+          <a href="javascript:void(0);" ng-click="hs.delete($index)">X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

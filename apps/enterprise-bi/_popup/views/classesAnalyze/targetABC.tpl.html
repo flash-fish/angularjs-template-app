@@ -1,0 +1,150 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">ABC指标</h1>
+  </div>
+  <div class="modal-body target">
+    <div class="row mt0">
+      <div class="col-md-6">
+        <div class="row flex-center" ng-repeat="item in ctrl.operations.total">
+          <div class="col-md-4">{{item.name}}</div>
+          <div class="col-md-8 multiple-select" ng-class="{'placeholder': ctrl.selectTotal[item.id].length}">
+            <select multiple inherit-select-classes="true" class="border-red" chosen
+                    ng-model="ctrl.selectTotal[item.id]"
+                    ng-options="value as label for (value, label) in ctrl.allSelect" no_results_text="'整体'"
+                    placeholder-text-multiple="'整体'">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row flex-center" ng-repeat="item in ctrl.operations.avg">
+          <div class="col-md-4">{{item.name}}</div>
+          <div class="col-md-8 multiple-select" ng-class="{'placeholder': ctrl.selectAvg[item.id].length}">
+            <select multiple inherit-select-classes="true" class="border-red" chosen
+                    ng-model="ctrl.selectAvg[item.id]"
+                    ng-options="value as label for (value, label) in ctrl.avgSelect" no_results_text="'平均'"
+                    placeholder-text-multiple="'平均'">
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <form name="targetABCForm">
+      <div class="row" ng-repeat="item in ctrl.selectXY">
+        <div class="col-md-6" ng-if="item.title !== 'layStoreCnt'">
+          <div class="row flex-center">
+            <div class="col-md-4">{{item.name}}</div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" name="{{item.title}}_lower" numberic
+                     min="0" max="9999999999" maxlength="10"
+                     placeholder="{{item.name + '最小值'}}"
+                     ng-keyup="ctrl.keyup(item.title, 'lower')"
+                     ng-blur="ctrl.blur(item.title, 'lower')"
+                     ng-model="ctrl.select[item.title].lower">
+            </div>
+          </div>
+          <div class="row" ng-if="ctrl.inputError[item.title].lower.flag">
+            <div class="col-md-offset-4">{{ctrl.inputError[item.title].lower.msg}}</div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="item.title !== 'layStoreCnt'">
+          <div class="row flex-center">
+            <div class="col-md-4 text-center">--</div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" name="{{item.title}}_upper" numberic
+                     min="0" max="9999999999" maxlength="10"
+                     placeholder="{{item.name + '最大值'}}"
+                     ng-keyup="ctrl.keyup(item.title, 'upper')"
+                     ng-blur="ctrl.blur(item.title, 'upper')"
+                     ng-model="ctrl.select[item.title].upper">
+            </div>
+          </div>
+          <div class="row" ng-if="ctrl.inputError[item.title].upper.flag">
+            <div class="col-md-offset-4">{{ctrl.inputError[item.title].upper.msg}}</div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="item.title === 'layStoreCnt'">
+          <div class="row flex-center">
+            <div class="col-md-4">{{item.name}}</div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" name="{{item.title}}_lower" numberic
+                     min="1" max="200" maxlength="3"
+                     placeholder="{{item.name + '最小值'}}"
+                     ng-keyup="ctrl.keyup(item.title, 'lower')"
+                     ng-blur="ctrl.blur(item.title, 'lower')"
+                     ng-model="ctrl.select[item.title].lower">
+            </div>
+          </div>
+          <div class="row" ng-if="ctrl.inputError[item.title].lower.flag">
+            <div class="col-md-offset-4">{{ctrl.inputError[item.title].lower.msg}}</div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="item.title === 'layStoreCnt'">
+          <div class="row flex-center">
+            <div class="col-md-4 text-center">--</div>
+            <div class="col-md-8">
+              <input type="text" class="form-control" name="{{item.title}}_upper" numberic
+                     min="1" max="200" maxlength="3"
+                     placeholder="{{item.name + '最大值'}}"
+                     ng-keyup="ctrl.keyup(item.title, 'upper')"
+                     ng-blur="ctrl.blur(item.title, 'upper')"
+                     ng-model="ctrl.select[item.title].upper">
+            </div>
+          </div>
+          <div class="row" ng-if="ctrl.inputError[item.title].upper.flag">
+            <div class="col-md-offset-4">{{ctrl.inputError[item.title].upper.msg}}</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ng-disabled="ctrl.disabled.stockCostAvg || ctrl.disabled.stockTurnover || ctrl.disabled.layStoreCnt" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>
+<style>
+
+  .target form .col-md-6 .row,
+  .target .mt0 {
+    margin-top: 0 !important;
+  }
+
+  .target .col-md-8 {
+    width: 274px;
+  }
+
+  .modal-body.target .row {
+    margin-top: 20px;
+  }
+
+  .target .col-md-4 {
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .target .multiple-select .chosen-container {
+    z-index: auto !important;
+  }
+
+  .target .placeholder .chosen-choices .search-field input.chosen-search-input {
+    width: 0 !important;
+  }
+
+  /*.target .multiple-select .chosen-container-multi .chosen-choices {*/
+    /*display: -webkit-inline-box;*/
+  /*}*/
+
+  .target .row .col-md-offset-4 {
+    padding-left: 13px;
+    color: red;
+    padding-top: 5px;
+  }
+
+  .target form {
+    margin-bottom: 20px;
+  }
+</style>

@@ -1,0 +1,442 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section ng-if="ctrl.inited">
+    <!--<div class="row">-->
+      <!--<header class="header top home-margin-top">-->
+        <!--<span>供应商概况</span>-->
+      <!--</header>-->
+
+      <!--<div class="body" style="background-color: white;">-->
+        <!--<div style="height: 40px;">-->
+          <!--<div style="height: 14px;line-height: 14px; width: 8%; float: left; margin-left: 15px">-->
+            <!--<p style="font-size: 13px; font-family: 'Microsoft YaHei'; color: #2A80D8">数据权限</p>-->
+          <!--</div>-->
+          <!--<div style="width: 92%">-->
+            <!--<div class="col-md-5" ng-repeat="list in ctrl.power" ng-if="list.data.length>0"-->
+                 <!--style="height: 14px;line-height: 14px">-->
+              <!--<p style="width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">-->
+                <!--<span style="font-size: 13px">{{list.name}}:</span>-->
+                <!--<span style="font-size: 13px" title="{{list.data}}">{{list.data}}</span>-->
+              <!--</p>-->
+            <!--</div>-->
+            <!--<div class="col-md-6" ng-if="ctrl.anyPower" style="height: 14px;line-height: 14px;">-->
+              <!--<p style="font-size: 13px">全部</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>供应商概况</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.keys.finish"></hs-search>
+          </div>
+        </div>
+      </article>
+    </div>
+
+
+    <div id="newItem-home">
+      <div class="row" style="background-color: white">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+            <span>供应商到货率趋势</span>
+          </header>
+          <div class="body" style="background-color: white;padding-top: 10px;">
+            <div class="row margin-left">
+              <div class="col-md-4" ng-repeat="list in ctrl.initTemp">
+                <p class="supplier-area-value-one">
+                  <img src="styles\img\icon\inv.png"/>
+                  <span>{{list.dateCode}}</span>
+                </p>
+                <p class="supplier-area-value-two">
+                  <span class="rate">{{ctrl.FigureService.scale(list.receiveQtyRate, true, true) }}</span>
+                  <span ng-if="list.receiveQtyRateYoY&&list.receiveQtyRate" up-down change="list.curr"></span>
+                  <span ng-if="list.receiveQtyRateYoY" ng-class="{'scale-red-icon': list.curr >= 0, 'scale-green-icon' : list.curr < 0}">{{ctrl.FigureService.scale(list.curr,true,false) === '-' ? '' : ctrl.FigureService.scale(list.curr,true,false)}}</span>
+                </p>
+                <p ng-if="list.receiveQtyRateYoY" class="supplier-area-value-three">
+                  <span>{{list.dateYoY}}</span>
+                  <span>{{ctrl.FigureService.scale(list.receiveQtyRateYoY,true,true)}}</span>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="hs-chart-function">
+                <chart-toggle first="ctrl.chart_recent" show-label="ctrl.recentLabel" key="{controlCharts: 'chart_recent'}"></chart-toggle>
+              </div>
+              <div class="col-md-12 hs-chart-box">
+                <div class="body">
+                  <div class="hs-chart">
+                    <chart option="ctrl.chart_recent" event="ctrl.key.addEvent" load="ctrl.chartLoadOne"
+                           class="hs-trend chart_recent"></chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+
+            <span>供应商异常</span>
+            <a ng-click="ctrl.jump('abornormal')" class="all-more" ng-if="ctrl.abnormalMore">
+              更多
+            </a>
+          </header>
+          <div class="body" style="background-color: white; height: 100px">
+            <div class="row" style="height: 100px;">
+              <div class="col-md-6" ng-repeat="list in ctrl.abnormal">
+                <p class="supplier-area-value-one text-center">
+                  <a class="prompt-box" uib-popover-html="ctrl.abnoAmont"
+                     popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 1">
+                    <i class="fa fa-exclamation-circle" style="color: orange"></i></a>
+                  <a class="prompt-box" uib-popover-html="ctrl.abnoPRf"
+                     popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 2">
+                    <i class="fa fa-exclamation-circle" style="color: orange"></i></a>
+                  <span>{{list.name}}</span>
+                </p>
+                <p class="supplier-area-value-three text-center">
+                  <span>{{list.code}}</span>
+                </p>
+                <p class="supplier-area-value-two text-center heightMax" style="margin-top: 10px">
+                  <a ng-click="(list.data !== '-' && ctrl.abnormalMore)  ? ctrl.jump('abornormal', list.prompt) : null">
+                    <span class="rate">{{list.data}}</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+
+            <span>供应商引入</span>
+            <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.inOut"
+               popover-trigger="mouseenter" popover-placement='bottom-left'>
+              <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign font-size"></i></a>
+
+            <a ng-click="ctrl.jump('import')" class="all-more" ng-if="ctrl.importInforMore">
+              更多
+            </a>
+          </header>
+          <div class="body" style="background-color: white">
+
+            <!--<div style="padding-top: 10px;padding-left: 20px; height: 50px;">-->
+              <!--<span style="font-size: 14px;">-->
+                <!--新供应商与去年对比({{ctrl.nearYear}})-->
+              <!--</span>-->
+              <!--<div style="height: 28px; float: right; width: 180px; margin-right: 15px">-->
+                <!--<marketing model="ctrl.model_date" models="ctrl.CommonCon.dateTypeToT"></marketing>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div style="display: flex;align-items: center">
+              <span style="font-size: 14px;padding-left: 20px;">
+                新供应商与去年对比({{ctrl.nearYear}})
+              </span>
+              <div class="hs-chart-box" style="margin-left: auto;display: flex;margin-bottom: 10px">
+                <div>
+                  <div class="home-model" style="margin-right: 0">
+                    <marketing model="ctrl.model_date" models="ctrl.CommonCon.dateTypeToT"></marketing>
+                  </div>
+                </div>
+                <div class="hs-chart-function">
+                  <chart-toggle first="ctrl.chart_bar_Unit" show-label="ctrl.label" key="{controlCharts: 'chart_bar'}"
+                                second="ctrl.chart_bar_Amount" third="ctrl.chart_bar_GPM"></chart-toggle>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row supplier-span">
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">引入供应商数</span>
+                </div>
+
+                <div style="height: 264px;width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_Unit" click-event="ctrl.clickEvent"  load="ctrl.chartLoadTwo" class="chart_bar"
+                         style="height: 264px;width: 100%"></chart>
+                  <!--<div class="hs-chart-function">-->
+                    <!--<chart-toggle first="ctrl.chart_bar_Unit" show-label="ctrl.unitLabel"-->
+                    <!--second="ctrl.chart_bar_Amount" third="ctrl.chart_bar_GPM"></chart-toggle>-->
+                  <!--</div>-->
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">供应商销售额(万元)</span>
+                </div>
+                <div style="height: 264px;width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_Amount" click-event="ctrl.clickEvent" class="chart_bar"
+                         load="ctrl.chartLoadTwo"
+                         style="height: 264px;width: 100%;"></chart>
+
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">供应商毛利额(万元)</span>
+                </div>
+                <div style="height: 264px;width: 100%" class="hs-chart-box">
+                  <chart option="ctrl.chart_bar_GPM" click-event="ctrl.clickEvent"  load="ctrl.chartLoadTwo" class="chart_bar"
+                         style="height: 264px;width: 100%;"></chart>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div style="padding-top: 20px; padding-left: 20px; height: 60px; border-top: 1px solid #e6e6e6">
+              <span style="font-size: 14px;">
+                引入年份结构({{ctrl.nearYear}})
+              </span>
+            </div>
+
+            <div class="row supplier-span">
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">引入年份结构(年至今)
+                    <a style="cursor: pointer" uib-popover-template="'importYears.html'"
+                       popover-trigger="mouseenter" popover-placement='bottom-left'>
+                    <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </div>
+                <div style="height: 350px;width: 100%;">
+                  <chart option="ctrl.chart_Pie_Supplier" click-event="ctrl.clickEvent"
+                         style="height: 350px;width: 100%;" load="ctrl.chartLoadThree"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">销售额结构(年至今)</span>
+                </div>
+
+                <div style="height: 350px;width: 100%;">
+                  <chart option="ctrl.chart_Pie_Sale" click-event="ctrl.clickEvent"
+                         style="height: 350px;width: 100%;" load="ctrl.chartLoadThree"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">毛利额结构(年至今)</span>
+                </div>
+
+                <div style="height: 350px;width: 100%;">
+                  <chart option="ctrl.chart_Pie_GPM" click-event="ctrl.clickEvent"
+                         style="height: 350px;width: 100%;" load="ctrl.chartLoadThree"></chart>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </article>
+      </div>
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+
+            <span>供应商供货信息(年至今{{ctrl.nearYear}})</span>
+            <a ng-click="ctrl.jump('supply')" class="all-more" ng-if="ctrl.supplyMore">
+              更多
+            </a>
+          </header>
+
+          <div class="boy" style="background-color: white">
+            <div class="row">
+              <div class="col-md-3" ng-repeat="list in ctrl.supply">
+                <div style="padding-top: 10px;padding-bottom: 30px" ng-class="{'supplier-under-padding-left' : list.prompt === 1}">
+                  <p class="supplier-area-value-one">
+                    <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.notstartingSku"
+                       popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 1">
+                      <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                    <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.eliminationRate"
+                       popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 3">
+                      <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                    <span>{{list.name}}</span>
+                  </p>
+                  <p class="supplier-area-value-two" title="{{list.currSelf}}">
+                    {{list.self}}
+                  </p>
+                  <p class="supplier-area-value-three">
+                    <span title="{{list.currOther}}">同比：{{list.other}}</span>
+                    <span ng-if="list.tot" up-down change="list.tot" class="home-margin-left"></span>
+                    <span ng-class="{'scale-red-icon': list.tot >= 0, 'scale-green-icon' : list.tot < 0}">{{list.count !== '-' ? list.count : '' }}</span>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+            <div class="row supplier-two">
+
+              <div class="col-md-6 padding-left-other">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">到货率</span>
+                </div>
+                <div style="height: 350px;width: 100%;">
+                  <chart option="ctrl.chart_Pie_Receive" click-event="ctrl.clickEvent"
+                         style="height: 350px;width: 100%" load="ctrl.chartLoadFour"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">退货率</span>
+                </div>
+                <div style="height: 350px;width: 100%;">
+                  <chart option="ctrl.chart_Pie_Return" click-event="ctrl.clickEvent"
+                         style="height: 350px;width: 100%" load="ctrl.chartLoadFour"></chart>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="row" style="background-color: white; margin-top: 15px">
+        <article class="col-md-12">
+          <header class="header home-margin-top">
+
+            <span>供应商加注缺品信息(年至今{{ctrl.nearYear}})</span>
+            <!--<span class="time-title">（年至今{{ctrl.nearYear}})</span>-->
+            <a ng-click="ctrl.jump('lack')" class="all-more" ng-if="ctrl.lackMore">
+              更多
+            </a>
+          </header>
+          <div class="boy hs-subSupply" style="background-color: white">
+            <div class="row">
+              <div class="col-md-4" ng-repeat="list in ctrl.lack">
+                <div style="padding-left: 20px; padding-bottom: 30px">
+                  <p class="supplier-area-value-one">
+                    <span>{{list.name}}</span>
+                    <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.notstartingSku"
+                       popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 1">
+                      <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                    <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.eliminationRate"
+                       popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 3">
+                      <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                  </p>
+                  <p class="supplier-area-value-two" title="{{list.currSelf}}">
+                    {{list.self}}
+                  </p>
+                  <p class="supplier-area-value-three">
+                    <span title="{{list.currOther}}">同比：{{list.other}}</span>
+                    <span ng-if="list.tot" up-down change="list.tot" class="home-margin-left"></span>
+                    <span ng-class="{'scale-red-icon': list.tot >= 0, 'scale-green-icon' : list.tot < 0}">{{list.count}}</span>
+                  </p>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="row supplier-span">
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i"> 加注缺品SKU数</span>
+                </div>
+                <div style="height: 350px; width: 100%">
+                  <chart option="ctrl.chart_Pie_out" click-event="ctrl.clickEvent"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadFive"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">平均缺货天数</span>
+                </div>
+                <div style="height: 350px; width: 100%">
+                  <chart option="ctrl.chart_Pie_avgDay" click-event="ctrl.clickEvent"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadFive"></chart>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div style="height: 33px">
+                  <img src="styles\img\label.png" class="blue-line"/>
+                  <span class="title-i">A类品加注缺品占比</span>
+                </div>
+                <div style="height: 350px; width: 100%">
+                  <chart option="ctrl.chart_Pie_aPrc" click-event="ctrl.clickEvent"
+                         style="height: 350px; width: 100%" load="ctrl.chartLoadFive"></chart>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .supplier-span .hs-chart-function {
+    position: relative;
+    bottom: 6px;
+    left: -12px;
+  }
+
+  .hs-chart-function .chart-toggle-box > div {
+    cursor: pointer;
+  }
+
+  .hs-chart-function .chart-toggle-box {
+    float: right;
+    margin-right: 30px;
+  }
+</style>

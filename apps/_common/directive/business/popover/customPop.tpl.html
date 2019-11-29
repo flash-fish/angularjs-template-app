@@ -1,0 +1,9 @@
+<a uib-popover-template="'popover.html'" popover-trigger="none" popover-is-open="show"
+   popover-popup-close-delay="200" popover-placement="right" ng-mouseover="over()" ng-mouseleave="leave()">
+  {{id}}
+</a>
+<script type="text/ng-template" id="popover.html">
+  <div class="hs-popover-box">
+    <a ng-repeat="i in list" ng-click="switch(i.id)">{{i.name}}</a>
+  </div>
+</script>

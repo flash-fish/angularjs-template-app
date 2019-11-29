@@ -1,0 +1,41 @@
+<div class="modal-content choose-options" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" aria-hidden="true" ng-click="ctrl.cancel()">&times;</button>
+    <h1 class="modal-title">可比门店列表</h1>
+  </div>
+  <div class="modal-body">
+    <div>
+      <div class="modal-contrast-store">
+        <div class="date">
+          <span class="first">选择时间段： {{ctrl.date}}</span>
+          <span>可比时间段： {{ctrl.vsDate}}</span>
+        </div>
+        <div class="field" ng-repeat="curr in ctrl.field">
+          <span>{{curr[1]}}：</span>
+          <div class="storeEnterClass">
+            {{curr[2]}}
+          </div>
+
+        </div>
+      </div>
+      <div class="show-area">
+        <div class="show-area-header">
+          <span class="show-area-title">可比门店列表</span>
+          <span class="show-area-count">（共有 {{ctrl.initList.length}} 条）</span>
+          <a href="" class="download hover-bold" ng-click="ctrl.download()">下载<i class="fa fa-download"></i></a>
+        </div>
+        <div class="show-area-body">
+          <span loading show="ctrl.loading"></span>
+          <div class="col-sm-3" ng-repeat="sto in ctrl.initList track by $index">
+            <div class="not-hover">
+              <div title="{{'[' + sto.code + ']' + sto.name}}">
+                [{{sto.code}}]{{sto.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

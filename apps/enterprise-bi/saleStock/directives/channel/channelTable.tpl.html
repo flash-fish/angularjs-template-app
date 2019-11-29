@@ -1,0 +1,20 @@
+<div ng-init="ctrl.init()" class="hs-container" style="margin-top: 20px">
+  <div class="row">
+    <article class="col-md-12">
+      <div class="body popover-hover">
+        <div ng-if="ctrl.param">
+          <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+          <empty-table show="ctrl.back.empty"></empty-table>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<style>
+  .hs-table-empty {
+    top: 52px;
+  }
+</style>

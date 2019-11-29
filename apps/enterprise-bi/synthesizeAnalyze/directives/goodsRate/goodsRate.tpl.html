@@ -1,0 +1,103 @@
+<div class="init-L" ng-init="ctrl.init()">
+  <div class="goods-width">
+    <div class="goods-check">
+      <label>
+        <input type="checkbox" class="checkbox" ng-model="ctrl.other.checkOne" ng-change="ctrl.watchStateOne()">
+        <span></span>
+      </label>
+      <span>到货率</span>
+      <div class="goods-Style">
+        <input type="text" ng-change="ctrl.watchStateOne()"
+               ng-class="{true:'label_true',false:'label_false'}[ctrl.other.number_one.length === 0 && ctrl.other.number_two.length === 0 && ctrl.other.checkOne]"
+               class="form-control input-number" ng-model="ctrl.other.number_one"
+               ng-disabled="!ctrl.other.checkOne" numberic min="0" max="999" max-length="3">
+        <span> - </span>
+        <input type="text" ng-change="ctrl.watchStateOne()"
+               ng-class="{true:'label_true',false:'label_false'}[ctrl.other.number_one.length === 0 && ctrl.other.number_two.length === 0 && ctrl.other.checkOne]"
+               class="form-control input-number" ng-model="ctrl.other.number_two"
+               ng-disabled="!ctrl.other.checkOne" numberic min="0" max="999" max-length="3">
+      </div>
+    </div>
+  </div>
+
+  <div class="goods-width mid-L">
+    <div class="goods-check">
+      <label>
+        <input type="checkbox" class="checkbox" ng-model="ctrl.other.checkTwo" ng-change="ctrl.watchStateOne()">
+        <span></span>
+      </label>
+      <span>退货率</span>
+      <div class="goods-Style">
+        <input type="text" ng-change="ctrl.watchStateOne()"
+               ng-class="{true:'label_true',false:'label_false'}[ctrl.other.number_three.length === 0 && ctrl.other.number_four.length === 0 && ctrl.other.checkTwo]"
+               class="form-control input-number" ng-model="ctrl.other.number_three"
+               ng-disabled="!ctrl.other.checkTwo" numberic min="0" max="999" max-length="3">
+        <span> - </span>
+        <input type="text" ng-change="ctrl.watchStateOne()"
+               ng-class="{true:'label_true',false:'label_false'}[ctrl.other.number_three.length === 0 && ctrl.other.number_four.length === 0 && ctrl.other.checkTwo]"
+               class="form-control input-number" ng-model="ctrl.other.number_four"
+               ng-disabled="!ctrl.other.checkTwo" numberic min="0" max="999" max-length="3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .init-L{
+    height: 43px;
+  }
+
+  .goods-width{
+    float: left;
+    margin-left: 11px;
+    height: 43px;
+    padding-top: 6px;
+  }
+
+  .mid-L{
+    margin-left: 21px;
+  }
+
+  .goods-check{
+    height: 29px;
+  }
+
+  .goods-check label{
+    float: left;
+    height: 29px;
+    padding-top: 0;
+  }
+
+  .goods-check span{
+    float: left;
+    height: 29px;
+    padding-top: 6px;
+  }
+
+  .goods-Style{
+    float: left;
+    margin-left: 20px;
+    margin-top: 0;
+  }
+
+  .goods-Style input{
+    float: left;
+    width: 61px;
+  }
+
+  .goods-Style span{
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .label_true {
+    border: 1px red solid;
+  }
+
+  .label_false {
+    border: 1px #ccc solid;
+  }
+
+
+</style>

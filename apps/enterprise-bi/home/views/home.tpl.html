@@ -1,0 +1,588 @@
+<div ng-init="ctrl.init()" ng-click="ctrl.showClick()">
+  <div style="background-color: #eef1f6">
+    <div home-notice data="ctrl.warningNotice"></div>
+    <section>
+      <div class="row" style="height: 120px; background-color: white">
+        <article style="width: 100%">
+          <div style="width: 20%; float: left">
+            <div style="padding-left: 35px; margin-top: 30px">
+              <p class="home-common-p">Hi {{ctrl.userJob}}</p>
+              <p class="home-common-p margin-top">{{ctrl.user.username}}</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 25px;width: 50%; float: left">
+            <p style="font-size: 12px; padding-bottom: 8px" ng-repeat="list in ctrl.dateArray" ng-if="ctrl.dateArray.length>0">
+              <span style="width: 70px; display: inline-block;">{{list.title}}</span>
+              <span style="width: 230px; display: inline-block;">{{list.date}}</span>
+              <span style="display: inline-block;">{{list.weatherTitle}}{{list.weather}}</span>
+            </p>
+          </div>
+
+          <div style="margin-top: 44px;width: 30%; float: right">
+            <a style="position: relative; cursor: pointer; color: black; text-decoration: none; margin-right: 35px" uib-popover-template="'infor.html'"
+               popover-placement='bottom-right' ng-click="ctrl.showInforClick()"
+               popover-class="home-increase-width" class="home-block" popover-is-open="ctrl.showInfor">
+              <span style="margin-left: 10px">最近消息</span>
+              <img src="styles\img\arrow_down.png" style="height: 6px; width: 10px; margin-left: 3px"/>
+            </a>
+            <a style="position: relative; cursor: pointer; color: black; text-decoration: none; margin-right: 15px" uib-popover-template="'data.html'"
+               popover-placement='bottom'
+               popover-class="home-increase-width" class="home-block" ng-click="ctrl.showPowerClick()" popover-is-open="ctrl.showPower">
+              <span style="margin-left: 10px">数据权限</span>
+              <img src="styles\img\arrow_down.png" style="height: 6px; width: 10px; margin-left: 3px"/>
+            </a>
+          </div>
+        </article>
+      </div>
+
+
+
+      <div id="content-home">
+
+        <div class="row condition home-row-margin-bottom">
+          <article class="col-sm-12">
+            <div class="body" style="background-color: white; padding-top: 10px; padding-bottom: 10px ">
+              <div class="row input-choose homeSearch" style="margin-left: 13px; margin-right: 21px; ">
+                <div class="col-md-2">
+                  <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+                </div>
+                <div class="col-md-2">
+                  <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+                </div>
+                <div class="col-md-2">
+                  <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+                </div>
+
+                <div class="hs-search-box">
+                  <hs-search search="ctrl.search()" finish="ctrl.keys.finish"></hs-search>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="row home-row-margin-bottom">
+          <article class="col-sm-12">
+            <div style="height: 240px; background-color: white">
+              <header class="home-container-header">
+                <img src="styles\img\round.png" class="home-round"/>
+                <span>销售概况</span>
+                <a ng-click="ctrl.jump('sale')" class="home-a" ng-if="ctrl.saleStock">
+                  更多
+                </a>
+              </header>
+              <div class="home-margin-left home-sale">
+                <div class="col-sm-4" ng-repeat="list in ctrl.saleArray" ng-if="ctrl.saleArray.length > 0">
+                  <p class="home-gray-p">{{list.title}}</p>
+                  <p class="home-big-number" title="{{list.bigNumber + '元'}}">{{list.bigNumberR + '万元'}}</p>
+                  <p class="home-yoy">
+                    <span class="home-item-Title">同期值:</span>
+                    <span class="home-item-Title" title="{{list.allAmountYoYValueY}}元">{{list.allAmountYoYValue}}万元</span>
+                    <span class="home-item-Title" title="{{list.allAmountYoYValueIncY}}元" ng-if="list.allAmountYoYValueInc">(差值: {{list.allAmountYoYValueInc}}万元)</span>
+                  </p>
+                  <p class="home-yoy">
+                    <span class="home-item-Title">同比增幅:</span>
+                    <span ng-if="list.yoyR" up-down change="list.yoyR" class="home-margin-left"></span>
+                    <span ng-if="list.yoy" ng-class="{'scale-red-icon': list.yoyR >= 0, 'scale-green-icon' : list.yoyR < 0}">{{list.yoy}}</span>
+                  </p>
+                  <p class="home-yoy" style="margin-top: 15px">
+                    <span class="home-item-Title">同比增幅(只含可比门店):</span>
+                    <span ng-if="list.compareYoYR" up-down change="list.compareYoYR" class="home-margin-left"></span>
+                    <span ng-if="list.compareYoY" ng-class="{'scale-red-icon': list.compareYoYR >= 0, 'scale-green-icon' : list.compareYoYR < 0}">{{list.compareYoY}}</span>
+                  </p>
+                  <p class="home-yoy" ng-if="list.num === 0">
+                    <span class="home-item-Title">日周环比增幅:</span>
+                    <span ng-if="list.weeklyToTR" up-down change="list.weeklyToTR" class="home-margin-left"></span>
+                    <span ng-if="list.weeklyToT" ng-class="{'scale-red-icon': list.weeklyToTR >= 0, 'scale-green-icon' : list.weeklyToTR < 0}">{{list.weeklyToT}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="row home-row-margin-bottom">
+          <article class="col-md-12">
+            <div class="body" style="background-color: white">
+              <header class="home-container-header" style="display: flex;">
+                <div>
+                  <img src="styles\img\round.png" class="home-round"/>
+                  <span>{{ctrl.yearNow}}同期对比</span>
+                </div>
+                <div style="margin-left: auto;margin-right: 30px; display: flex" class="hs-chart-box">
+                  <div>
+                    <div class="home-model-header" style="margin-right: 0">
+                      <marketing model="ctrl.last_name" models="ctrl.lastYearMarketing"></marketing>
+                    </div>
+                  </div>
+                  <div class="hs-chart-function" style="margin-top: 16px">
+                    <chart-toggle first="ctrl.chart_bar_Unit" show-label="ctrl.label" key="{controlCharts: 'chart_bar'}"
+                                  second="ctrl.chart_bar_Amount" third="ctrl.chart_bar_GPM"></chart-toggle>
+                  </div>
+                </div>
+              </header>
+              <div class="home-margin-left home-margin-right" style="background-color: #CCCCCC; height: 1px"></div>
+              <div class="row survey-span" style="margin-left: 10px">
+                <div class="col-md-4">
+                  <div style="height: 33px">
+                    <img src="styles\img\label.png" class="blue-line"/>
+                    <span class="title-i">销售额</span>
+                  </div>
+                  <div style="height: 264px; width: 100%" class="hs-chart-box">
+                    <chart option="ctrl.chart_bar_Unit" class="hs-trend chart_bar" load="ctrl.chartLoadOne"
+                           style="height: 264px; width: 100%"></chart>
+
+                    <!--<div class="hs-chart-function">-->
+                      <!--<chart-toggle first="ctrl.chart_bar_Unit" show-label="ctrl.amountLabel"-->
+                                    <!--second="ctrl.chart_bar_Amount" third="ctrl.chart_bar_GPM"></chart-toggle>-->
+                    <!--</div>-->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div style="height: 33px">
+                    <img src="styles\img\label.png" class="blue-line"/>
+                    <span class="title-i">毛利额</span>
+                  </div>
+                  <div style="height: 300px; width: 100%" class="hs-chart-box">
+                    <chart option="ctrl.chart_bar_Amount" load="ctrl.chartLoadOne" class="trend chart_bar"
+                           style="height: 264px; width: 100%"></chart>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div style="height: 33px">
+                    <img src="styles\img\label.png" class="blue-line"/>
+                    <span class="title-i">客单数</span>
+                  </div>
+                  <div style="height: 300px; width: 100%" class="hs-chart-box">
+                    <chart option="ctrl.chart_bar_GPM" load="ctrl.chartLoadOne" class="trend chart_bar"
+                           style="height: 264px; width: 100%"></chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="row home-row-margin-bottom">
+          <article class="col-sm-12">
+            <div style="background-color: white">
+              <header class="home-container-header">
+                <img src="styles\img\round.png" class="home-round"/>
+                <span>核心指标概况 ({{ctrl.dateMode === 'day' ? ctrl.day : (ctrl.dateMode === 'month' ? ctrl.monthStart + '-' + ctrl.monthEnd : '01/01-' + ctrl.day)}})</span>
+                <div style="height: 60px; width: 210px; float: right; margin-right: 15px; margin-top: 15px">
+                  <marketing model="ctrl.dateMode" models="ctrl.dateType"></marketing>
+                </div>
+              </header>
+              <div class="home-margin-left home-margin-right" style="background-color: #CCCCCC; height: 1px"></div>
+              <div style="margin: 20px; border: 1px solid #CCCCCC" ng-class="{'home-select-day-big': ctrl.dateMode === 'day', 'home-select-month-big': ctrl.dateMode !== 'day'}">
+                <div ng-class="{'home-select-day': ctrl.dateMode === 'day', 'home-select-month': ctrl.dateMode !== 'day','home-select' : ctrl.selectUp, 'home-unSelect' : !ctrl.selectUp}"
+                     ng-click="ctrl.changeSelect(0)">
+                  <img src="styles\img\selected_blue.png" class="home-image-true" ng-if="ctrl.selectUp"/>
+                  <div class="col-sm-4" style="margin-top: 10px" ng-repeat="list in ctrl.coreUpArray">
+                    <div class="home-margin-left home-margin-right">
+                      <p class="home-gray-p">
+                        <label>
+                          <input type="checkbox" ng-model="list.select" ng-click="ctrl.checkSelect(list.num)"
+                                 ng-disabled="list.disable"
+                                 class="checkbox"/>
+                          <span style="margin-top: 3px">{{list.title}}</span>
+                        </label>
+                      </p>
+                      <p class="home-big-number" title="{{list.num === 0 ? list.bigNumberR + '元' : (list.num === 1 ? list.bigNumberR : '')}}">{{list.num === 0 ? list.bigNumber + '万元' : (list.num === 2 ? list.bigNumberR + '元' : list.bigNumber + '万') }}</p>
+                      <p class="home-yoy" ng-if="ctrl.dateMode === 'day'">
+                        <span class="home-item-Title">较前一日:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span ng-if="list.lastDayR" up-down change="list.lastDayR"></span>
+                        <span ng-if="list.lastDay" ng-class="{'scale-red-icon': list.lastDayR >= 0, 'scale-green-icon' : list.lastDayR < 0}">{{list.lastDay}}</span>
+                      </p>
+                      <p class="home-yoy">
+                        <span class="home-item-Title">同比增幅:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span ng-if="list.yoyR" up-down change="list.yoyR"></span>
+                        <span ng-if="list.yoy" ng-class="{'scale-red-icon': list.yoyR >= 0, 'scale-green-icon' : list.yoyR < 0}">{{list.yoy}}</span>
+                      </p>
+                      <p class="home-yoy" ng-if="ctrl.dateMode === 'day'">
+                        <span class="home-item-Title">农历同比增幅:</span>
+                        <span ng-if="list.oldYoYR" up-down change="list.oldYoYR"></span>
+                        <span ng-if="list.oldYoY" ng-class="{'scale-red-icon': list.oldYoYR >= 0, 'scale-green-icon' : list.oldYoYR < 0}">{{list.oldYoY}}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div ng-repeat="list in ctrl.coreDownArray" class="home-blue-block">
+                  <div class="col-sm-4"
+                       ng-class="{'home-select-day-under': ctrl.dateMode === 'day', 'home-select-month-under': ctrl.dateMode !== 'day', 'home-select' : list.select, 'home-unSelect': !list.select, 'home-select-right': list.num != 3}"
+                       ng-click="ctrl.changeSelect(list.num)">
+                    <img src="styles\img\selected_blue.png" style="height: 30px;width: 30px;float: right" ng-if="list.select"/>
+                    <div class="home-margin-right" style="margin-left: 25px">
+                      <p class="home-gray-p" style="margin-top: 10px">
+                        {{list.title}}
+                      </p>
+                      <p class="home-big-number" title="{{list.bigNumberR + '元'}}">{{list.bigNumber + '万元'}}</p>
+                      <p class="home-yoy" ng-if="ctrl.dateMode === 'day'">
+                        <span class="home-item-Title">较前一日:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span ng-if="list.lastDayR" up-down change="list.lastDayR"></span>
+                        <span ng-if="list.lastDay" ng-class="{'scale-red-icon': list.lastDayR >= 0, 'scale-green-icon' : list.lastDayR < 0}">{{list.lastDay}}</span>
+                      </p>
+                      <p class="home-yoy">
+                        <span class="home-item-Title">同比增幅:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span ng-if="list.yoyR" up-down change="list.yoyR"></span>
+                        <span ng-if="list.yoy" ng-class="{'scale-red-icon': list.yoyR >= 0, 'scale-green-icon' : list.yoyR < 0}">{{list.yoy}}</span>
+                      </p>
+                      <p class="home-yoy" ng-if="ctrl.dateMode === 'day'">
+                        <span class="home-item-Title">农历同比增幅:</span>
+                        <span ng-if="list.oldYoYR" up-down change="list.oldYoYR"></span>
+                        <span ng-if="list.oldYoY" ng-class="{'scale-red-icon': list.oldYoYR >= 0, 'scale-green-icon' : list.oldYoYR < 0}">{{list.oldYoY}}</span>
+                      </p>
+                      <div class="home-line"></div>
+                      <p style="height: 40px; line-height: 40px;" class="home-item-Title">
+                        <span>{{list.underTitle}}</span>
+                        <span class="home-margin-left">{{list.data}}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="height: 30px">
+                <p style="float: right; margin-right: 20px; width: 220px; text-align: right" ng-repeat="list in ctrl.flowCntInforArray">
+                  <span style="color:#808080; font-size: 13px">{{list.title}}</span>
+                  <span class="home-item-Title">{{list.num}}</span>
+                </p>
+              </div>
+              <!--<header class="home-container-header">-->
+                <!--<span>销售趋势</span>-->
+              <!--</header>-->
+              <div class="hs-chart-box">
+                <div class="hs-chart-function float-right" style="margin-right: 30px">
+                  <chart-toggle first="ctrl.chart_line" show-label="ctrl.showLineLabel" key="{type: 'line', img: 'chart_label_line.svg', controlCharts: 'chart_line'}"></chart-toggle>
+                  <chart-toggle first="ctrl.chart_line" show-label="ctrl.showBarLabel" key="{controlCharts: 'chart_line'}"></chart-toggle>
+                </div>
+              </div>
+              <div class="body hs-chart-box">
+                <div class="hs-chart no-position">
+                  <chart option="ctrl.chart_line" event="ctrl.key.addEvent" load="ctrl.loadChart"
+                         class="hs-trend chart_line"></chart>
+                </div>
+                <!--<div class="hs-chart-function">-->
+                  <!--<chart-toggle first="ctrl.chart_line" show-label="ctrl.showBarLabel"></chart-toggle>-->
+
+                  <!--<chart-toggle first="ctrl.chart_line" show-label="ctrl.showLineLabel" key="{type: 'line'}"></chart-toggle>-->
+                <!--</div>-->
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="row home-row-margin-bottom">
+          <article class="col-sm-12">
+            <div style="background-color: white;" class="home-select-other">
+              <header class="home-container-header">
+                <p  style="float: left">
+                  <img src="styles\img\round.png" class="home-round"/>
+                  <span>{{(ctrl.job !== 'all' || ctrl.storeSearch) ? ctrl.indexTitle : ''}}指标达成{{ctrl.indexMonth}}</span>
+                </p>
+
+                <div style="height: 40px; width: 100px;position: absolute; top: 15px; left: 200px" ng-if="ctrl.job === 'all' && !ctrl.storeSearch">
+                  <marketing model="ctrl.jobMode" models="ctrl.jobType"></marketing>
+                </div>
+                <a ng-click="ctrl.jump('index')" class="home-a" ng-if="ctrl.indexComplete">更多</a>
+              </header>
+
+              <div class="home-margin-left">
+                <div class="col-sm-4" ng-repeat="list in ctrl.indexArray">
+                  <p class="home-item-Title">
+                    <span>{{list.title}}</span>
+
+                  </p>
+                  <p style="font-size: 11px; color: #A9A9A9; margin-top: 3px">
+                    <span title="{{list.mineY}}元">{{list.mine}}万元/</span>
+                    <span title="{{list.allY}}元">{{list.all}}万元</span>
+                  </p>
+                  <div style="width: 100%">
+                    <div class="home-progress-index" style="float: left">
+                      <div class="home-progress-index-finish" ng-style="{'width': list.percent}"></div>
+                    </div>
+                    <div style="float: left; margin-left: 30px; height: 30px; line-height: 30px; margin-top: 10px">
+                      <span >{{list.percent}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top: 20px; height: 100px; background-color: #eef1f6" ng-if="!ctrl.show" >
+          <div style="height: 40px; width: 100%; background-color: white; line-height: 40px;text-align: center; cursor: pointer;" ng-click="ctrl.getDownData()">
+            <span style="color: #368bf8">查看更多</span>
+            <img src="styles\img\arrow_down.png" style="height: 6px; width: 10px; margin-left: 3px"/>
+          </div>
+        </div>
+
+        <div ng-if="ctrl.show" style="width: 100%">
+          <div class="row home-row-margin-bottom">
+            <article class="col-sm-12">
+              <div style="background-color: white; height: 440px">
+                <header class="home-container-header">
+                  <img src="styles\img\round.png" class="home-round"/>
+                  <span>销售方式{{ctrl.yearToNow}}</span>
+                  <div class="home-marketing-saleType">
+                    <marketing model="ctrl.saleTypeMode" models="ctrl.saleTypeMarketing"></marketing>
+                  </div>
+                </header>
+                <div class="home-margin-left">
+                  <div style="width: 100%">
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">年至今销售额</span>
+                    </div>
+
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">去年同期销售额</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="home-pie-big">
+                      <chart option="ctrl.chart_Pie_Sale_Left" class="home-pie-big" load="ctrl.chartLoadTwo" event="ctrl.chartEvent" id="saleCharts"></chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="row home-row-margin-bottom">
+            <article class="col-sm-12">
+              <div style="background-color: white; height: 425px">
+                <header class="home-container-header">
+                 <img src="styles\img\round.png" class="home-round"/>
+                  <span>业态结构{{ctrl.yearToNow}}</span>
+                </header>
+                <div class="home-margin-left">
+                  <div style="width: 100%">
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">年至今销售额</span>
+                    </div>
+
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">去年同期销售额</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="home-pie-big">
+                      <chart option="ctrl.chart_Pie_Area" class="home-pie-big" event="ctrl.typeChartEvent" id="typeCharts" load="ctrl.chartLoadThree"></chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="row home-row-margin-bottom">
+            <article class="col-sm-12">
+              <div style="background-color: white; height: 425px">
+                <header class="home-container-header">
+                  <img src="styles\img\round.png" class="home-round"/>
+                  <span>地区结构{{ctrl.yearToNow}}</span>
+                </header>
+                <div class="home-margin-left">
+                  <div style="width: 100%">
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">年至今销售额</span>
+                    </div>
+
+                    <div class="col-sm-6" style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">去年同期销售额</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="home-pie-big">
+                      <chart option="ctrl.chart_Pie_Area_Now" class="home-pie-big" event="ctrl.areaChartEvent" id="areaCharts" load="ctrl.chartLoadFour"></chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="row home-row-margin-bottom">
+            <article class="col-sm-12">
+              <div style="background-color: white; height: 430px">
+                <header class="home-container-header">
+                  <img src="styles\img\round.png" class="home-round"/>
+                  <span>新品概况{{ctrl.yearToNow}}</span>
+                  <a ng-click="ctrl.jump('new')" class="home-a" ng-if="ctrl.newItemInfo">
+                    更多
+                  </a>
+                </header>
+                <div class="home-margin-left">
+                  <div class="col-sm-4" style="height: 370px">
+                    <div style="height: 19px; margin-top: 0px">
+                      <img src="styles\img\label.png" style="width: 3px;height: 10px;margin-right: 8px;float: left;margin-top: 3px;"/>
+                      <p class="home-chart-i">
+                        <span>引入新品SKU结构</span>
+                        <a style="cursor: pointer; margin-top: 3px" uib-popover-template="'importProducts.html'"
+                           popover-trigger="mouseenter" popover-placement='bottom-left'>
+                        <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i>
+                      </a>
+                      </p>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>新品SKU结构</span>-->
+                      <chart option="ctrl.chart_Pie_Unit" class="home-pie" load="ctrl.chartLoadFive"></chart>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" style="height: 370px">
+                    <div style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">销售额结构</span>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>销售额结构</span>-->
+                      <chart option="ctrl.chart_Pie_Amount" class="home-pie" load="ctrl.chartLoadFive"></chart>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" style="height: 370px">
+                    <div style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">毛利额结构</span>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>毛利额结构</span>-->
+                      <chart option="ctrl.chart_Pie_GPM" class="home-pie" load="ctrl.chartLoadFive"></chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="row">
+            <article class="col-sm-12">
+              <div style="background-color: white; height: 430px">
+                <header class="home-container-header">
+                 <img src="styles\img\round.png" class="home-round"/>
+                  <span>供应商概况{{ctrl.yearToNow}}</span>
+                  <a ng-click="ctrl.jump('supply')" class="home-a" ng-if="ctrl.supplierInfo">
+                    更多
+                  </a>
+                </header>
+                <div class="home-margin-left">
+                  <div class="col-sm-4" style="height: 370px">
+                    <!--<div style="height: 12px; margin-top: 7px">-->
+                      <!--<img src="styles\img\label.png" class="home-blue-line"/>-->
+                      <!--<span class="home-chart-i">引入年份结构</span>-->
+                    <!--</div>-->
+                    <div style="height: 19px; margin-top: 0px">
+                      <img src="styles\img\label.png" style="width: 3px;height: 10px;margin-right: 8px;float: left;margin-top: 3px;"/>
+                      <p class="home-chart-i">
+                        <span>引入年份结构</span>
+                        <a style="cursor: pointer; margin-top: 3px" uib-popover-template="'importYears.html'"
+                           popover-trigger="mouseenter" popover-placement='bottom-left'>
+                          <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i>
+                        </a>
+                      </p>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>引入年份结构</span>-->
+                      <chart option="ctrl.chart_supplier" class="home-pie" load="ctrl.chartLoadSix"></chart>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" style="height: 370px">
+                    <div style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">销售额结构</span>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>销售额结构</span>-->
+                      <chart option="ctrl.chart_sale" class="home-pie" load="ctrl.chartLoadSix"></chart>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" style="height: 370px">
+                    <div style="height: 12px; margin-top: 7px">
+                      <img src="styles\img\label.png" class="home-blue-line"/>
+                      <span class="home-chart-i">毛利额结构</span>
+                    </div>
+                    <div class="home-pie">
+                      <!--<span><i class="fa fa-circle-o home-i"></i>毛利额结构</span>-->
+                      <chart option="ctrl.chart_profit" class="home-pie" load="ctrl.chartLoadSix"></chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<script type="text/ng-template" id="data.html">
+  <div class="home-data">
+    <p class="home-data-block"  ng-repeat="list in ctrl.power" ng-if="list.data.length>0">
+      <span style="font-size: 13px; text-align: left;">{{list.name}}</span>
+      <span style="font-size: 13px; text-align: left;" ng-if="ctrl.defPowerCondition && list.primary">(默认条件)</span>
+      <span style="font-size: 13px; float: right;width: 170px; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;text-align: right" title="{{list.data}}">{{list.data}}</span>
+    </p>
+
+    <div class="home-data-block" ng-if="ctrl.anyPower">
+      <span style="font-size: 13px; text-align: left">权限</span>
+      <span style="font-size: 13px; float: right">全部</span>
+    </div>
+
+  </div>
+</script>
+
+<script type="text/ng-template" id="infor.html">
+  <div class="home-infor">
+    <p class="home-infor-block" ng-repeat="list in ctrl.inforArray track by $index" ng-if="ctrl.inforArray.length > 0" ng-class="{'info-font': list.dataType === 1}">
+      <span style="font-size: 13px; text-align: left;">{{list.dateCode}}</span>
+      <span class="info-title"  title="{{list.content}}">{{list.title}}</span>
+    </p>
+
+    <div class="home-infor-block" ng-if="ctrl.inforArray.length === 0">
+      <span style="font-size: 13px; text-align: left">暂时没有最新消息！</span>
+    </div>
+
+  </div>
+</script>
+
+<style>
+  .survey-span .hs-chart-function {
+    position: relative;
+    bottom: 6px;
+    left: -12px;
+  }
+
+  .float-right.hs-chart-function .chart-toggle-box {
+    float: right;
+  }
+
+  .hs-chart.no-position .chart-div {
+    position: unset !important;
+  }
+
+  .info-font {
+    color: red;
+    /*font-weight: bolder;*/
+  }
+
+  .home-infor .info-title {
+    font-size: 13px;
+    float: right;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    font-weight: bolder;
+  }
+
+</style>

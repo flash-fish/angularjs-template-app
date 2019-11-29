@@ -1,0 +1,63 @@
+<div ng-init="ctrl.init()" class="hs-sub-tab-box">
+  <div class="row">
+    <article class="col-md-12 flex-center">
+      <header class="header">
+        <span>费用代码数据</span>
+      </header>
+      <div class="input-choose flex-center" style="margin-left: auto">
+        <span>按费用代码筛选</span>
+        <div class="col-md-2"
+             ng-class="{'channel-condition-box': ctrl.inputFilter[ctrl.keys.activeSearch].length,
+             'channel-condition-box-90': ctrl.inputFilter[ctrl.keys.activeSearch].length <= 10}">
+          <search-box click="ctrl.openChannelCode()" data="ctrl.inputFilter[ctrl.keys.activeSearch]"
+                      key="'费用代码'"></search-box>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <uib-tabset active="ctrl.keys.subActive">
+    <uib-tab index="1" heading="按费用代码">
+      <div ng-if="ctrl.keys.subActive === 1">
+        <channel-table param="ctrl.currentParam" field="ctrl.field" keys="ctrl.keys"></channel-table>
+      </div>
+    </uib-tab>
+    <uib-tab index="3" heading="{{ctrl.types[2].name}}">
+      <div ng-if="ctrl.keys.subActive === 3">
+        <channel-tree param="ctrl.currentParam" field="ctrl.field" keys="ctrl.keys"></channel-tree>
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="{{ctrl.types[1].name}}">
+      <div ng-if="ctrl.keys.subActive === 2">
+        <channel-tree param="ctrl.currentParam" field="ctrl.field" keys="ctrl.keys"></channel-tree>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>
+
+<style>
+
+  .hs-sub-tab-box .nav-tabs > li:first-child > a {
+    width: 80px;
+  }
+
+  .hs-sub-tab-box .nav-tabs > li > a {
+    width: 130px;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .channel-condition-box .condition-box > .condition-content:hover {
+    width: 110%;
+    z-index: 2;
+  }
+
+  .channel-condition-box-90 .condition-box > .condition-content:hover {
+    width: 90%;
+    z-index: 2;
+  }
+
+</style>

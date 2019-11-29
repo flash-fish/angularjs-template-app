@@ -1,0 +1,77 @@
+<style>
+  .tip {
+    width: 100%;
+    max-width: 220px;
+    min-width: 220px;
+    height: 100%;
+    z-index: 999;
+    /*background: #fafafa;*/
+  }
+
+  .tip span {
+    word-break: break-all !important;
+    font-size: 13px;
+  }
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 600;
+  }
+
+  .popover-box {
+    cursor: pointer;
+  }
+
+  .popover-box i {
+    color: #007ADB;
+  }
+</style>
+<div ng-init="ctrl.init()"> <!--tooltip-class="inner"-->
+  <a class="popover-box"
+     uib-popover-template="'{{ctrl.data.tplName}}'"
+     popover-placement="bottom-left" popover-trigger="mouseenter">
+    <i class="fa fa-exclamation-circle"></i>
+  </a>
+</div>
+
+<script type="text/ng-template" id="occupationRatio.html">
+  <div class="tip">
+    <p>
+      <span>根据销售占比情况，找出和小类存在不均衡关系的供应商</span>
+    </p>
+  </div>
+</script>
+
+<script type="text/ng-template" id="occupationRatioDiff.html">
+  <div class="tip">
+    <p>
+      <span>占比差：</span><span style="color: #1479ca">占比华商小类</span>  - <span style="color: #05BC90">占比供应商自己</span><br>
+      <span style="color: #1479ca">占比华商小类</span><span>：供应商小类销售额 / 华商相同小类整体销售额 * 100%</span><br>
+      <span style="color: #05BC90">占比供应商自己</span><span>：供应商小类销售额 / 供应商整体销售额 * 100%</span><br><br>
+      <span>例如：<br>
+        小分类[乳饮料]下，供应商A销售额->80万，华商销售额->100万，
+        供应商A在华商的全部销售额->1000万<br><br>
+        那么<br>
+        占比差 = (80/100 - 80/1000) *100% = 72%</span>
+    </p>
+  </div>
+</script>
+
+<script type="text/ng-template" id="occupationRatioHsSmallClass.html">
+  <div class="tip">
+    <p>
+      <span>占比华商小类 = 供应商小类销售额 / 华商相同小类整体销售额 * 100%</span>
+    </p>
+  </div>
+</script>
+
+<script type="text/ng-template" id="occupationRatioSupplierOwn.html">
+  <div class="tip">
+    <p>
+      <span>占比供应商自己 = 供应商小类销售额 / 供应商整体销售额 * 100%</span>
+    </p>
+  </div>
+</script>

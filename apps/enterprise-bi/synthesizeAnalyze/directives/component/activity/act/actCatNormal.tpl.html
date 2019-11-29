@@ -1,0 +1,89 @@
+<div ng-init="ctrl.init()" class="hs-container">
+  <!--<div class="row">-->
+  <!--<article class="col-md-12">-->
+  <!--<header class="header">-->
+  <!--<span>合计</span>-->
+  <!--</header>-->
+  <!--<div class="body">-->
+  <!--<hs-sale-sum sum="ctrl.sum"></hs-sale-sum>-->
+  <!--</div>-->
+  <!--</article>-->
+  <!--</div>-->
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header current-parent-box">
+        <span>类别{{ctrl.keys.page.title}}图表</span>
+        <div class="hs-breadcrumbs" ng-if="!ctrl.hideTree">
+          <breadcrumbs data="ctrl.categoryTree" click="ctrl.getParent(code, level, name)"></breadcrumbs>
+        </div>
+        <div style="display: flex; align-items: center" class="hs-chart-button hs-chart-box">
+          <div class="hs-chart-function" >
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showLineLabel" key="{type: 'line', zoom: ctrl.zoom, img: 'chart_label_line.svg'}"
+            ></chart-toggle>
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showBarLabel" key="{type: 'bar', zoom: ctrl.zoom}"
+            ></chart-toggle>
+            <chart-sort sort="ctrl.key.currSort"></chart-sort>
+          </div>
+          <div class="tool-box">
+            <select class="form-control" ng-model="ctrl.currCatType"
+                    ng-change="ctrl.changeLevel()">
+              <option value="{{s.id}}" ng-repeat="s in ctrl.catType track by s.id">{{s.name}}</option>
+            </select>
+          </div>
+        </div>
+      </header>
+      <div class="body hs-chart-box">
+        <div class="hs-chart">
+          <chart option="ctrl.sale" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+        </div>
+        <div ng-if="ctrl.keys.haveStock">
+          <div class="hs-chart" ng-if="ctrl.showStock">
+            <chart option="ctrl.stock" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+          </div>
+          <div>
+            <toggle-button show="ctrl.showStock" name="'库存图表'"></toggle-button>
+          </div>
+        </div>
+        <div class="hs-chart-function">
+          <!--<chart-sort sort="ctrl.key.currSort"></chart-sort>-->
+
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showBarLabel" key="{type: 'bar', zoom: ctrl.zoom}"-->
+          <!--&gt;</chart-toggle>-->
+
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showLineLabel" key="{type: 'line', zoom: ctrl.zoom, img: 'chart_label_line.svg'}"-->
+          <!--&gt;</chart-toggle>-->
+
+          <chart-pager page="ctrl.chartPage" init-page="ctrl.back.tablePage"
+                       total="ctrl.back.total" is-pager="ctrl.clickChartPage"></chart-pager>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header">
+        <span>类别排名</span>
+      </header>
+      <div class="body popover-hover">
+        <div ng-if="ctrl.param">
+          <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+          <empty-table show="ctrl.back.empty"></empty-table>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<script type="text/ng-template" id="popover.html">
+  <table-pop data="ctrl.popover" click="ctrl.tool.goTab(id, ctrl)"></table-pop>
+</script>

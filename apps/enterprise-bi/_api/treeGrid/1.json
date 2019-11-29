@@ -1,0 +1,35 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "name": "aaa",
+        "duration": 2322323,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aaa",
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aaa",
+        "duration": 313123,
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aaa",
+        "task": 123,
+        "percentage": 0.3
+      },
+      {
+        "name": "aaa",
+        "duration": 112312323,
+        "task": 123,
+        "percentage": 0.3
+      }
+    ]
+  }
+}

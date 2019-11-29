@@ -1,0 +1,5 @@
+<div class="select-module clearfix" ng-init="$ctrl.init()">
+    <div ng-repeat="stab in $ctrl.tabs" type="button" ng-click="$ctrl.switchTab(stab)" ng-class="{'active': stab.active==$ctrl.cur.active}">{{stab.name}}
+        <span class="line"></span>
+    </div>
+</div>

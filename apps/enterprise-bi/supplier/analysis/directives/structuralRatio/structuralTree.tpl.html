@@ -1,0 +1,21 @@
+<div ng-init="ctrl.init()">
+  <div class="row">
+    <article class="col-sm-12">
+      <header class="header">
+        <span>供应商结构占比（按树形结构）</span>
+      </header>
+      <div class="body popover-hover more-margin">
+      </div>
+    </article>
+  </div>
+
+  <div class="row" style="margin-bottom: 10px">
+    <article class="col-sm-12">
+      <div class="body">
+        <div class="table-box">
+          <tree-grid table="ctrl.table" key="ctrl.config"></tree-grid>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

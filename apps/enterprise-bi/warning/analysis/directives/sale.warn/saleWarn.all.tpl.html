@@ -1,0 +1,66 @@
+<div class="hs-container top-content-box" ng-init="$ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="$ctrl.openClasses()" data="$ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openCat()" data="$ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="$ctrl.openBrand()" data="$ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+            <div class="col-md-2 combine-input-box">
+              <label>
+                <input type="checkbox" ng-model="$ctrl.com.filter.check" class="checkbox"/>
+                <span></span>
+              </label>
+              <sapn>上个周期零售额大于</sapn>
+              <input type="text" class="form-control input-number" ng-model="$ctrl.com.filter.number"
+                     ng-disabled="!$ctrl.com.filter.check" numberic min="0" max="9999" max-length="4"
+                     ng-class="$ctrl.dataStyle"/><span>万元</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="$ctrl.showSearchRes">
+            <search-result-box keys="$ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="$ctrl.showSearchRes"></search-show>
+            <hs-search search="$ctrl.search()" finish="$ctrl.finish && $ctrl.finish_data"></hs-search>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>销售异常商品</span>
+        </header>
+        <div class="body" ng-if="$ctrl.dateRange">
+          <table datatable dt-options="$ctrl.option" dt-columns="$ctrl.column"
+                 dt-instance="$ctrl.instance" ng-if="$ctrl.copyCom"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+<style>
+  .label_true {
+    border: 1px red solid !important;
+  }
+
+  .label_false {
+    border: 1px solid #999;
+  }
+</style>

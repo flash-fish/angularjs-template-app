@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-cur" fill="#A5A5A5">
+            <g id="group" transform="translate(4.000000, 5.000000)">
+                <rect id="Rectangle-5" x="0" y="13" width="16" height="1" rx="0.5"></rect>
+                <rect id="Rectangle-7-Copy" x="11" y="0" width="2" height="2" rx="1"></rect>
+                <rect id="Rectangle-7-Copy-3" x="4" y="5" width="2" height="2" rx="1"></rect>
+                <path d="M11,3 L13,3 C13.5522847,3 14,3.44771525 14,4 L14,13 L10,13 L10,4 C10,3.44771525 10.4477153,3 11,3 Z" id="Rectangle-5-Copy"></path>
+                <path d="M4,8 L6,8 C6.55228475,8 7,8.44771525 7,9 L7,13 L3,13 L3,9 C3,8.44771525 3.44771525,8 4,8 Z" id="Rectangle-5-Copy-3"></path>
+            </g>
+        </g>
+    </g>
+</svg>

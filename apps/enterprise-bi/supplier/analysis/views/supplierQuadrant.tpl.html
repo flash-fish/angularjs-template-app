@@ -1,0 +1,128 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>供应商四象限分析</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+          </div>
+
+          <div class="search-m-t" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+
+            <button class="btn btn-primary hs-meBtn"
+                    ng-disabled=""
+                    ng-click="ctrl.search()"> 查询
+            </button>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-sm-12 art-h">
+        <header class="header">
+          <span>按整体</span>
+          <div class="hs-breadcrumbs" ng-if="!ctrl.hideTree">
+            <breadcrumbs data="ctrl.categoryTree" click="ctrl.getParent(code, level, name)"></breadcrumbs>
+          </div>
+        </header>
+        <div class="body" ng-if="ctrl.com.date">
+          <div class="col-md-4">
+            <div class="chart-h body hs-chart-box">
+              <chart option="ctrl.quadrantPieChart" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="chart-h">
+              <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                     dt-instance="ctrl.instance"
+                     class="table table-trend hs-table" width="100%">
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row" >
+      <article class="col-sm-12">
+        <header class="header">
+          <span>按品类组</span>
+          <div class="hs-breadcrumbs" ng-if="!ctrl.hideTree">
+            <breadcrumbs data="ctrl.categoryTree" click="ctrl.getParent(code, level, name)"></breadcrumbs>
+          </div>
+          <div class="mark-line">
+            <marketing model="ctrl.s_mark" models="ctrl.Marks"></marketing>
+          </div>
+          <div class="mark-box">
+            <select class="form-control" ng-model="ctrl.currCatType"
+                    ng-change="ctrl.changeLevel()">
+              <option value="{{s.id}}" ng-repeat="s in ctrl.catType track by s.id">{{s.name}}</option>
+            </select>
+          </div>
+        </header>
+        <div class="body table-box">
+          <sup-tree-grid table="ctrl.tableTree" key="ctrl.config"></sup-tree-grid>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<script type="text/ng-template" id="popover.html">
+  <table-pop data="ctrl.popover" click="ctrl.tool.goTab(id, ctrl)"></table-pop>
+</script>
+
+<style>
+  .mark-line{
+    width: 220px;
+    float: right;
+  }
+  .chart-h{
+    height: 350px;
+    width: 100%;
+    margin-left: 14px;
+  }
+  .art-h{
+    height: 375px !important;
+  }
+  .mark-box{
+    width: 110px;
+    float: right;
+    margin-right: 20px;
+  }
+  .DTFC_ScrollWrapper{
+    height: 100% !important;
+    width: 100%;
+  }
+  .search-m-t{
+    margin-top: 15px;
+  }
+  .hs-meBtn{
+    width: 80px;
+  }
+
+  table.dataTable thead .sorting_asc {
+    font-weight: bold;
+    background-color: #f5f5f5 !important;
+    background: none;
+  }
+
+
+</style>

@@ -1,0 +1,74 @@
+<div ng-init="ctrl.init()" class="hs-container hs-sale-item">
+  <div class="row">
+    <article class="col-md-12" ng-if="ctrl.chartShow">
+      <header class="header" style="display: flex; align-items: center;">
+        <span>门店对标趋势图</span>
+        <date-crumb crumb="ctrl.crumb" param="ctrl.param"></date-crumb>
+        <div style="display: flex; align-items: center; margin-left: auto" class="hs-chart-button hs-chart-box">
+          <div class="hs-chart-function">
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showLineLabel" key="{type: 'line', img: 'chart_label_line.svg'}"
+            ></chart-toggle>
+            <chart-toggle
+              first="ctrl.sale" second="ctrl.stock"
+              show-label="ctrl.showBarLabel" key="{type: 'bar'}"
+            ></chart-toggle>
+          </div>
+        </div>
+
+        <div class="tool-select">
+          <!-- 类别下拉选择-->
+          <select class="form-control" ng-model="ctrl.init_tend" ng-change="ctrl.changeLevels()">
+            <option value="{{s.id}}" ng-repeat="s in ctrl.tren_Select track by s.id">{{s.name}}</option>
+          </select>
+        </div>
+      </header>
+      <div class="body hs-chart-box" >
+        <div class="hs-chart">
+          <div>
+            <chart option="ctrl.sale" event="ctrl.key.addEvent" load="ctrl.loadChart" class="hs-trend" id="rectChart"></chart>
+          </div>
+        </div>
+        <!--<div class="hs-chart-function">-->
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showBarLabel" key="{type: 'bar'}"-->
+          <!--&gt;</chart-toggle>-->
+
+          <!--<chart-toggle-->
+            <!--first="ctrl.sale" second="ctrl.stock"-->
+            <!--show-label="ctrl.showLineLabel" key="{type: 'line', img: 'chart_label_line.svg'}"-->
+          <!--&gt;</chart-toggle>-->
+        <!--</div>-->
+      </div>
+
+      <div class="row pager-top-table" >
+        <article class="col-md-12">
+          <header class="header">
+            <span>门店对标趋势数据</span>
+          </header>
+          <div class="body">
+            <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                   dt-instance="ctrl.instance"
+                   class="table table-trend hs-table" width="100%">
+            </table>
+          </div>
+        </article>
+      </div>
+    </article>
+  </div>
+</div>
+
+
+<style>
+.tool-select{
+    width: 250px;
+    float: right;
+    margin-left: 5px;
+    margin-top: 6px;
+    margin-right: 30px;
+  }
+
+
+</style>

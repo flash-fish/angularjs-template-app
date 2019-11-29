@@ -1,0 +1,67 @@
+<div class="mySelects" ng-init="ctrl.init()">
+    <div ng-repeat="a in ctrl.models track by $index">
+      <div class="span_H">
+        <div class="col-md-1">
+          <label>
+            <input type="checkbox" class="checkbox" ng-model="ctrl.check" ng-change="ctrl.change()">
+            <span></span>
+          </label>
+        </div>
+        <span class="Sl_style">
+            {{a.name}}
+            <a ng-if="a.icon" class="prompt-box" class="hs-popover-link" uib-popover-template="'{{a.icon + '.html'}}'"
+               popover-placement="bottom-left" popover-trigger="mouseenter">
+              <i class="fa fa-exclamation-circle"></i>
+            </a>
+        </span>
+      </div>
+      <div class="L_Se">
+        <select class="form-control" ng-model="ctrl.selected" ng-disabled="!ctrl.check" style="width: 180px">
+          <option value="{{y.id}},{{a.active}}"  ng-repeat="y in a.selects">{{y.name}}</option>
+        </select>
+      </div>
+    </div>
+</div>
+
+<style>
+  .mySelects{
+    height: 60px;
+    float: left;
+    padding-right: 20px;
+  }
+  .span_H{
+    float: left;
+    width: 180px;
+    padding-top: 10px;
+  }
+  .Sl_style{
+    margin: 10px 0 0 8px;
+    font-size: 14px;
+  }
+  .L_Se{
+    float: left;
+    margin-left: 4px;
+  }
+  @media screen and (max-width: 1000px) {
+
+  }
+</style>
+
+<!--组件popover浮窗内容-->
+<script type="text/ng-template" id="one.html">
+  <div class="hs-popover-box">
+    <span>新品销售额/新品有售SKU数</span>
+  </div>
+</script>
+<script type="text/ng-template" id="two.html">
+  <div class="hs-popover-box">
+    <span>新品毛利额/新品有售SKU数</span>
+  </div>
+</script>
+<script type="text/ng-template" id="thr.html">
+  <div class="hs-popover-box">
+    <span>各新品铺货门店数的合计/新品个数</span>
+  </div>
+</script>
+
+

@@ -1,0 +1,13 @@
+<div class="filter-box" ng-init="ctrl.init()" ng-hide="ctrl.hideSelect">
+  <label>
+    <input type="checkbox" class="checkbox" ng-model="ctrl.check"
+           ng-change="ctrl.change()">
+    <span></span>
+  </label>
+  <span>按</span>
+  <select class="form-control select" ng-model="ctrl.selected"
+          ng-disabled="!ctrl.check" ng-change="ctrl.selectChange()">
+    <option value="{{item.id}}" ng-repeat="item in ctrl.selections track by item.id">{{item.name}}</option>
+  </select>
+  <span>的前80%筛选{{ctrl.target}}</span>
+</div>

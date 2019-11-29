@@ -1,0 +1,10 @@
+<span class="dateRange-trend" ng-init="ctrl.init()">
+  <span ng-repeat="curr in ctrl.crumb track by $index">
+    <span ng-if="$index < ctrl.crumb.length - 1">
+      <a href="" ng-click="ctrl.returnMonth(curr)">{{curr}}</a> >
+    </span>
+    <span ng-if="$index === ctrl.crumb.length - 1">
+      {{curr}}
+    </span>
+  </span>
+</span>

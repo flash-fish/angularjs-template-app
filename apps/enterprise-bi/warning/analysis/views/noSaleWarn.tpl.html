@@ -1,0 +1,24 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="tab-top-box">
+      <header class="header top">
+        <span>不动销异常</span>
+        <span style="float: right"><i class="fa fa-exclamation doorWarn-sale-title"></i>不动销商品异常：指定期间内无销售但是存在库存的商品</span>
+      </header>
+      <div class="tab-top">
+        <uib-tabset active="ctrl.key.active">
+          <uib-tab index="1" heading="按整体" ng-if="!ctrl.key.onlyShowStore">
+            <div ng-if="ctrl.key.active === 1">
+              <no-sale-warn-all keys="ctrl.key" table-info="ctrl.tableInfo"></no-sale-warn-all>
+            </div>
+          </uib-tab>
+          <uib-tab index="2" heading="按门店">
+            <div ng-if="ctrl.key.active === 2">
+              <no-sale-warn-store keys="ctrl.key"></no-sale-warn-store>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+  </section>
+</div>

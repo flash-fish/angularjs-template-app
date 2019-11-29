@@ -1,0 +1,11 @@
+<div ng-init="ctrl.init()" class="org-select-container">
+  <select type="text" class="form-control" style="width:100%;" name="genre"
+          ng-model="ctrl.select">
+    <!--<option value="">请选择</option>-->
+    <option value="{{sel[ctrl.id]}}"
+            ng-repeat="sel in ctrl.list"
+            ng-disabled="ctrl.isDis">
+      {{sel[ctrl.title]}}
+    </option>
+  </select>
+</div>

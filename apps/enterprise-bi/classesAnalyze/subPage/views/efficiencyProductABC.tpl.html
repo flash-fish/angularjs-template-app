@@ -1,0 +1,185 @@
+<style>
+  .l_radio {
+    /*overflow: hidden;*/
+    color: #656565;
+    font-size: 15px;
+  }
+
+  .l_radio_div {
+    position: relative;
+    padding: 15px 30px 15px 10px;
+    float: left;
+  }
+
+  .l_analysis {
+    font-size: 15px;
+    color: #5DBCFF;
+    font-weight: 600;
+    float: right;
+  }
+
+  .l_analysis:hover {
+    cursor: pointer;
+  }
+
+  .l_iconRight {
+    color: #0074Db;
+  }
+
+  .l_change {
+    font-size: 15px;
+  }
+
+  .l_add {
+    padding: 10px;
+  }
+
+  .l_setting {
+    float: right;
+  }
+
+  .l_noData {
+    height: 200px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 200px;
+    color: #999;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<div class="subpage">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.fromSession"></sub-menu>
+  <div class="sub-main hs-container top-content-box" ng-init="ctrl.init()">
+    <section>
+      <div class="row condition">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>经销商品效能</span>
+          </header>
+          <div class="body">
+            <div class="row input-choose">
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.years" selected="ctrl.activeYear"
+                               keys="{id: 'id', title: 'name', all: false, name: '年份'}"></hs-new-select>
+              </div>
+              <div class="col-md-2">
+                <hs-new-select options="ctrl.months" selected="ctrl.activeMonth"
+                               keys="{id: 'id', title: 'name', all: false, name: '月份'}"></hs-new-select>
+              </div>
+            </div>
+            <div class="row input-choose">
+              <div class="col-md-2">
+                <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+              </div>
+              <div class="col-md-2">
+                <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+              </div>
+            </div>
+            <!--单选按钮部分-->
+            <div class="row l_radio form-group ">
+              <div class="l_radio_div">
+                <i class="fa fa-arrow-circle-right fa-1x l_iconRight"></i>
+                <span class="l_change">快捷选择</span>
+              </div>
+              <!--<div>-->
+              <!--<label class="radio-inline">-->
+              <!--<input type="radio" class="radio" name="1" value="1" ng-model="ctrl.radioValue" checked>-->
+              <!--<span>高效能商品</span>-->
+              <!--</label>-->
+              <!--</div>-->
+              <div class="l_radio_div">
+                 <span style="position: absolute;top:16px;left: -5px;font-size: 15px">
+                      <tip data="ctrl.tip.storeType1"></tip>
+                </span>
+                <label class="radio-inline">
+                  <input type="radio" value="2" ng-model="ctrl.radioValue" name="1">金牛商品
+                </label>
+              </div>
+              <div class="l_radio_div">
+                 <span style="position: absolute;top:16px;left: -5px;font-size: 15px">
+                      <tip data="ctrl.tip.storeType2"></tip>
+                </span>
+                <label class="radio-inline">
+                  <input type="radio" value="3" ng-model="ctrl.radioValue" name="1">明星商品
+                </label>
+              </div>
+              <!--<div>-->
+              <!--<label class="radio-inline">-->
+              <!--<input type="radio" value="4" ng-model="ctrl.radioValue" name="1">低效能商品-->
+              <!--</label>-->
+              <!--</div>-->
+              <div class="l_radio_div">
+                 <span style="position: absolute;top:16px;left: -5px;font-size: 15px">
+                      <tip data="ctrl.tip.storeType3"></tip>
+                </span>
+                <label class="radio-inline">
+                  <input type="radio" value="5" ng-model="ctrl.radioValue" name="1">问题商品
+                </label>
+              </div>
+              <div class="l_radio_div">
+                 <span style="position: absolute;top:16px;left: -5px;font-size: 15px">
+                      <tip data="ctrl.tip.storeType4"></tip>
+                </span>
+                <label class="radio-inline">
+                  <input type="radio" value="6" ng-model="ctrl.radioValue" name="1">瘦狗商品
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+              <search-result-box keys="ctrl.sortCom"></search-result-box>
+            </div>
+            <div class="hs-search-box">
+              <search-show show="ctrl.showSearchRes"></search-show>
+              <hs-search search="ctrl.search()" finish="ctrl.key.finish"></hs-search>
+              <div class="setting-box btn-group">
+                <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+              </div>
+            </div>
+            <!--单选按钮部分-->
+          </div>
+        </article>
+      </div>
+
+      <!--合计部分-->
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>合计</span>
+          </header>
+          <div class="body">
+            <!--<div class="col-md-4 l_addCount" ng-repeat="x in ctrl.sum">-->
+            <!--<p class="l_addTile">{{x.name}}</p>-->
+            <!--<p class="l_addNum"> {{x.data}}</p>-->
+            <!--</div>-->
+            <abc-sum sum="ctrl.sum" ng-if="ctrl.sum.length!=0"></abc-sum>
+            <!--<hs-sale-sum sum="ctrl.sum"></hs-sale-sum>-->
+            <div class="l_noData" ng-if="ctrl.sum.length==0">
+              暂无数据！！
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!--商品排名部分-->
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>商品排名</span>
+            <span ng-if="!ctrl.back.empty" class="l_analysis" ng-click="ctrl.goUrl()">结构分析>></span>
+          </header>
+          <div class="body">
+            <div class="l_add" ng-if="ctrl.isFinish">
+              <table datatable dt-columns="ctrl.columns" dt-options="ctrl.options" dt-instance="ctrl.instance"
+                     class="table table-trend hs-table" width="100%">
+              </table>
+              <empty-table show="ctrl.back.empty"></empty-table>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </section>
+  </div>
+</div>

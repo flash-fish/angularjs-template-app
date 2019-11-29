@@ -1,0 +1,17 @@
+<div class="hs-container" ng-init="ctrl.init()">
+  <div class="row">
+    <article class="col-sm-12">
+      <header class="header">
+        <span>供应商排名</span>
+      </header>
+      <div class="body popover-hover table-box" ng-if="ctrl.param">
+        <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+               dt-instance="ctrl.instance"
+               class="table table-trend hs-table" width="100%">
+        </table>
+        <empty-table show="ctrl.back.empty"></empty-table>
+      </div>
+    </article>
+  </div>
+</div>
+

@@ -1,0 +1,111 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section ng-if="ctrl.inited">
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>通道收益</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.store">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+              <hide-condition show="ctrl.haveStoreRelate" name="'品类组'"></hide-condition>
+            </div>
+            <div class="col-md-2" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.buyer">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'门店'"></hide-condition>
+            </div>
+            <div class="col-md-2" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.all">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose" ng-if="ctrl.job !== ctrl.commonCon.jobTypes.buyer">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'业态'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'地区'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreGroup()" data="ctrl.com.storeGroup.val" key="'店群'"></search-box>
+              <hide-condition show="ctrl.haveClass" name="'店群'"></hide-condition>
+            </div>
+          </div>
+
+          <div class="row input-choose" ng-show="ctrl.show" ng-if="ctrl.job === ctrl.commonCon.jobTypes.all">
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+          </div>
+
+          <div class="input-choose" ng-if="ctrl.job === ctrl.commonCon.jobTypes.all">
+            <split-line show="ctrl.show"></split-line>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.key.finish"></hs-search>
+            <div class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+              <button class="btn setting-btn" ng-if="!'89'.includes(ctrl.key.active.toString())" ng-click="ctrl.getChartOption()">图表设定</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-sm-12">
+        <uib-tabset active="ctrl.key.active">
+          <uib-tab index="1" heading="按趋势" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 1 && ctrl.tabFinish">
+              <sale-trend param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-trend>
+            </div>
+          </uib-tab>
+          <uib-tab index="2" heading="按品类组" select="ctrl.select($event)"
+                   ng-if="ctrl.job !== ctrl.commonCon.jobTypes.store">
+            <div ng-if="ctrl.key.active === 2 && ctrl.tabFinish">
+              <sale-cat-group param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-cat-group>
+            </div>
+          </uib-tab>
+          <uib-tab index="5" heading="按门店" select="ctrl.select($event)"
+                   ng-if="ctrl.job !== ctrl.commonCon.jobTypes.buyer">
+            <div ng-if="ctrl.key.active === 5 && ctrl.tabFinish">
+              <sale-store param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></sale-store>
+            </div>
+          </uib-tab>
+          <uib-tab index="7" heading="按供应商" select="ctrl.select($event)">
+            <div ng-if="ctrl.key.active === 7 && ctrl.tabFinish">
+              <new-provider param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"
+                             table-info="ctrl.tableInfo"></new-provider>
+            </div>
+          </uib-tab>
+          <uib-tab index="8" heading="按采购费用代码" select="ctrl.select($event)"
+                   ng-if="ctrl.job !== ctrl.commonCon.jobTypes.store">
+            <div ng-if="ctrl.key.active === 8 && ctrl.tabFinish">
+              <channel-group param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></channel-group>
+            </div>
+          </uib-tab>
+          <uib-tab index="9" heading="按营运费用代码" select="ctrl.select($event)"
+                   ng-if="ctrl.job !== ctrl.commonCon.jobTypes.buyer">
+            <div ng-if="ctrl.key.active === 9 && ctrl.tabFinish">
+              <channel-group param="ctrl.commonParam" field="ctrl.field" keys="ctrl.key"></channel-group>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </article>
+    </div>
+  </section>
+</div>

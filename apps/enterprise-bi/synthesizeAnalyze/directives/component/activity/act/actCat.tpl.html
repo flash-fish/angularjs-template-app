@@ -1,0 +1,14 @@
+<div ng-init="ctrl.init()" class="hs-sub-tab-box">
+  <uib-tabset active="ctrl.keys.subActive" style="margin-top: 15px;">
+    <uib-tab index="1" heading="常规表示">
+      <div ng-if="ctrl.keys.subActive === 1">
+        <act-cat-normal param="ctrl.param" field="ctrl.field" keys="ctrl.keys"></act-cat-normal>
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="树形表示">
+      <div ng-if="ctrl.keys.subActive === 2">
+        <act-cat-tree param="ctrl.param" field="ctrl.field" keys="ctrl.keys"></act-cat-tree>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>

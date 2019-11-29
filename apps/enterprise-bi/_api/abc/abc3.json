@@ -1,0 +1,1660 @@
+{
+  "code": "0",
+  "data": {
+    "offset": {
+      "layStoreCnt":5,
+      "stockCostAvg": 20
+    },
+    "details": [
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 14,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 7,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 22,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 117,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 22,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 12,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 10,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 63,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 85,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 6,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 39,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 8,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 30,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 38,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 6,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 1,
+        "stockCostAvg": -220
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 5,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 71,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 34,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 5,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 22,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 64,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 27,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 3,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 95,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 1,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 47,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 13,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 13,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 4,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 9,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 10,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 35,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 85,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 2,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 73,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 18,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 101,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 25,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": -160
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 19,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 5,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 75,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 10,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 46,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 76,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 1,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 14,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 5,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 36,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 30,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 1,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 50,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 5,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 82,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 6,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 6,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 13,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 19,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 3,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 11,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 52,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 69,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 31,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 12,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": -200
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 53,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 1,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 49,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 3,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 30,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 23,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 97,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 1,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 24,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 7,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 3,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 82,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 11,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 1,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 18,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 10,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 33,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 4,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 5,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 54,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 15,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 85,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 4,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 24,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 8,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 40,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 3,
+        "stockCostAvg": -240
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 50,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 5,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 32,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 71,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 15,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 58,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 18,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 9,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 11,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 96,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 8,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 26,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 8,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 40,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 102,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 47,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 7,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 21,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 10,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 8,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 57,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 106,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 26,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 47,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 21,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 2,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 67,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 33,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 7,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 88,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 10,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 56,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 12,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 3,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 9,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 27,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 3,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 107,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 21,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 14,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 87,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 72,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 4,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 35,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 2,
+        "stockCostAvg": -160
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 43,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 38,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 58,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 10,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 3,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 36,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 68,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 15,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 1,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 4,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 61,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 4,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 15,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 1,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 1,
+        "stockCostAvg": -240
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 101,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 3,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 24,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 28,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 10,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 1,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 7,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 42,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 10,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 55,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 5,
+        "stockCostAvg": -200
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 67,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 20,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 25,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 74,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 7,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 31,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 13,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 82,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 11,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 35,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 73,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 4,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 1,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 7,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 49,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 7,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 10,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 14,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 50,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 100,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 3,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 6,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 13,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 3,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 43,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 11,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 66,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 47,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 18,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 74,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 20,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 25,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 10,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 80,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 1,
+        "stockCostAvg": -160
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 37,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 10,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 37,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 83,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 2,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 11,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 7,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 30,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 27,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 53,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 14,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 1,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 89,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 12,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 19,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 1,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 3,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 3,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 62,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 5,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 36,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 2,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 102,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 56,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 12,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 15,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 16,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 15,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 2,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 76,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 1,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 12,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 65,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 23,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 78,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 7,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 24,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 35,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 34,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 4,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 2,
+        "stockCostAvg": -220
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 1,
+        "stockCostAvg": -240
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 46,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 72,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 55,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 3,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 13,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 56,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 14,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 19,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 102,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 5,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 33,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 16,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 4,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 3,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 9,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 41,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 14,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 72,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 20,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 67,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 74,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 51,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 39,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 5,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 86,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 16,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 10,
+        "skuUnit": 2,
+        "stockCostAvg": -160
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 35,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 9,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 1,
+        "stockCostAvg": -240
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 1,
+        "stockCostAvg": -120
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 85,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 4,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 12,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 61,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 14,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 49,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 7,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 2,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 104,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 24,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 60,
+        "skuUnit": 1,
+        "stockCostAvg": -200
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 16,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 3,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 85,
+        "skuUnit": 7,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 2,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 19,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 34,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 7,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 66,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 23,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 77,
+        "stockCostAvg": 0
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 15,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 26,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 49,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 18,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 5,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 95,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 30,
+        "skuUnit": 14,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 25,
+        "skuUnit": 37,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 45,
+        "skuUnit": 98,
+        "stockCostAvg": -20
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 2,
+        "stockCostAvg": 160
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 11,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 90,
+        "skuUnit": 25,
+        "stockCostAvg": 60
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 3,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 50,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 11,
+        "stockCostAvg": 120
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 5,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 62,
+        "stockCostAvg": 20
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 2,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 85,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 70,
+        "skuUnit": 7,
+        "stockCostAvg": 180
+      },
+      {
+        "layStoreCnt": 0,
+        "skuUnit": 3,
+        "stockCostAvg": -180
+      },
+      {
+        "layStoreCnt": 65,
+        "skuUnit": 21,
+        "stockCostAvg": 80
+      },
+      {
+        "layStoreCnt": 5,
+        "skuUnit": 53,
+        "stockCostAvg": -80
+      },
+      {
+        "layStoreCnt": 80,
+        "skuUnit": 7,
+        "stockCostAvg": -100
+      },
+      {
+        "layStoreCnt": 75,
+        "skuUnit": 1,
+        "stockCostAvg": -200
+      },
+      {
+        "layStoreCnt": 55,
+        "skuUnit": 7,
+        "stockCostAvg": 140
+      },
+      {
+        "layStoreCnt": 50,
+        "skuUnit": 41,
+        "stockCostAvg": 40
+      },
+      {
+        "layStoreCnt": 95,
+        "skuUnit": 20,
+        "stockCostAvg": -60
+      },
+      {
+        "layStoreCnt": 20,
+        "skuUnit": 78,
+        "stockCostAvg": -40
+      },
+      {
+        "layStoreCnt": 15,
+        "skuUnit": 1,
+        "stockCostAvg": -140
+      },
+      {
+        "layStoreCnt": 40,
+        "skuUnit": 7,
+        "stockCostAvg": 100
+      },
+      {
+        "layStoreCnt": 35,
+        "skuUnit": 68,
+        "stockCostAvg": 0
+      }
+    ],
+    "summary": {
+      "saleAmount": 641457593.78,
+      "stockTurnover": 459.4717,
+      "saleUnit": 47717793,
+      "profit": 85210555.62,
+      "skuUnit": 9565,
+      "stockCostAvg": 148654149.9319
+    },
+    "total": 328
+  }
+}

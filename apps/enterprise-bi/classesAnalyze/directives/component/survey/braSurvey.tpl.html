@@ -1,0 +1,94 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+              <hide-condition show="ctrl.haveStore" name="'门店'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+              <hide-condition show="ctrl.haveStore" name="'地区'"></hide-condition>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <marketing model="ctrl.com.distributionSelect" models="ctrl.wholeData"></marketing>
+            </div>
+            <div class="col-md-2">
+              <contrast-store param="ctrl.com" curr="ctrl.com.comparableStores" dis="ctrl.disabledId"></contrast-store>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <button class="btn btn-primary hs-meBtn" ng-click="ctrl.search()"> 查询
+            </button>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>合计</span>
+          <div class="header-right" ng-if="ctrl.keys.haveSaleWayPct">
+            <sale-way-pct field="ctrl.field.chart.first" param="ctrl.param"></sale-way-pct>
+          </div>
+        </header>
+        <div class="body">
+          <sum-brand sum="ctrl.sum"></sum-brand>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>类别结构图</span>
+        </header>
+        <div class="body">
+          <div class="table-box">
+            <tree-grid table="ctrl.table" key="ctrl.config"></tree-grid>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+
+<style>
+  .hs-meBtn{
+    width: 80px;
+  }
+</style>

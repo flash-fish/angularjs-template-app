@@ -1,0 +1,102 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section ng-if="ctrl.inited">
+    <div class="row condition">
+      <article class="col-sm-12">
+        <header class="header top">
+          <span>新品门店动销异常</span>
+          <span style="float: right"><i class="fa fa-exclamation doorWarn-sale-title"></i>门店动销异常新品：门店动销率在50%以下的新品</span>
+        </header>
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <select class="form-control hs-date-picker" ng-model="ctrl.com.date">
+                <option ng-repeat="x in ctrl.dateOption" value="{{x}}">{{x}}</option>
+              </select>
+
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+
+            <div class="col-md-2" style="height: 30px">
+              <label style="float: left; margin-top: 3px">
+                <input type="checkbox" ng-model="ctrl.com.noStoreCount_delete"
+                       class="checkbox"/>
+                <span style="margin-top: 4px; margin-left: 3px">门店铺设数大于</span>
+              </label>
+
+              <div style="width: 80px; float: left; margin-left: 3px">
+                <input name="points" type="number" min="1" step="1" ng-model="ctrl.com.storeCount_delete"
+                       class="form-control"
+                       onkeypress='return( /[\d]/.test(String.fromCharCode(event.keyCode) ) )'
+                       ng-class="{'label_true': ctrl.com.noStoreCount_delete && (ctrl.com.storeCount_delete === null || ctrl.com.storeCount_delete === ''), 'label_false' : ctrl.com.storeCount_delete !== null}"
+                       ng-disabled="!ctrl.com.noStoreCount_delete"/>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label style="margin-top: 3px">
+                <input type="checkbox" class="checkbox" ng-model="ctrl.com.noSaleStoreOnly"/>
+                <span style="margin-top: 4px; margin-left: 3px">只看零销售门店</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <hs-search search="ctrl.search()" finish="ctrl.keys.finish && (ctrl.com.noStoreCount_delete && ctrl.com.storeCount_delete !== null || !ctrl.com.noStoreCount_delete)"></hs-search>
+          </div>
+        </div>
+      </article>
+    </div>
+
+
+    <div class="row" style="padding-top: 10px">
+      <article class="col-md-12">
+        <div class="body">
+          <div style="position: relative" ng-if="ctrl.copyCom.date">
+            <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+                   dt-instance="ctrl.instance"
+                   class="table table-trend hs-table" width="100%">
+              <thead>
+              <tr>
+                <th>No.</th>
+                <th>{{ctrl.productName}}</th>
+                <th>联华码</th>
+                <th>规格</th>
+                <th>首次到货时间</th>
+                <th>门店铺货数</th>
+                <th>有销售门店铺货数</th>
+                <th>门店动销率</th>
+              </tr>
+              </thead>
+            </table>
+            <empty-table show="ctrl.back.empty"></empty-table>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<style>
+
+  .label_true {
+    border: 1px red solid;
+  }
+
+  .label_false {
+
+  }
+
+</style>

@@ -1,0 +1,619 @@
+<div class="subpage">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.fromSession"></sub-menu>
+  <div class="sub-main hs-container top-content-box" ng-init="ctrl.init()" style="font-size: 13px">
+    <section>
+      <div class="row">
+
+        <header class="header top home-margin-top">
+          <span style="font-size: 16px;">供应商概况</span>
+          <company-infor supplier="ctrl.com.supplier"></company-infor>
+        </header>
+
+        <div class="body borderSet" style="background-color: white;">
+          <div style="height: 60px;">
+            <div style="height: 60px;line-height: 60px; width: 8%; float: left; margin-left: 15px">
+              <p style="font-size: 13px; font-family: 'Microsoft YaHei'; color: #2A80D8">数据权限</p>
+            </div>
+            <div style="width: 92%">
+              <div class="col-md-5" ng-repeat="list in ctrl.power" ng-if="list.data.length>0"
+                   style="height: 60px;line-height: 60px">
+                <p style="width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+                  <span style="font-size: 13px">{{list.name}}:</span>
+                  <span style="font-size: 13px" title="{{list.data}}">{{list.data}}</span>
+                </p>
+              </div>
+              <div class="col-md-6" ng-if="ctrl.anyPower" style="height: 60px;line-height: 60px;">
+                <p style="font-size: 13px">全部</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row ">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>总体表现({{ctrl.now}})</span>
+          <!--<span class="year-now">({{ctrl.now}})</span>-->
+          <date-crumb key="ctrl.dateKeys" param="ctrl.param"></date-crumb>
+
+          <div style="height: 28px; width: 180px; float: right; margin-top: 16px">
+            <marketing model="ctrl.allMode" models="ctrl.allType" style="height: 28px"></marketing>
+          </div>
+        </header>
+
+        <div class="body borderSet" style="background-color: white">
+          <div style="height: 300px" class="sub-all-show">
+            <div class="col-md-6" style="border-right: 1px solid #CCCCCC;height: 300px">
+              <chart option="ctrl.radar" style=" height:280px; margin: 10px;" load="ctrl.allMode"></chart>
+            </div>
+
+            <div class="col-md-6 sub-all-show">
+              <div style="height: 60px;font-size: 13px; border-bottom: 1px solid #CCCCCC"
+                   class="col-md-12 sub-all-show">
+                <div class="col-md-4">
+                  <p style="margin-left: 15px; margin-top: 20px">KPI</p>
+                </div>
+
+                <div class="col-md-5">
+                  <div
+                    style="height: 13px;width: 13px; border: 1px solid #007ADB;  border-radius: 3px; background-color: #007ADB; float: left; margin-top: 23px; margin-right: 3px"></div>
+                  <p style="margin-top: 20px">{{ctrl.com.supplier.val[0].name}}</p>
+                </div>
+                <div class="col-md-3">
+                  <div
+                    style="height: 13px; width: 13px; border: 1px solid #26C08C;  border-radius: 3px; background-color: #26C08C; float: left; margin-top: 23px; margin-right: 3px;"
+                    class="home-margin-left"></div>
+                  <p style="margin-top: 20px">
+                    {{ctrl.allMode === 'yoy' ? '同期值' : '子类平均值'}}
+                    <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.sonAvg"
+                       popover-trigger="mouseenter" popover-placement='bottom-right' ng-if="ctrl.allMode !== 'yoy'">
+                      <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-12 sub-all-show" style="font-size: 13px">
+                <div class="col-md-4">
+                  <p style="margin-left: 15px; margin-top: 25px">{{ctrl.allMode === 'yoy' ? '销售额(万元)' :
+                    '单品销售额(万元)'}}</p>
+                  <p style="margin-left: 15px" class="margin-top">毛利率</p>
+                  <p style="margin-left: 15px" class="margin-top">经销周转天数</p>
+                  <p style="margin-left: 15px" class="margin-top">到货率</p>
+                  <p style="margin-left: 15px" class="margin-top">退货率</p>
+                  <p style="margin-left: 15px" class="margin-top"><span>平均加注缺品天数</span></p>
+                </div>
+                <div class="col-md-5">
+                  <p class="margin-top" style="margin-top: 25px"
+                     title="{{ctrl.allMode === 'yoy' ? ctrl.selfData[1] : ctrl.radarDataSelf[1]}}元">
+                    {{ctrl.allMode === 'yoy' ? ctrl.selfData[0] : ctrl.radarDataSelf[0]}}</p>
+                  <p class="margin-top">{{ctrl.selfData[2]}}</p>
+                  <p class="margin-top">{{ctrl.selfData[3]}}</p>
+                  <p class="margin-top">{{ctrl.selfData[4]}}</p>
+                  <p class="margin-top">{{ctrl.selfData[5]}}</p>
+                  <p class="margin-top">{{ctrl.selfData[6]}}</p>
+                </div>
+                <div class="col-md-3">
+                  <p class="margin-top home-margin-left" style="margin-top: 25px"
+                     title="{{ctrl.allMode === 'yoy' ? ctrl.yoyData[1] : ctrl.sonData[1]}}元">{{ctrl.allMode === 'yoy'
+                    ? ctrl.yoyData[0] : ctrl.sonData[0]}}</p>
+                  <p class="margin-top home-margin-left">{{ctrl.allMode === 'yoy' ? ctrl.yoyData[2] :
+                    ctrl.sonData[2]}}</p>
+                  <p class="margin-top home-margin-left">{{ctrl.allMode === 'yoy' ? ctrl.yoyData[3] :
+                    ctrl.sonData[3]}}</p>
+                  <p class="margin-top home-margin-left">{{ctrl.allMode === 'yoy' ? ctrl.yoyData[4] :
+                    ctrl.sonData[4]}}</p>
+                  <p class="margin-top home-margin-left">{{ctrl.allMode === 'yoy' ? ctrl.yoyData[5] :
+                    ctrl.sonData[5]}}</p>
+                  <p class="margin-top home-margin-left">{{ctrl.allMode === 'yoy' ? ctrl.yoyData[6] :
+                    ctrl.sonData[6]}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!--销售情况-->
+      <div class="row">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>销售信息({{ctrl.now}})</span>
+          <!--<a ng-click="ctrl.jump('sale')" class="home-a">-->
+            <!--更多-->
+          <!--</a>-->
+          <div style="width: 160px;float: right;height: 28px; margin-right: 15px;margin-top: 16px">
+            <marketing model="ctrl.saleMode" models="ctrl.saleType"></marketing>
+          </div>
+        </header>
+
+
+        <div class="body borderSet" style="background-color: white">
+          <div class="supplier-info-three-line-div">
+            <div class="supplier-info-one-title col-sm-12">
+              <p>{{ctrl.saleMode === 'allAmount' ? '销售额(万元)' : '销售数'}}</p>
+            </div>
+            <div class="sub-sale">
+              <div class="col-sm-3 supplier-info-two-line-div-margin">
+                <p class="supplier-self supplier-info-three-p"
+                   title="{{ctrl.saleMode === 'allAmount' ?  ctrl.supplierRankInfoSale.allAmountY + '元' : ''}}">
+                  {{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmount :
+                  ctrl.supplierRankInfoUnit.allUnit}}
+                </p>
+                <p class="supplier-info-four-p">
+                  <span class="supplier-item-Title">同比:</span>
+                  <span
+                    title="{{ctrl.saleMode === 'allAmount' ?  ctrl.supplierRankInfoSale.allAmountYoYValueY + '元' : ''}}">{{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoYValue : ctrl.supplierRankInfoUnit.allUnitYoYValue}}</span>
+                  <span
+                    ng-if="ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoY : ctrl.supplierRankInfoUnit.allUnitYoY"
+                    up-down
+                    change="ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoY : ctrl.supplierRankInfoUnit.allUnitYoY"
+                    class="supplier-margin-left"></span>
+                  <span
+                    ng-if="ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoY : ctrl.supplierRankInfoUnit.allUnitYoY"
+                    ng-class="{'scale-red-icon': ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoY >= 0 : ctrl.supplierRankInfoUnit.allUnitYoY >= 0, 'scale-green-icon' : ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoY < 0 : ctrl.supplierRankInfoUnit.allUnitYoY < 0}">{{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.allAmountYoYC : ctrl.supplierRankInfoUnit.allUnitYoYC}}</span>
+                </p>
+              </div>
+              <div class="col-sm-3 supplier-info-two-line-div-margin">
+                <div style="padding-top: 10px">
+                  <span>经销占比</span>
+                  <span class="supplier-margin-left">{{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.distributionAmountOfLH : ctrl.supplierRankInfoUnit.distributionUnitOfLH}}</span>
+                </div>
+                <div style="padding-top: 10px">
+                  <span>联营占比</span>
+                  <span class="supplier-margin-left">{{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.jointAmountOfLH : ctrl.supplierRankInfoUnit.jointUnitOfLH}}</span>
+                </div>
+              </div>
+              <div class="col-sm-3 supplier-info-two-line-div-margin">
+                <div style="padding-top:10px">
+                  <span>零售占比</span>
+                  <span class="supplier-margin-left">{{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.retailAmountOfLH : ctrl.supplierRankInfoUnit.retailUnitOfLH}}</span>
+                </div>
+
+                <div style="padding-top: 10px">
+                  <span>批发占比</span>
+                  <span class="supplier-margin-left">
+                      {{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.wholeAmountOfLH : ctrl.supplierRankInfoUnit.wholeUnitOfLH}}
+                    </span>
+                </div>
+
+              </div>
+
+              <div class="col-sm-3 supplier-info-two-line-div-margin">
+                <div style="padding-top: 10px">
+                  <span>自有品牌占比</span>
+                  <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.selfBrand"
+                     popover-trigger="mouseenter" popover-placement='bottom-left'>
+                    <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+
+                  <span class="supplier-margin-left">
+                      {{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.selfBrandOfAllAmount : ctrl.supplierRankInfoUnit.selfBrandOfAllUnit}}
+                    </span>
+                </div>
+
+                <div style="padding-top: 10px">
+                  <span>纯生鲜占比</span>
+                  <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.fresh"
+                     popover-trigger="mouseenter" popover-placement='bottom-left'>
+                    <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+
+                  <span style="margin-left: 20px">
+                      {{ctrl.saleMode === 'allAmount' ? ctrl.supplierRankInfoSale.freshOfAllAmount : ctrl.supplierRankInfoUnit.freshOfAllUnit}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--收益信息-->
+      <div class="row">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>收益信息({{ctrl.now}})</span>
+          <!--<span class="year-now">({{ctrl.now}})</span>-->
+        </header>
+        <div class="body borderSet" style="background-color: white">
+          <div style="border-bottom: 1px solid #CCCCCC" class="supplier-info-four-line-div sub-profit">
+            <div class="col-sm-6" style="border-right: 1px solid #CCCCCC; height: 105px">
+              <!--<div style="height: 50px">-->
+                <!--<a ng-click="ctrl.jump('grossProfit')"-->
+                   <!--style="font-size: 15px;float: right;margin-top: 15px; margin-right: 15px">更多</a>-->
+              <!--</div>-->
+              <div class="col-sm-6" style="margin-top: 15px;">
+                <p class="supplier-info-two-p">毛利额(万元)</p>
+                <p class="supplier-self supplier-info-three-p"
+                   title="{{ctrl.supplierRankInfoProfit.allProfitY}}元">
+                  {{ctrl.supplierRankInfoProfit.allProfit}}
+                </p>
+                <p class="supplier-info-four-p">
+                  <span class="supplier-item-Title">同比:</span>
+                  <span title="{{ctrl.supplierRankInfoProfit.allProfitYoYValueY}}元">
+                      {{ctrl.supplierRankInfoProfit.allProfitYoYValue}}
+                    </span>
+                  <span ng-if="ctrl.supplierRankInfoProfit.allProfitYoY" up-down
+                        change="ctrl.supplierRankInfoProfit.allProfitYoY"
+                        class="supplier-margin-left"></span>
+                  <span ng-if="ctrl.supplierRankInfoProfit.allProfitYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoProfit.allProfitYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoProfit.allProfitYoY < 0}">{{ctrl.supplierRankInfoProfit.allProfitYoYC}}</span>
+                </p>
+              </div>
+
+              <div class="col-sm-6" style="margin-top: 15px;">
+                <p class="supplier-info-two-p">毛利率</p>
+                <p class="supplier-self supplier-info-three-p">
+                  {{ctrl.supplierRankInfoProfit.allProfitRate}}
+                </p>
+                <p class="supplier-info-four-p">
+                  <span class="supplier-item-Title">同比:</span>
+                  <span>{{ctrl.supplierRankInfoProfit.allProfitRateYoYValue}}</span>
+                  <span ng-if="ctrl.supplierRankInfoProfit.allProfitRateYoYInc" up-down
+                        change="ctrl.supplierRankInfoProfit.allProfitRateYoYInc"
+                        class="supplier-margin-left"></span>
+                  <span ng-if="ctrl.supplierRankInfoProfit.allProfitRateYoYInc" ng-class="{'scale-red-icon': ctrl.supplierRankInfoProfit.allProfitRateYoYInc >= 0, 'scale-green-icon' : ctrl.supplierRankInfoProfit.allProfitRateYoYInc < 0}">
+                      {{ctrl.supplierRankInfoProfit.allProfitRateYoYIncC}}
+                    </span>
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <!--<div style="height: 50px">-->
+                <!--<a ng-click="ctrl.jump('profit')"-->
+                   <!--style="font-size: 15px;float: right;margin-top: 15px;margin-right: 15px">更多</a>-->
+              <!--</div>-->
+              <div class="col-sm-6" style="margin-top: 15px;">
+                <p class="supplier-info-two-p">通道收益额{{ctrl.jobTitleOne}}(万元)</p>
+                <div style="padding-top: 10px">
+                    <span class="supplier-self supplier-info-three-p"
+                          title="{{ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountY}}元">{{ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmount}}</span>
+                  <span style="padding-left: 5px">已到期未收:</span>
+                  <span title="{{ctrl.supplierRankInfoProfitRightJob.jobChannelPendingAmountY}}元">{{ctrl.supplierRankInfoProfitRightJob.jobChannelPendingAmount}}</span>
+                </div>
+                <p class="supplier-info-four-p">
+                  <span class="supplier-item-Title">同比:</span>
+                  <span title="{{ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoYValueY}}元">{{ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoYValue}}</span>
+                  <span ng-if="ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoY" up-down
+                        change="ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoY"
+                        class="supplier-margin-left"></span>
+                  <span ng-if="ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoY < 0}">
+                      {{ctrl.supplierRankInfoProfitRightJob.jobChannelRealAmountYoYC}}
+                    </span>
+                </p>
+              </div>
+
+              <div class="col-sm-6" style="margin-top: 15px;">
+                <p class="supplier-info-two-p"> 综合收益额{{ctrl.jobTitleTwo}}(万元)</p>
+                <p class="supplier-self supplier-info-three-p"
+                   title="{{ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountY}}元">
+                  {{ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmount}}
+                </p>
+                <p class="supplier-info-four-p">
+                  <span class="supplier-item-Title">同比:</span>
+                  <span title="{{ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoYValueY}}元">{{ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoYValue}}</span>
+                  <span ng-if="ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoY" up-down
+                        change="ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoY"
+                        class="supplier-margin-left"></span>
+                  <span ng-if="ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoY < 0}">
+                      {{ctrl.supplierRankInfoProfitRightJob.jobBizCompIncomeAmountYoYC}}
+                    </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%;height: 90px">
+            <div class="col-sm-4">
+              <div style="margin-top: 20px;">
+                <span>毛利额经销占比</span>
+                <span
+                  class="supplier-margin-left">{{ctrl.supplierRankInfoProfit.distributionOfAllProfit}}</span>
+              </div>
+              <div style="margin-top: 10px;">
+                <span>毛利额联营占比</span>
+                <span class="supplier-margin-left">{{ctrl.supplierRankInfoProfit.jointOfAllProfit}}</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div style="margin-top: 20px">
+                <span>毛利额零售占比</span>
+                <span class="supplier-margin-left">{{ctrl.supplierRankInfoProfit.retailOfAllProfit}}</span>
+              </div>
+              <div style="margin-top: 10px">
+                <span>毛利额批发占比</span>
+                <span class="supplier-margin-left">{{ctrl.supplierRankInfoProfit.wholeOfAllProfit}}</span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div style="margin-top: 20px">
+                <span>毛利额自有品牌占比</span>
+                <span class="supplier-margin-left">{{ctrl.supplierRankInfoProfit.selfBrandOfAllProfit}}</span>
+              </div>
+              <div style="margin-top: 10px;">
+                <span>毛利额纯生鲜占比</span>
+                <span style="margin-left: 20px">{{ctrl.supplierRankInfoProfit.freshOfAllProfit}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--库存信息-->
+      <div class="row">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>库存信息</span>
+          <!--<a ng-click="ctrl.jump('stock')" class="home-a">-->
+            <!--更多-->
+          <!--</a>-->
+        </header>
+
+        <div class="body borderSet" style="background-color: white">
+          <div style="border-bottom: 1px solid #CCCCCC" class="supplier-info-stock-line-div">
+            <div class="supplier-info-one-title col-sm-12">
+              <p>({{ctrl.now}})</p>
+            </div>
+            <div class="col-sm-4 supplier-info-three-line-div-margin">
+              <p class="supplier-info-two-p">经销周转天数</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.supplierRankInfoStock.saleDays}}
+              </p>
+              <p class="supplier-info-four-p">
+                <span class="supplier-item-Title">同比:</span>
+                <span>{{ctrl.supplierRankInfoStock.saleDaysYoYValue}}</span>
+
+                <span ng-if="ctrl.supplierRankInfoStock.saleDaysYoY" up-down
+                      change="ctrl.supplierRankInfoStock.saleDaysYoY" class="supplier-margin-left"></span>
+                <span ng-if="ctrl.supplierRankInfoStock.saleDaysYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoStock.saleDaysYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoStock.saleDaysYoY < 0}">{{ctrl.supplierRankInfoStock.saleDaysYoYC}}</span>
+              </p>
+            </div>
+
+            <div class="col-sm-4 supplier-info-three-line-div-margin">
+              <p class="supplier-info-two-p">日均库存金额(万元)</p>
+              <p title="{{ctrl.supplierRankInfoStock.stockCostY}}元" class="supplier-self supplier-info-three-p">
+                {{ctrl.supplierRankInfoStock.stockCost}}
+              </p>
+              <p class="supplier-info-four-p">
+                <span class="supplier-item-Title">同比:</span>
+                <span title="{{ctrl.supplierRankInfoStock.stockCostYoYValueY}}元">{{ctrl.supplierRankInfoStock.stockCostYoYValue}}</span>
+
+                <span ng-if="ctrl.supplierRankInfoStock.stockCostYoY" up-down
+                      change="ctrl.supplierRankInfoStock.stockCostYoY" class="supplier-margin-left"></span>
+                <span ng-if="ctrl.supplierRankInfoStock.stockCostYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoStock.stockCostYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoStock.stockCostYoY < 0}">{{ctrl.supplierRankInfoStock.stockCostYoYC}}</span>
+              </p>
+            </div>
+
+            <div class="col-sm-4 supplier-info-three-line-div-margin">
+              <p class="supplier-info-two-p">日均库存数</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.supplierRankInfoStock.stockQty}}
+              </p>
+              <p class="supplier-info-four-p">
+                <span class="supplier-item-Title">同比:</span>
+                <span>{{ctrl.supplierRankInfoStock.stockQtyYoYValue}}</span>
+                <span ng-if="ctrl.supplierRankInfoStock.stockQtyYoY" up-down
+                      change="ctrl.supplierRankInfoStock.stockQtyYoY" class="supplier-margin-left"></span>
+                <span ng-if="ctrl.supplierRankInfoStock.stockQtyYoY" ng-class="{'scale-red-icon': ctrl.supplierRankInfoStock.stockQtyYoY >= 0, 'scale-green-icon' : ctrl.supplierRankInfoStock.stockQtyYoY < 0}">{{ctrl.supplierRankInfoStock.stockQtyYoYC}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="supplier-info-three-line-div">
+            <div class="supplier-info-one-title col-sm-12">
+              <p>({{ctrl.dayString}})</p>
+            </div>
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p"> 最新经销周转天数</p>
+              <p class="supplier-self supplier-info-three-p">{{ctrl.supplierRankInfoStock.saleDaysLatest}}</p>
+            </div>
+
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p"> 最新库存金额(万元)</p>
+              <p class="supplier-self supplier-info-three-p"
+                 title="{{ctrl.supplierRankInfoStock.stockCostLatestY}}元">
+                {{ctrl.supplierRankInfoStock.stockCostLatest}}</p>
+            </div>
+
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p"> 最新库存数</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.supplierRankInfoStock.stockQtyLatest}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--供货信息-->
+      <div class="row">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>供货信息({{ctrl.now}})</span>
+          <!--<span class="year-now">({{ctrl.now}})</span>-->
+          <!--<a ng-click="ctrl.jump('supply')" class="home-a" ng-if="ctrl.subSupply">-->
+            <!--更多-->
+          <!--</a>-->
+        </header>
+
+        <div class="body borderSet" style="background-color: white">
+          <div style="width: 100%; height: 65px;margin-top: 25px">
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">
+                到货率
+                <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.receiveQtyRate"
+                   popover-trigger="mouseenter" popover-placement='bottom-left'>
+                  <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+              </p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.supportProductInfor.receiveQtyRate}}
+              </p>
+            </div>
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">未到商品金额(万元)</p>
+              <p class="supplier-self supplier-info-three-p"
+                 title="{{ctrl.supportProductInfor.nonAmountY}}元">
+                {{ctrl.supportProductInfor.nonAmount}}
+              </p>
+            </div>
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">
+                退货率
+                <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.returnAmountRate"
+                   popover-trigger="mouseenter" popover-placement='bottom-left'>
+                  <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+              </p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.supportProductInfor.returnAmountRate}}</p>
+            </div>
+
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">
+                退货成本(除税)(万元)
+              </p>
+              <p class="supplier-self supplier-info-three-p" title="{{ctrl.supportProductInfor.returnAmountY}}元">
+                {{ctrl.supportProductInfor.returnAmount}}
+              </p>
+            </div>
+          </div>
+
+          <div style="width: 100%;height: 40px">
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5">
+              <span>中转占比:</span>
+              <span>{{ctrl.supportProductInfor.middleTransferPct}}</span>
+            </div>
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5">
+              <span>统配占比:</span>
+              <span>{{ctrl.supportProductInfor.uniteAssignPct}}</span>
+            </div>
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5">
+              <span>直送占比:</span>
+              <span>{{ctrl.supportProductInfor.directSendPct}}</span>
+            </div>
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5">
+              <span>直通占比:</span>
+              <span>{{ctrl.supportProductInfor.directPassPct}}</span>
+            </div>
+
+            <div class="col-xs-1-5 col-sm-1-5 col-md-1-5 col-lg-1-5">
+              <span>区配占比:</span>
+              <span>{{ctrl.supportProductInfor.areaAssignPct}}</span>
+            </div>
+
+
+            <!--<div style="width: 50%; float: left">-->
+            <!--<span>中转占比:</span>-->
+            <!--<span>{{ctrl.supportProductInfor.middleTransferPct}}</span>-->
+            <!--</div>-->
+
+            <!--<div style="width: 50%; float: right">-->
+            <!--<span>统配占比:</span>-->
+            <!--<span>{{ctrl.supportProductInfor.uniteAssignPct}}</span>-->
+            <!--</div>-->
+            <!--<div style="width:100%">-->
+            <!---->
+            <!--</div>-->
+
+            <!--<div style="padding-top: 10px; width: 100%">-->
+            <!--<div style="width: 50%; float: left">-->
+            <!--<span>直送占比:</span>-->
+            <!--<span>{{ctrl.supportProductInfor.directSendPct}}</span>-->
+            <!--</div>-->
+
+            <!--<div style="width: 50%; float: right">-->
+            <!--<span>直通占比:</span>-->
+            <!--<span>{{ctrl.supportProductInfor.directPassPct}}</span>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
+          </div>
+        </div>
+
+      </div>
+
+      <!--加注缺品信息-->
+      <div class="row" style="padding-bottom: 20px">
+
+        <header class="supply-sub-header">
+          <img src="styles\img\round.png" class="home-round"/>
+          <span>加注缺品信息({{ctrl.now}})</span>
+          <!--<a ng-click="ctrl.jump('lack')" class="home-a" ng-if="ctrl.subLack">-->
+          <!--更多-->
+          <!--</a>-->
+        </header>
+
+        <!--<div class="borderSet">-->
+        <div class="body borderSet" style="background-color: white;height: 100px">
+          <div style="margin-top: 25px">
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">加注缺品SKU数</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.stockOutProductInfor.stockOutSku}}</p>
+            </div>
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">平均加注缺品天数</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.stockOutProductInfor.avgStockOutDays}}</p>
+            </div>
+            <div class="col-sm-4 supplier-info-two-line-div-margin">
+              <p class="supplier-info-two-p">A类品加注缺品占比</p>
+              <p class="supplier-self supplier-info-three-p">
+                {{ctrl.stockOutProductInfor.stockOutSkuAPct}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+<!--栅格5等分自适应代码-->
+<style>
+  .col-xs-1-5,.col-sm-1-5,.col-md-1-5,.col-lg-1-5 {
+    min-height: 1px;
+    padding-left: 12px;
+    /*padding-right: 15px;*/
+    position: relative;
+  }
+
+  .col-xs-1-5 {
+    width: 20%;
+    float: left;
+  }
+
+  @media (min-width: 768px) {
+    .col-sm-1-5 {
+      width: 20%;
+      float: left;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-md-1-5 {
+      width: 20%;
+      float: left;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .col-lg-1-5 {
+      width: 20%;
+      float: left;
+    }
+  }
+
+</style>
+
+
+

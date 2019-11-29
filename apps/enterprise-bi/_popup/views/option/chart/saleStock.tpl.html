@@ -1,0 +1,82 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">指标选择</h1>
+  </div>
+  <div class="modal-body sale-stock-chart">
+    <uib-tabset active="ctrl.active">
+      <uib-tab index="1" heading="销售">
+        <div class="sale-types">
+          <marketing model="ctrl.saleType" models="ctrl.saleTypes"></marketing>
+        </div>
+        <div class="hs-field sale-tab">
+          <div class="pop-option" ng-repeat="(k, v) in ctrl.chart.sale track by k">
+            <p>
+              <span>{{v.key.title}}</span>
+              <label ng-if="v.key.last">
+                <input type="checkbox" ng-model="v.key.last.active" class="checkbox" ng-disabled="v.key.last.disable">
+                <span>{{v.key.last.name}}</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="s in v.list track by $index">
+                <label>
+                  <input type="radio" name="{{'sale_' + k}}" class="radiobox"
+                         ng-checked="s.check" ng-value="s" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.chart.sale)" ng-if="!v.key.checkbox"/>
+
+                  <input type="checkbox" name="{{'sale_' + k}}" class="checkbox"
+                         ng-model="s.check" ng-disabled="s.disable || s.lineDisable"
+                         ng-click="ctrl.change(s, v, ctrl.chart.sale, '销售')" ng-if="v.key.checkbox"/>
+
+                  <span ng-style="{opacity: s.name ? 1 : 0}">{{s.name}}</span>
+                  <span ng-if="s.icon" class="{{s.icon ? s.icon : ''}}">
+                    <a href="" class="hs-popover-link" uib-popover-template="'{{s.icon + '.html'}}'"
+                       popover-placement="top-right" popover-trigger="mouseenter"><i class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="2" heading="库存">
+        <div class="hs-field">
+          <div class="pop-option {{v.key.class}}" ng-repeat="(k, v) in ctrl.chart.stock track by k">
+            <p>
+              <span>{{v.key.title}}</span>
+              <label ng-if="v.key.last">
+                <input type="checkbox" ng-model="v.key.last.active" class="checkbox" ng-disabled="v.key.last.disable">
+                <span>{{v.key.last.name}}</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="{{'col-md-' + v.key.col}}" ng-repeat="s in v.list track by s.id">
+                <label>
+                  <input type="radio" name="{{'stock_' + k}}" class="radiobox"
+                         ng-checked="s.check" ng-value="s" ng-disabled="s.disable"
+                         ng-click="ctrl.change(s, v, ctrl.chart.stock)" ng-if="!v.key.checkbox"/>
+
+                  <input type="checkbox" name="{{'stock_' + k}}" class="checkbox"
+                         ng-model="s.check" ng-disabled="s.disable || s.lineDisable"
+                         ng-click="ctrl.change(s, v, ctrl.chart.stock, '库存')" ng-if="v.key.checkbox"/>
+                  <span ng-style="{opacity: s.name ? 1 : 0}">{{v.key.get && !s.own ? ctrl.currStockBar.name + "-" + s.name : s.name}}</span>
+                  <span ng-if="s.icon" class="{{s.icon ? s.icon : ''}}">
+                    <a href="" class="hs-popover-link" uib-popover-template="'{{s.icon + '.html'}}'"
+                       popover-placement="top-right" popover-trigger="mouseenter"><i class="glyphicon glyphicon-info-sign"></i></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+  <div class="modal-footer">
+    <span class="hs-red error" ng-if="ctrl.showManyError">【{{ctrl.errors.join(" , ")}}】折线图最多指定两个指标, 请减少一些指标</span>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>

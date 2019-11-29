@@ -1,0 +1,49 @@
+{
+  "name": "smartadmin-angularjs-app",
+  "version": "1.8.1",
+  "description": "Demo Application for AngularJS version of SmartAdmin application template",
+  "main": "index.html",
+  "private": true,
+  "scripts": {
+    "dev": "gulp dev --app=enterprise-bi",
+    "dev-remote": "gulp dev --app=enterprise-bi --remote=http://10.0.1.51:8081",
+    "dev:mock": "gulp dev:mock",
+    "mock": "cd myapi && npm start",
+    "prod": "gulp prod --app=enterprise-bi"
+  },
+  "author": "Sunny",
+  "license": "MyOrange Inc.",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "datatable": "^2.0.2",
+    "event-stream": "~3.3.1",
+    "graceful-fs": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.2.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-debug": "^3.2.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-ng-annotate": "^2.1.0",
+    "gulp-remember": "^0.3.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "http-proxy-middleware": "^0.17.4",
+    "lodash": "^4.17.5",
+    "run-sequence": "^2.2.1",
+    "smartadmin-libs": "^1.1.7",
+    "ui-bootstrap-dialogs": "^1.0.1",
+    "vo-resources": "^1.0.9"
+  },
+  "dependencies": {
+    "angular-bootstrap-datetimepicker": "^1.1.4",
+    "angular-cookies": "^1.6.9",
+    "babel-polyfill": "^6.26.0",
+    "json3": "^3.3.2",
+    "ngstorage": "^0.3.11"
+  }
+}

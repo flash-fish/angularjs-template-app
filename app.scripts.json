@@ -1,0 +1,194 @@
+{
+  "chunks": {
+    "vendor": [
+      "jquery",
+      "jquery-ui",
+      "lodash",
+      "echarts",
+      "bootstrap",
+      "angular",
+      "angular-sanitize",
+      "angular-animate",
+      "angular-ui-router",
+      "angular-bootstrap",
+      "fastclick",
+      "moment",
+      "moment-timezone",
+      "smartwidgets",
+      "datatables",
+      "dataTables-fixedColumns",
+      "angular-datatables",
+      "angular-datatables.bootstrap",
+      "datatables.fixedcolumns",
+      "notification",
+      "angular-cookies",
+      "ui.bootstrap.datetimepicker",
+      "ui.bootstrap.datetimepicker.templates",
+      "chosen",
+      "localytics.directives",
+      "accounting",
+      "ngStorage",
+      "vo-dialogs",
+      "vo-resources",
+      "stateEvent",
+      "jqWidgets.jqxcore",
+      "jqWidgets.jqxbuttons",
+      "jqWidgets.jqxbscrollbar",
+      "jqWidgets.jqxdatatable",
+      "jqWidgets.jqxtreegrid",
+      "jqWidgets.jqxdata",
+      "jqWidgets.jqxcheckbox",
+      "jqWidgets.jqxlistbox"
+    ],
+    "vendor.ui": [
+      "select2",
+      "summernote",
+      "markdown",
+      "he",
+      "to-markdown",
+      "bootstrap-markdown",
+      "bootstrap-slider",
+      "bootstrap-progressbar",
+      "jquery-validation",
+      "jquery-maskedinput",
+      "bootstrap-validator",
+      "ionslider",
+      "nouislider",
+      "bootstrap-duallistbox",
+      "bootstrap-timepicker",
+      "clockpicker",
+      "bootstrap-colorpicker",
+      "bootstrap-tagsinput",
+      "jquery-knob",
+      "x-editable",
+      "fuelux-wizard",
+      "dropzone",
+      "jquery-nestable",
+      "jquery-color",
+      "jcrop"
+    ]
+  },
+  "chunks_b": {
+    "vendor": [
+      "jquery",
+      "jquery-ui",
+      "lodash",
+      "echarts",
+      "bootstrap",
+      "angular",
+      "angular-sanitize",
+      "angular-animate",
+      "angular-ui-router",
+      "angular-resource",
+      "angular-bootstrap",
+      "angular-simple-logger",
+      "angular-google-maps",
+      "restangular",
+      "fastclick",
+      "moment",
+      "moment-timezone",
+      "fullcalendar",
+      "notification",
+      "smartwidgets",
+      "easy-pie",
+      "sparkline",
+      "jquery-jvectormap",
+      "jquery-jvectormap-world-mill-en",
+      "flot",
+      "flot-resize",
+      "flot-fillbetween",
+      "flot-orderBar",
+      "flot-pie",
+      "flot-time",
+      "flot-tooltip",
+      "datatables",
+      "angular-datatables",
+      "angular-datatables.bootstrap",
+      "angular-cookies",
+      "ui.bootstrap.datetimepicker",
+      "ui.bootstrap.datetimepicker.templates",
+      "chosen",
+      "localytics.directives",
+      "accounting",
+      "ngStorage"
+    ],
+    "vendor.ui": [
+      "select2",
+      "summernote",
+      "markdown",
+      "he",
+      "to-markdown",
+      "bootstrap-markdown",
+      "bootstrap-slider",
+      "bootstrap-progressbar",
+      "jquery-validation",
+      "jquery-maskedinput",
+      "bootstrap-validator",
+      "ionslider",
+      "nouislider",
+      "bootstrap-duallistbox",
+      "bootstrap-timepicker",
+      "clockpicker",
+      "bootstrap-colorpicker",
+      "bootstrap-tagsinput",
+      "jquery-knob",
+      "x-editable",
+      "fuelux-wizard",
+      "dropzone",
+      "jquery-nestable",
+      "jquery-color",
+      "jcrop"
+    ],
+    "vendor.datatables": [
+      "datatables",
+      "datatables-bootstrap",
+      "datatables-tools",
+      "datatables-colvis",
+      "datatables-responsive"
+    ],
+    "vendor.graphs": [
+      "raphael",
+      "morris",
+      "dygraphs",
+      "chartjs",
+      "highcharts",
+      "highchartTable"
+    ]
+  },
+  "paths": {
+    "angular-cookies": [
+      "node_modules/angular-cookies/angular-cookies.js",
+      "node_modules/angular-cookies/angular-cookies.min.js"
+    ],
+
+    "ngStorage": [
+      "node_modules/ngstorage/ngStorage.js",
+      "node_modules/ngstorage/ngStorage.min.js"
+    ],
+
+    "ui.bootstrap.datetimepicker": "node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js",
+    "ui.bootstrap.datetimepicker.templates": "node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js",
+
+    "datatables.fixedcolumns": [
+      "node_modules/smartadmin-libs/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js",
+      "node_modules/smartadmin-libs/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.min.js"
+    ],
+
+    "vo-dialogs": "node_modules/ui-bootstrap-dialogs/dist/dialogs.min.js",
+
+    "vo-resources": [
+      "node_modules/vo-resources/dist/vo.resources.js",
+      "node_modules/vo-resources/dist/vo.resources.min.js"
+    ],
+
+    "stateEvent": [
+      "node_modules/smartadmin-libs/bower_components/angular-ui-router/release/stateEvents.js",
+      "node_modules/smartadmin-libs/bower_components/angular-ui-router/release/stateEvents.min.js"
+    ],
+
+    "lodash": [
+      "node_modules/lodash/lodash.js",
+      "node_modules/lodash/lodash.min.js"
+    ]
+  }
+}

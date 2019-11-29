@@ -1,0 +1,92 @@
+<style>
+  .l_body {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #ECECEC;
+  }
+
+  .l_inner {
+    border: 1px solid #ECECEC;
+    padding: 20px 0px 0px 30px;
+    height: 160px;
+  }
+
+  .l_title {
+    font-size: 20px;
+    font-wight: 900;
+
+  }
+
+  .l_titleSpan {
+    font-size: 20px;
+    color: #0e90d2;
+    font-wight: 900;
+  }
+
+  .l_value {
+    padding: 5px 0;
+    font-size: 20px;
+    font-wight: 900;
+    color: #007ADB;
+  }
+
+  .l_yoyTitleSpan {
+    padding-left: 10px;
+    font-size: 15px;
+    color: #808080;
+    font-wight: 900;
+  }
+
+  .l_yoyTitlePct {
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .l_yoyTitlePctSpan {
+    font-size: 15px;
+    font-weight: 900;
+    color: #404040;
+  }
+
+  .l_yoyData {
+    font-size: 15px;
+    color: #808080;
+    font-wight: 900;
+  }
+
+  .l_toggle {
+    height: 50px;
+    padding: 10px 0 10px 0;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+  }
+</style>
+<div ng-init="ctrl.init()">
+  <div class="row l_body">
+    <div class="col-sm-6 col-xs-12 col-md-4 l_inner " ng-repeat="x in  ctrl.sum" ng-if="x.isShow">
+      <p class="l_title">
+        {{x.name}}
+      </p>
+      <p class="l_value">
+        <span title="{{x.dataSpan? x.dataSpan:''}}">{{x.data}}</span>
+        <span class="l_yoyTitleSpan" ng-if="x.pctData">
+              <span ng-if="x.pctUp" >
+                  <i class="fa fa-arrow-down green-icon ng-scope" ng-if="x.pctUp==2">({{x.pctData}})</i>
+                  <i class="fa fa-arrow-up green-icon ng-scope" style="color:red;" ng-if="x.pctUp==1">({{x.pctData}})</i>
+              </span>
+              <!--({{x.pctData}})-->
+            </span>
+      </p>
+      <p class="l_yoyData" ng-if="x.yoyData">
+        上年同期：
+          <span class="l_yoyTitlePctSpan" title="{{x.yoyDataSpan? x.yoyDataSpan:''}}">
+            {{x.yoyData}}
+          </span>
+      </p>
+    </div>
+  </div>
+  <div class="row l_toggle" ng-if="ctrl.sum.length>3">
+    <button class="btn btn-default" ng-click="ctrl.showAll()">{{!ctrl.isShowAll?'显示':'隐藏'}}更多数据</button>
+  </div>
+</div>

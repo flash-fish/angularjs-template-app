@@ -1,0 +1,244 @@
+/* 圆圈loading效果 */
+
+.circle-loading {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border: 6px solid #0c80fe;
+  border-left-color: #fff;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: loading 1s infinite linear;
+  -webkit-animation: loading .8s infinite linear;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* empty-table */
+
+.hs-table-empty {
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  height: 170px;
+  line-height: 60px;
+  font-size: 13px;
+  text-align: center;
+  background: #fff;
+  z-index: 99;
+  left: 1px;
+}
+
+/* tree-grid */
+.tree-grid-box {
+  position: relative;
+}
+
+/* hs-search */
+.hs-search {
+  width: 80px;
+}
+
+.hs-search:hover {
+  background: #004D8C;
+}
+
+/* hs-sale-sum */
+.hs-sum {
+  min-height: 90px;
+  padding-left: 10px;
+}
+
+.hs-sum .field-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  max-height: 230px;
+}
+
+.hs-sum .field-box > .one-field {
+  padding: 0 5px 18px 5px;
+  text-align: center;
+  width: 14.28%;
+}
+
+.hs-sum .one-field p:first-child {
+  font-size: 11px;
+  color: #808080;
+}
+
+.hs-sum .one-field p:nth-child(2) {
+  padding: 5px 0;
+  color: #404040;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.hs-sum .one-field p:nth-child(2) > span {
+  font-size: 12px;
+  padding-left: 1px;
+}
+
+/**
+  子菜单的样式
+ */
+.sub-menu {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  width: 165px;
+  background: #fff;
+  color: #666769;
+  z-index: 999;
+  border-right: 1px solid #E6E6E6;
+}
+
+.sub-menu.closed ul,
+.sub-menu.closed .static-title-box {
+  visibility: hidden;
+}
+
+.sub-menu.closed {
+  width: 0;
+  background: #fff;
+}
+
+.sub-menu > .toggle {
+  width: 15px;
+  height: 20px;
+  top: 45%;
+  background: #d4d3d3;
+  position: absolute;
+  text-align: center;
+  border: 1px solid #d4d3d3;
+}
+
+.sub-menu > .toggle i {
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.sub-menu > .toggle.left {
+  left: 0;
+  border-radius: 0 40px 40px 0;
+}
+
+.sub-menu > .toggle.right {
+  right: 0;
+  border-radius: 40px 0 0 40px;
+}
+
+.sub-menu > .toggle:hover {
+  width: 20px;
+  cursor: pointer;
+}
+
+.sub-menu i {
+  font-weight: bold;
+}
+
+.sub-menu a,
+.sub-menu a:hover {
+  color: #000;
+}
+
+.sub-menu a.title,
+.sub-menu .static-title {
+  height: 70px;
+  line-height: 70px;
+  font-size: 18px;
+  color: #796f6f;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.sub-menu a.title:hover {
+  text-decoration: none;
+  background-color: #f2f2f2;
+}
+
+.sub-menu a.title span {
+  padding-right: 5px;
+  padding-left: 9px;
+  letter-spacing: 7px;
+}
+
+.sub-menu ul li a {
+  display: block;
+  padding: 10px 0 10px 25px;
+}
+
+.sub-menu ul li a:hover {
+  text-decoration: none;
+  background-color: #F8F8F8;
+  cursor: pointer;
+}
+
+.sub-menu ul li.cursor a:hover {
+  cursor: default;
+}
+
+.sub-menu ul li.active a {
+  background: rgba(0, 122, 219, 0.05);
+  color: #007ADB;
+}
+
+.sub-menu ul li.active a:hover {
+  text-decoration: none;
+}
+
+/*搜索结果展示组件*/
+.search-result-box {
+  padding: 10px 20px;
+  background: #F8F8F8;
+}
+
+.search-result-header {
+  margin-bottom: 10px;
+}
+
+.search-result-header .right{
+  cursor: pointer;
+}
+
+.search-result-header i {
+  color: #007ADB;
+  font-size: 12px;
+}
+
+.search-result-header .title {
+  font-size: 16px;
+}
+
+.search-result-body {
+  font-size: 12px;
+  color: #808080;
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+.search-result-body > div > div {
+  margin: 7px 0;
+}
+
+.search-result-body div .cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: auto;
+  white-space:unset;
+  word-break: break-all;
+}

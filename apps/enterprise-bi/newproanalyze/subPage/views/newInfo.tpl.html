@@ -1,0 +1,99 @@
+<div class="new_Product">
+  <sub-menu menus="ctrl.menu" info="ctrl.info" session="ctrl.fromSession"></sub-menu>
+  <div class="sub-main hs-container top-content-box" ng-init="ctrl.init()">
+    <section>
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header top">
+            <span>单品概况</span>
+            <company-infor supplier="ctrl.com.supplier"></company-infor>
+          </header>
+          <div class="body">
+            <!--新品基本信息-->
+            <div class="store-basic">
+              <article class="border-box margin-bottom">
+                <header>
+                  <span class="title tit_header">新品基本信息</span>
+                </header>
+                <basic-message param="ctrl.click.code"></basic-message>
+              </article>
+            </div>
+            <!--新品轨迹-->
+            <div class="store-basic">
+              <article class="border-box margin-bottom">
+                <header>
+                  <span class="title tit_header">新品轨迹</span>
+                </header>
+                <step-progress keys="ctrl.newTrail"></step-progress>
+              </article>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row">
+        <article class="col-sm-12">
+          <header class="header">
+            <span>门店首到/首销效率</span>
+            <a uib-popover-html="ctrl.popover" popover-trigger="mouseenter" popover-placement='bottom-left'>
+              <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign font-size"></i>
+            </a>
+          </header>
+          <div class="body">
+            <div class="hs-chart">
+              <div class="hs-chart-box">
+                <!--chart引入-->
+                <chart option="ctrl.chart_Scatter" event="ctrl.event" load="ctrl.loadChart"
+                       class="hs-trend graphic-style" id="graphicChart" resize="ctrl.resizeContainer(chart)"></chart>
+              </div>
+            </div>
+
+            <div class="row similar" style="margin: 10px 0;">
+              <button class="btn btn-primary sure" ng-click="ctrl.changeSelect()">选择完成</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!--新品节点信息-->
+      <div class="row ">
+        <article class="col-sm-12">
+          <header class="header">
+            <span>门店数据</span>
+          </header>
+          <div class="body popover-hover more-margin" ng-if="ctrl.newTrail">
+            <table datatable dt-options="ctrl.option" dt-columns="ctrl.column" dt-instance="ctrl.instance"
+                   class="table table-trend hs-table" width="100%">
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+
+  .tit_header {
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .hea_R {
+    float: right;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+
+  .b_R {
+    float: right;
+    margin: 10px 16px 20px 0;
+  }
+
+  .tips {
+    float: right;
+    margin: 23px 16px 20px 0;
+  }
+
+</style>
+

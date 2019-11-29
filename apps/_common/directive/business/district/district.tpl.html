@@ -1,0 +1,9 @@
+<div ng-init="$ctrl.init()">
+  <!--<div ng-if="$ctrl.district">-->
+    <select type="text" class="form-control hover-pointer" style="width:100%;"
+            ng-model="$ctrl.district"
+            ng-options="sto as sto.districtName for sto in $ctrl.districtList"
+            ng-disabled= "$ctrl.isInit">
+    </select>
+  <!--</div>-->
+</div>

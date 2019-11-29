@@ -1,0 +1,43 @@
+<div ng-init="ctrl.init()">
+  <article ng-if="ctrl.options" class="{{ctrl.options.line.class}}">
+    <split-line show="ctrl.options.line.show" name="{{ctrl.options.line.name}}"></split-line>
+    <div ng-show="ctrl.options.line.show" class="pop-option">
+      <p>
+        <span>{{ctrl.options.all.name}}</span>
+        <label>
+          <input type="checkbox" class="checkbox"
+                 ng-model="ctrl.options.all.value" ng-disabled="ctrl.options.all.disable" ng-click="ctrl.selectAll()">
+          <span>全选</span>
+        </label>
+        <span ng-if="ctrl.options.all.icon" class="{{ctrl.options.all.icon ? ctrl.options.all.icon : ''}}">
+                <a href="" class="hs-popover-link" uib-popover-template="'{{ctrl.options.all.icon + '.html'}}'"
+                   popover-placement="top-left" popover-trigger="mouseenter"><i
+                  class="glyphicon glyphicon-info-sign"></i></a>
+              </span>
+      </p>
+      <div class="row" ng-repeat="items in ctrl.options.group" style="display: flex">
+        <div class="{{'col-md-' + items.title.col}}">{{items.title.value}}:</div>
+        <div class="{{'col-md-' + item.col}}" ng-repeat="item in items.list">
+          <label ng-class="{'not-allowed': !item.enabled}">
+            <input type="checkbox" class="checkbox"
+                   ng-model="item.value" ng-value="item.value" ng-disabled="item.disable || ctrl.options.all.disable"
+                   ng-click="ctrl.selectOne(item, $parent.$index)"/>
+            <span ng-style="{opacity: item.key ? 1 : 0}">{{item.name}}</span>
+            <span ng-if="item.icon" class="{{item.icon ? item.icon : ''}}">
+                <a href="" class="hs-popover-link" uib-popover-template="'{{item.icon + '.html'}}'"
+                   popover-placement="top-right" popover-trigger="mouseenter"><i
+                  class="glyphicon glyphicon-info-sign"></i></a>
+              </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+<style>
+  .not-allowed span,
+  .not-allowed input,
+  .not-allowed {
+    cursor: not-allowed !important;
+  }
+</style>

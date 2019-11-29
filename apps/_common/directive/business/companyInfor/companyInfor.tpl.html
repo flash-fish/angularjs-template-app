@@ -1,0 +1,101 @@
+<!--供应商详情内容弹框-->
+<a style="position: relative; cursor: pointer;" uib-popover-template="'company.html'"
+   popover-trigger="mouseenter" popover-placement='bottom'
+   popover-class="increase-companyPopover-width" ng-init="ctrl.init()">
+  <span class="supplier-title" ng-show="ctrl.current.name">
+    [{{ctrl.current.showCode}}]{{ctrl.current.name}}
+  </span>
+</a>
+
+
+<script type="text/ng-template" id="company.html">
+  <div class="company-info">
+    <p class="head">基本信息</p>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="info-wrap">
+          <div class="title">
+            <span>供应商名称:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.supplierName}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>供应商等级:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.supplierRankName}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>供应商分类:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.supplierClassName}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>法人代表姓名:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.corpper}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="info-wrap">
+          <div class="title">
+            <span>供应商代码:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.supplierCode}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>供应商类型:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.supplierTypeName}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>注册地址:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.registerAddress}}</span>
+          </div>
+        </div>
+
+        <div class="info-wrap">
+          <div class="title">
+            <span>电话:</span>
+          </div>
+
+          <div class="content">
+            <span>{{ctrl.companyInfor.tel}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</script>

@@ -1,0 +1,65 @@
+<div class="sale-way-box" ng-init="ctrl.init()" ng-hide="ctrl.hide">
+  <div class="content">
+    <span ng-mouseenter="ctrl.show = true"
+          ng-mouseleave="ctrl.show = false">销售方式占比</span>
+  </div>
+
+  <div class="sale-way-pop" ng-show="ctrl.show">
+    <div ng-repeat="curr in ctrl.list">
+      <span>{{curr.name}} : </span>
+      <span>{{curr.data}}</span>
+    </div>
+  </div>
+
+  <style>
+    .sale-way-box .content > span {
+      font-size: 11px;
+      color: #3f9be4;
+      cursor: pointer;
+    }
+
+    .sale-way-box .content > span:hover {
+      color: #1479ca;
+      font-weight: bold;
+    }
+
+    .sale-way-box > .sale-way-pop {
+      width: 450px;
+      display: flex;
+      flex-wrap: wrap;
+      position: absolute;
+      right: 0;
+      padding: 14px 0 14px 14px;
+      background: #FFFFFF;
+      border: 1px solid #E6E6E6;
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,0.10);
+      border-radius: 5px;
+    }
+
+    .sale-way-box > .sale-way-pop::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      top: -6px;
+      right: 25px;
+      position: absolute;
+      background: #ffffff;
+      display: inline-block;
+      border-top: 1px solid #E6E6E6;
+      border-right: 1px solid #E6E6E6;
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+    }
+
+    .sale-way-box > .sale-way-pop > div {
+      width: 215px;
+      height: 25px;
+      line-height: 25px;
+    }
+
+    .sale-way-box > .sale-way-pop > div > span:nth-child(2) {
+      padding-left: 4px;
+    }
+  </style>
+</div>

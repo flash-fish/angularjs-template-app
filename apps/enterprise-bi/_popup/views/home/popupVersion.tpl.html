@@ -1,0 +1,37 @@
+<div class="modal-content modal-notice" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <div style="font-size: 14px; font-weight: bolder; display: flex; align-items: baseline"><i class="glyphicon glyphicon-info-sign"></i>
+      <div style="margin-left: 20px">
+        {{ctrl.message.dateCode}}
+      </div>
+      <div class="modal-title-message" title="{{ctrl.message.title}}">
+        {{ctrl.message.title}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-body" style="overflow-y: auto; max-height: 120px">
+    <div ng-bind-html="ctrl.message.content" style="word-break: break-word"></div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="ctrl.cancel()">知道了</button>
+  </div>
+</div>
+<style>
+  .modal-dialog{
+    top: 100px;
+    width: 400px;
+  }
+  .modal-body {
+    padding: 10px 50px 10px 50px !important;
+    font-size: 14px;
+    color: #999;
+    line-height: 25px;
+  }
+  .modal-title-message {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+    padding-left: 10px;
+  }
+</style>

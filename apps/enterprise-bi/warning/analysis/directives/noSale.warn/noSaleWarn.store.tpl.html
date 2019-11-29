@@ -1,0 +1,114 @@
+<div class="hs-container top-content-box" ng-init="$ctrl.init()">
+  <section ng-if="$ctrl.inited">
+    <div class="row condition" >
+      <article class="col-sm-12">
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="$ctrl.openClasses()" data="$ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openCat()" data="$ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openItem()" data="$ctrl.com.product.val" key="'商品'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="$ctrl.openOperation()" data="$ctrl.com.operation.val" key="'业态'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openStoreList()" data="$ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <!--<div class="col-md-4 hs-flex-box" style="width: 303px;">-->
+              <!--<label>-->
+                <!--<input type="checkbox" ng-checked="$ctrl.stockCostFlag" ng-click="$ctrl.updateStockCost()" class="checkbox"/>-->
+                <!--<span></span>-->
+              <!--</label>-->
+              <!--<span style="width: 95px">日均库存金额：</span>-->
+              <!--<select class="form-control select" ng-model="$ctrl.compareStoreCost">-->
+                <!--<option value="{{y.id}}" ng-repeat="y in $ctrl.allCompareStoreCost">{{y.name}}</option>-->
+              <!--</select>-->
+              <!--<input type="number" class="form-control input-number" ng-model="$ctrl.stockCostFilter"-->
+                     <!--ng-disabled="!$ctrl.stockCostFlag"-->
+                     <!--ng-class="$ctrl.stockCostStyle"/>-->
+              <!--<span class="unit">万元</span>-->
+            <!--</div>-->
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2 hs-flex-box">
+              <span style="width: 124px">请选择时间周期：</span>
+              <select class="form-control" style="width: 96px;"
+                      ng-change="$ctrl.changeDate()"
+                      ng-model="$ctrl.filter.dataLevel.data">
+                <option value="{{y.id}}" ng-repeat="y in $ctrl.allTimeCycle">{{y.name}}</option>
+              </select>
+            </div>
+            <div class="col-md-2 combine-input-box">
+              <label>
+                <input type="checkbox" ng-model="$ctrl.filter.importDate.check" class="checkbox"/>
+                <span></span>
+              </label>
+              <span>商品引入日期在最近：</span>
+              <input numberic min="0" max="999" max-length="3"
+                     class="form-control input-number" ng-model="$ctrl.filter.importDate.data"
+                     ng-disabled="!$ctrl.filter.importDate.check"
+                     ng-class="$ctrl.importDateStyle"/><span>天前</span>
+            </div>
+          </div>
+
+          <div class="row input-choose" ng-show="$ctrl.show">
+            <div class="col-md-2">
+              <search-box click="$ctrl.openBrand()" data="$ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openDistrict()" data="$ctrl.com.district.val" key="'地区'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="$ctrl.openStoreGroup()" data="$ctrl.com.storeGroup.val" key="'店群'"></search-box>
+            </div>
+          </div>
+
+          <div class="input-choose">
+            <split-line show="$ctrl.show"></split-line>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="$ctrl.showSearchRes">
+            <search-result-box keys="$ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="$ctrl.showSearchRes"></search-show>
+            <hs-search search="$ctrl.search()" finish="$ctrl.finish && $ctrl.finish_import"></hs-search>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>不动销异常商品</span>
+        </header>
+        <div class="body">
+          <table datatable dt-options="$ctrl.option" dt-columns="$ctrl.column"
+                 dt-instance="$ctrl.instance"  ng-if="$ctrl.copyCom"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+<style>
+  .label_true {
+    border: 1px red solid !important;
+  }
+
+  .label_false {
+    border: 1px solid #999;
+  }
+</style>

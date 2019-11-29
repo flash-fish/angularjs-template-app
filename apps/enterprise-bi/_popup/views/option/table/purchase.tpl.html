@@ -1,0 +1,49 @@
+<div class="modal-content" ng-init="ctrl.init()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ctrl.cancel()">&times;
+    </button>
+    <h1 class="modal-title">指标选择</h1>
+  </div>
+  <div class="modal-body popup-option-table">
+    <div class="hs-field">
+      <div class="pop-option" ng-repeat="(k, v) in ctrl.field track by k">
+        <p>
+          <span>{{v.key.name}}</span>
+          <label>
+            <input type="checkbox" class="checkbox"
+                   ng-model="v.all" ng-disabled="v.disable" ng-click="ctrl.selectAll(v, ctrl.field)">
+            <span>全选</span>
+          </label>
+        </p>
+        <div class="row">
+          <div class="{{'col-md-' + v.key.col}}" ng-repeat="l in v.list track by $index">
+            <label>
+              <input type="checkbox" class="checkbox"
+                     ng-model="l.model" ng-value="l.id" ng-disabled="(l.relateTab && ctrl.disable) || l.disable || v.disable"
+                     ng-click="ctrl.selectOne(l, k, ctrl.field)"/>
+              <span ng-style="{opacity: l.id ? 1 : 0}">{{l.name}}</span>
+              <span ng-if="l.icon" class="{{l.icon ? l.icon : ''}}">
+                <a href="" class="hs-popover-link" uib-popover-template="'{{l.icon + '.html'}}'"
+                   popover-placement="bottom-left" popover-trigger="mouseenter" popover-class="table-popover-width"><i class="glyphicon glyphicon-info-sign"></i></a>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <same-ring-setting options="ctrl.options"></same-ring-setting>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <span class="hs-red error" ng-if="ctrl.showError">至少指定一个指标, 请选择</span>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.ok()">确定</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.cancel()">取消</button>
+  </div>
+</div>
+
+<script type="text/ng-template" id="skuCount.html">
+  <div>
+    有销售或者有库存的商品数
+  </div>
+</script>
+
+

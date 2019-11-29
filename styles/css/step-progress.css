@@ -1,0 +1,135 @@
+.steps {
+  min-height: 90px;
+  padding: 30px 30px 60px 30px;
+  position: relative
+}
+
+.steps .steps-container {
+  position: relative;
+  background: #DDD;
+  height: 10px;
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  margin: 0;
+  list-style: none
+}
+
+.steps .steps-container li {
+  position: absolute;
+  text-align: center;
+  list-style: none;
+  z-index: 3;
+  float: left
+}
+
+.steps .steps-container li .step {
+  padding: 0 10px
+}
+
+.steps .steps-container li .step .step-image {
+  margin: -14px 0 0 0
+}
+
+.steps .steps-container li .step .step-image span {
+  background-color: #DDD;
+  display: block;
+  width: 37px;
+  height: 37px;
+  margin: 0 auto;
+  border-radius: 37px;
+  -moz-border-radius: 37px;
+  -webkit-border-radius: 37px;
+  -ms-border-radius: 37px
+}
+
+.steps .steps-container li .step .step-current {
+  font-size: 11px;
+  color: #999;
+  margin: 8px 0 0 0
+}
+
+.steps .steps-container li .step .step-description {
+  font-size: 13px;
+  color: #4492f7;
+}
+
+.steps .steps-container li:hover .step.linkable .step-description {
+  text-decoration: underline;
+}
+
+.steps .steps-container li.activated .step .step-image span {
+  background-color: #4492f7;
+  z-index: 4;
+}
+
+.steps .steps-container li.activated.linkable {
+  cursor: pointer;
+}
+
+.steps .steps-container li.activated.linkable .step-image span:after:hover {
+  background-color: #bfbfbf
+}
+
+.steps .steps-container li.activated .step .step-image span:after {
+  background-color: #FFF;
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 5;
+  width: 27px;
+  height: 27px;
+  margin: 5px;
+  border-radius: 27px;
+  -moz-border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -ms-border-radius: 27px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+}
+
+.steps .steps-container li.activated .step.linkable {
+  cursor: pointer;
+}
+
+.steps .steps-container li.activated .step.linkable:hover .step-image span:after {
+  /*background-color: #4492f7;*/
+  /*display: block;*/
+  /*content: '';*/
+  /*position: absolute;*/
+  /*z-index: 1;*/
+  width: 0px;
+  height: 0px;
+  margin: 18px;
+  border-radius: 27px;
+  -moz-border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -ms-border-radius: 27px;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  transition: 0.2s;
+}
+
+.steps .step-bar {
+  position: absolute;
+  background-color: #4492f7;
+  height: 10px;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -ms-border-radius: 10px 10px 10px 10px;
+  z-index: 1;
+}
+
+.steps .step-bar.last {
+  top: -10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px
+}

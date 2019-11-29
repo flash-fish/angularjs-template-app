@@ -1,0 +1,19 @@
+<div ng-init="hoOther.init()" style="height: 18px;margin-top: 5px;display: flex">
+
+  <div style="width: 45%">
+    <div style="margin-left: 15px;height: 1px; margin-top: 9px; background-color: #CCCCCC"></div>
+  </div>
+
+  <div style="width: 10%">
+    <div style="width: 100%; text-align: center" ng-click="hoOther.toggle()" class="otherName">
+      更多内容
+      <i class="fa fa-angle-down" ng-if="!hoOther.show" style="color: #27ADF8; font-size: 16px; padding-left: 4px;"></i>
+      <i class="fa fa-angle-up" ng-if="hoOther.show" style="color: #27ADF8; font-size: 16px; padding-left: 4px;"></i>
+    </div>
+  </div>
+
+  <div style="width: 45%;margin-right: 15px">
+    <div style="height: 1px; margin-top: 9px; background-color: #CCCCCC"></div>
+  </div>
+
+</div>

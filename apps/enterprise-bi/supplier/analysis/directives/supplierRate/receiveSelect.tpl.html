@@ -1,0 +1,38 @@
+<div class="row input-choose" ng-init="ctrl.init()">
+  <div class="col-md-2 supplier-supply">
+    <div class="col-md-4 supplier-label">
+      <label>
+        <input type="checkbox" class="checkbox"
+               ng-model="ctrl.rates.checkOne"
+               ng-change="ctrl.change()">
+        <span>到货率</span>
+      </label>
+    </div>
+    <div class="col-md-8 supplier-box">
+      <select class="form-control select"
+              ng-disabled="!ctrl.rates.checkOne"
+              ng-change="ctrl.change()"
+              ng-model="ctrl.rates.receiveQtyRate"
+              ng-options="item for item in ctrl.receiveData">
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-2 supplier-supply">
+    <div class="col-md-4 supplier-label">
+      <label>
+        <input type="checkbox" class="checkbox"
+               ng-model="ctrl.rates.checkTwo"
+               ng-change="ctrl.change()">
+        <span>退货率</span>
+      </label>
+    </div>
+    <div class="col-md-8 supplier-box">
+      <select class="form-control select"
+              ng-disabled="!ctrl.rates.checkTwo"
+              ng-change="ctrl.change()"
+              ng-model="ctrl.rates.returnAmountRate"
+              ng-options="item for item in ctrl.returnData"></select>
+    </div>
+  </div>
+</div>

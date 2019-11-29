@@ -1,0 +1,364 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <search-box click="ctrl.openOperation()" data="ctrl.com.operation.val" key="'业态'"></search-box>
+              <hide-condition show="ctrl.haveStore" name="'门店'"></hide-condition>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openStoreList()" data="ctrl.com.store.val" key="'门店'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openDistrict()" data="ctrl.com.district.val" key="'地区'"></search-box>
+              <hide-condition show="ctrl.haveStore" name="'地区'"></hide-condition>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <marketing model="ctrl.com.distributionSelect" models="ctrl.wholeData"></marketing>
+            </div>
+            <div class="col-md-2">
+              <contrast-store param="ctrl.com" curr="ctrl.com.comparableStores" dis="ctrl.disabledId"></contrast-store>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <button class="btn btn-primary hs-meBtn"
+                    ng-disabled=""
+                    ng-click="ctrl.search()"> 查询
+            </button>
+            <div class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">数据设定</button>
+              <button class="btn setting-btn" ng-click="ctrl.ChartOption()">图表设定</button>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>合计</span>
+        </header>
+        <div class="body">
+          <hs-sale-sum sum="ctrl.sum"></hs-sale-sum>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header current-parent-box">
+          <span>价格带分析图</span>
+          <div class="hs-breadcrumbs" ng-if="!ctrl.hideTree">
+            <breadcrumbs data="ctrl.tree" click="ctrl.getParent(code, level, name)"></breadcrumbs>
+          </div>
+          <div style="display: flex; align-items: center; margin-left: auto" class="hs-chart-button hs-chart-box">
+            <div class="hs-chart-function">
+              <chart-toggle
+                first="ctrl.sale" second="ctrl.stock"
+                show-label="ctrl.showLineLabel" key="{type: 'line', zoom: ctrl.zoom, img: 'chart_label_line.svg'}"
+              ></chart-toggle>
+              <chart-toggle
+                first="ctrl.sale" second="ctrl.stock"
+                show-label="ctrl.showBarLabel" key="{type: 'bar', zoom: ctrl.zoom}"
+              ></chart-toggle>
+            </div>
+          </div>
+        </header>
+        <div class="body hs-chart-box">
+          <div class="hs-chart">
+            <chart option="ctrl.sale" event="ctrl.key.addEvent" load="ctrl.back.loadChart" class="hs-trend"></chart>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>价格带构成图</span>
+        </header>
+        <div class="body hs-chart-box" style="border-radius: 32px; overflow: hidden;">
+          <span class="header_T_One" ng-if="ctrl.conf.firstPrice">{{ctrl.conf.firstPrice}}</span>
+          <span class="header_T_Two" ng-if="ctrl.conf.secondPrice">{{ctrl.conf.secondPrice}}</span>
+          <chart option="ctrl.structureChart" class="hs-trend"></chart>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <header class="header">
+          <span>价格带数据</span>
+        </header>
+        <div class="body" ng-if="ctrl.tableShow">
+          <table datatable dt-options="ctrl.TableOption" dt-columns="ctrl.TableColumn"
+                 dt-instance="ctrl.instance"
+                 class="table table-trend hs-table" width="100%">
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <!-- ng-if="ctrl.SingleProduct" -->
+    <div class="row" ng-if="ctrl.conf.finishRequire && ctrl.conf.analyzeShow">
+      <article class="col-md-12">
+        <header class="header">
+          <span>价格线分析</span>
+        </header>
+        <div class="body hs-chart-box">
+          <div class="LegendShow">
+            <div class="f_L" ng-if="ctrl.legArea.legFive">
+              <em class="icon_five"></em>
+              <span class="font_chart">
+                {{ctrl.conf.LenName[0]}}
+                ({{ctrl.areaPrice.five}}元 ~)
+              </span>
+            </div>
+            <div class="f_L" ng-if="ctrl.legArea.legFour">
+              <em class="icon_four"></em>
+              <span class="font_chart">
+                {{ctrl.conf.LenName[1]}}
+                ({{ctrl.areaPrice.four}} ~ {{ctrl.areaPrice.fourLevel}}元)
+              </span>
+            </div>
+            <div class="f_L" ng-if="ctrl.legArea.legThree">
+              <em class="icon_three"></em>
+              <span class="font_chart">
+                {{ctrl.conf.LenName[2]}}
+                ({{ctrl.areaPrice.three}} ~ {{ctrl.areaPrice.threeLevel}}元)
+              </span>
+            </div>
+            <div class="f_L" ng-if="ctrl.legArea.legTwo">
+              <em class="icon_two"></em>
+              <span class="font_chart">
+                {{ctrl.conf.LenName[3]}}
+                ({{ctrl.areaPrice.two}} ~ {{ctrl.areaPrice.twoLevel}}元)
+              </span>
+            </div>
+            <div class="f_L" ng-if="ctrl.legArea.legOne">
+              <em class="icon_one"></em>
+              <span class="font_chart">
+                {{ctrl.conf.LenName[4]}}
+                (0 ~ {{ctrl.areaPrice.oneLevel}}元)
+              </span>
+            </div>
+          </div>
+          <div class="hs-chart" style="margin-top: 0">
+            <chart option="ctrl.AreaChart" class="hs-trend"></chart>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ng-if="ctrl.SingleProduct" -->
+    <div class="row" ng-if="ctrl.conf.analyzeShow">
+      <article class="col-md-12">
+        <header class="header">
+          <span>单品结构分析</span>
+        </header>
+        <div class="body">
+          <uib-tabset active="ctrl.conf.active">
+            <uib-tab index="1" heading="按价格带商品" select="ctrl.brandOneSelect($evente)">
+              <div ng-if="ctrl.conf.active === 1 && ctrl.treeFinish">
+                <div class="table-box">
+                  <tree-grid table="ctrl.oneBraTable" key="ctrl.oneBraConfig"></tree-grid>
+                </div>
+              </div>
+            </uib-tab>
+
+            <uib-tab index="2" heading="按价格带规格" select="ctrl.brandTwoSelect($event)">
+              <div ng-if="ctrl.conf.active === 2 && ctrl.treeFinish" >
+                <div class="table-box">
+                <tree-grid table="ctrl.twoBraTable" key="ctrl.twoBraConfig"></tree-grid>
+                </div>
+              </div>
+            </uib-tab>
+
+            <uib-tab index="3" heading="按品牌价格带" select="ctrl.brandThreeSelect($event)">
+              <div ng-if="ctrl.conf.active === 3 && ctrl.treeFinish">
+                <div class="table-box">
+                  <tree-grid table="ctrl.threeBraTable" key="ctrl.threeBraConfig"></tree-grid>
+                </div>
+              </div>
+            </uib-tab>
+
+            <uib-tab index="4" heading="按价格带品牌" select="ctrl.brandFourSelect($event)">
+              <div ng-if="ctrl.conf.active === 4 && ctrl.treeFinish">
+                <div class="table-box">
+                  <tree-grid table="ctrl.fourBraTable" key="ctrl.fourBraConfig"></tree-grid>
+                </div>
+              </div>
+            </uib-tab>
+
+          </uib-tabset>
+
+        </div>
+      </article>
+    </div>
+
+  </section>
+</div>
+
+<style>
+  .hs-meBtn{
+    width: 80px;
+  }
+
+  .DTFC_ScrollWrapper{
+    height: 100% !important;
+    width: 100%;
+  }
+
+  /*.dt-toolbar-footer{
+    display: none;
+  }*/
+
+  .header_T_One{
+    position: absolute;
+    left: 6px;
+    top: 50px;
+    font-weight: bold;
+    color: #007adb;
+  }
+  .header_T_Two{
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    font-weight: bold;
+    color: #007adb;
+  }
+
+  .LegendShow{
+    float: right;
+    width: 1000px;
+    right: 57px;
+    top: 48px;
+    position: relative;
+  }
+
+  .f_L{
+    float: right;
+    margin-left: 10px;
+  }
+  .icon_one{
+    width: 15px;
+    height: 15px;
+    background: #2CDEA1;
+    float: left;
+    opacity: 0.4;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-top: 2px;
+  }
+  .icon_two{
+    width: 15px;
+    height: 15px;
+    background: #F4F156;
+    float: left;
+    opacity: 0.4;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-top: 2px;
+  }
+  .icon_three{
+    width: 15px;
+    height: 15px;
+    background: #3ABAEF;
+    float: left;
+    opacity: 0.4;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-top: 2px;
+  }
+  .icon_four{
+    width: 15px;
+    height: 15px;
+    background: #F49EBB;
+    float: left;
+    opacity: 0.4;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-top: 2px;
+  }
+  .icon_five{
+    width: 15px;
+    height: 15px;
+    background: #ED9942;
+    float: left;
+    opacity: 0.4;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-top: 2px;
+  }
+  .font_chart{
+    font-size: 12px !important;
+    margin-left: 3px;
+  }
+  .sku_One{
+    width: 10px;
+    height: 10px;
+    background: #e83329;
+    float: left;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-top: 6px;
+    margin-right: 3px;
+  }
+  .sku_Two{
+    width: 10px;
+    height: 10px;
+    background: #007ADB;
+    float: left;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-top: 6px;
+    margin-right: 3px;
+  }
+  .dataTables_info{
+    display: none;
+  }
+
+ /* .DTFC_LeftHeadWrapper table.dataTable thead .sorting_asc {
+    font-weight: bold;
+    background-color: #f5f5f5 !important;
+    background: none;
+  }*/
+
+</style>

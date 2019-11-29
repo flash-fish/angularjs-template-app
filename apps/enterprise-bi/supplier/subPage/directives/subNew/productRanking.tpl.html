@@ -1,0 +1,13 @@
+<div id="content" class="homepage" ng-init="ctrl.init()">
+  <section widget-grid class="row">
+    <article class="col-md-12 one-list-box margin-bottom">
+      <h2>
+        <span class="title" style="position: relative;top: 5px;">销售概况</span>
+        <a style="position: relative; float: left; cursor: pointer" uib-popover-html="home.keywordDict" popover-trigger="mouseenter" popover-placement='bottom-left'>
+          <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+        <a href="" class="more hover-bold" ng-click="home.goPage(home.CommonCon.homeLink.trend, null, null)">
+          销售详细<i class="fa fa-angle-right"></i></a>
+      </h2>
+    </article>
+  </section>
+</div>

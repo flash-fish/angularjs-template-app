@@ -1,0 +1,173 @@
+<div class="hs-container top-content-box subpage" ng-init="ctrl.init()">
+  <section ng-if="ctrl.inited">
+    <div class="row condition">
+      <article class="col-md-12">
+        <header class="header top">
+          <span>门店对标</span>
+        </header>
+        <div class="body store-analyze">
+          <div class="row input-choose">
+            <div class="one-area">
+              对标1：
+            </div>
+            <!--门店1-->
+            <div class="col-md-2 mid_Ben">
+              <search-box click="ctrl.openStoreListOne()"
+                          ng-class="{true:'label_true',false:'label_false'}[ctrl.com.store.val.length == 0]"
+                          data="ctrl.com.store.val" key="'门店'">
+              </search-box>
+            </div>
+          </div>
+
+          <div class="row input-choose">
+            <div class="col-md-1 one-area">
+              对标2：
+            </div>
+            <div class="col-md-3">
+              <label>
+                <input class="radiobox" id="storeA" type="radio" ng-model="ctrl.endStore" name="stores" ng-value="'compareStoreCode'">
+                <span></span>
+              </label>
+            </div>
+            <!--门店2-->
+            <div class="col-md-2 im_L">
+              <label for="storeA" class="label_s">
+                <search-box click="ctrl.openStoreListTwo()"
+                            ng-class="{true:'label_true',false:'label_false'}[ctrl.com.compareStoreCode_mid.val.length == 0 && ctrl.com.compareStoreGroup_mid.val.length == 0 && ctrl.endStore != 'compareOperation' && ctrl.endStore == 'compareStoreCode']"
+                            data="ctrl.com.compareStoreCode_mid.val" key="'门店'">
+                </search-box>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label>
+                <input class="radiobox" id="storeB" type="radio" ng-model="ctrl.endStore" name="stores" ng-value="'compareStoreGroup'">
+                <span></span>
+              </label>
+            </div>
+            <div class="col-md-2 im_L">
+              <label for="storeB" class="label_s">
+                <search-box click="ctrl.openStoreGroup()"
+                            ng-class="{true:'label_true',false:'label_false'}[ctrl.com.compareStoreCode_mid.val.length == 0 && ctrl.com.compareStoreGroup_mid.val.length == 0 && ctrl.endStore != 'compareOperation' && ctrl.endStore == 'compareStoreGroup']"
+                            data="ctrl.com.compareStoreGroup_mid.val" key="'店群'">
+                </search-box>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label>
+                <input class="radiobox" type="radio" id="storeC" ng-model="ctrl.endStore" name="stores" ng-value="'compareOperation'">
+                <span></span>
+              </label>
+            </div>
+            <div class="col-md-1 one-area im_L">
+              <label for="storeC" class="label_s">
+                业态平均
+              </label>
+            </div>
+          </div>
+
+          <div class="row input-choose" style="max-width: 100%">
+            <div class="col-md-1 one-area">
+              其他条件：
+            </div>
+            <div class="col-md-2 mid_Ben">
+              <input date-custom-picker class="form-control hs-date-picker month-picker" type="text"
+                     opts="ctrl.dateOption" ng-model="ctrl.com.date" placeholder="日期" required readonly
+                     ng-click="ctrl.tool.dateRange_click($event)"/>
+            </div>
+            <div class="col-md-2  mid_Im">
+              <search-box click="ctrl.openClasses()" data="ctrl.com.classes.val" key="'品类组'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openCat()" data="ctrl.com.category.val" key="'类别'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openBrand()" data="ctrl.com.brand.val" key="'品牌'"></search-box>
+            </div>
+            <div class="col-md-2">
+              <search-box click="ctrl.openSupplier()" data="ctrl.com.supplier.val" key="'供应商'"></search-box>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+            <search-result-box keys="ctrl.sortCom"></search-result-box>
+          </div>
+          <div class="hs-search-box">
+            <search-show show="ctrl.showSearchRes"></search-show>
+            <button class="btn btn-primary hs-meBtn"
+                    ng-disabled="ctrl.com.store.val.length == 0 || (ctrl.com.compareStoreCode_mid.val.length == 0 && ctrl.com.compareStoreGroup_mid.val.length == 0 && ctrl.endStore != 'compareOperation')"
+                    ng-click="ctrl.search()"> 查询
+            </button>
+            <div ng-if="ctrl.active === 3" class="setting-box btn-group">
+              <button class="btn setting-btn" ng-click="ctrl.getTableOption()">
+                数据设定
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-md-12">
+        <uib-tabset active="ctrl.active">
+
+          <uib-tab index="1" heading="按整体">
+            <div ng-if="ctrl.active === 1">
+              <by-whole param="ctrl.commonParam" tab="ctrl.active" field="ctrl.totalField" keys="ctrl.key"></by-whole>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="2" heading="按趋势">
+            <div ng-if="ctrl.active === 2">
+              <by-store-trend param="ctrl.commonParam" field="ctrl.keys.field" tab="ctrl.active"
+                              keys="ctrl.key"></by-store-trend>
+            </div>
+          </uib-tab>
+
+          <uib-tab index="3" heading="按类别">
+            <div ng-if="ctrl.active === 3">
+              <by-store-type param="ctrl.commonParam" field="ctrl.type_field" keys="ctrl.key"></by-store-type>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </article>
+    </div>
+
+  </section>
+</div>
+
+<style>
+  .hs-meBtn{
+    width: 80px;
+  }
+
+  .one-area{
+    float: left;
+  }
+
+  .label_true {
+    border: 1px red solid;
+  }
+
+  .label_false {
+    border: none;
+  }
+
+  .im_L {
+    margin-left: 0 !important;
+  }
+
+  .mid_Ben {
+    margin-left: 26px !important;
+    float: left;
+  }
+
+  .mid_Im {
+    margin-left: 28px !important;
+  }
+
+  .label_s {
+    width: 220px;
+    height: 29px;
+  }
+</style>

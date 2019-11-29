@@ -1,0 +1,19 @@
+<div ng-init="ctrl.init()" class="hs-sub-tab-box">
+  <uib-tabset active="ctrl.active" style="margin-top: 15px;">
+    <uib-tab index="1" heading="按门店" ng-if="!ctrl.keys.storeOmit.includes(1)">
+      <div ng-if="ctrl.active === 1">
+        <by-store param="ctrl.param" field="ctrl.field" keys="ctrl.keys"></by-store>
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="按业态" ng-if="!ctrl.keys.storeOmit.includes(2)">
+      <div ng-if="ctrl.active === 2">
+        <by-operation param="ctrl.param" field="ctrl.field" keys="ctrl.keys" active="ctrl.active"></by-operation>
+      </div>
+    </uib-tab>
+    <uib-tab index="3" heading="按地区" ng-if="!ctrl.keys.storeOmit.includes(3)">
+      <div ng-if="ctrl.active === 3">
+        <by-area param="ctrl.param" field="ctrl.field" keys="ctrl.keys" active="ctrl.active"></by-area>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>

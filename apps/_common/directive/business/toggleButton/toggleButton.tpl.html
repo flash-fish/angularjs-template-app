@@ -1,0 +1,17 @@
+<div class="hs-show-more" ng-init="ctrl.init()">
+  <button class="btn btn-default" ng-click="ctrl.toggle()">
+    {{ctrl.showChart ? "隐藏" : "显示"}}{{ctrl.name}}
+  </button>
+</div>
+
+<style>
+  .hs-show-more {
+    margin: 10px 0 15px 0;
+    text-align: center;
+  }
+
+  .hs-show-more button {
+    width: 140px;
+    font-size: 11px;
+  }
+</style>

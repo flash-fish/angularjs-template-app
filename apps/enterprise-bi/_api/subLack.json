@@ -1,0 +1,53 @@
+{
+  "code": 0,
+  "data": {
+    "details": [
+      {
+        "itemName": "佳洁士长效清新薄荷健康专家防蛀修护牙膏",
+        "itemCode": "029906",
+        "size": 25,
+        "status": 3.23,
+        "level": 0,
+        "days": 3234.23,
+        "price": 3234.23
+      },
+      {
+        "itemName": "潘婷乳液修复洗发露",
+        "itemCode": "029906",
+        "size": 25,
+        "status": 3.23,
+        "level": 0,
+        "days": 3234.23,
+        "price": 3234.23
+      },
+      {
+        "itemName": "海飞丝丝质柔滑型去屑洗发露(优惠装)",
+        "itemCode": "029906",
+        "size": 25,
+        "status": 3.23,
+        "level": 0,
+        "days": 3234.23,
+        "price": 3234.23
+      },
+      {
+        "itemName": "潘婷排浊赋能洗护组合",
+        "itemCode": "029906",
+        "size": 25,
+        "status": 3.23,
+        "level": 0,
+        "days": 3234.23,
+        "price": 3234.23
+      }
+    ],
+    "summary": {
+      "itemName": "",
+      "itemCode": "",
+      "size": "",
+      "status": "",
+      "level": "",
+      "days": 3234.23,
+      "price": 3234.23
+    },
+    "total": 4
+  }
+}

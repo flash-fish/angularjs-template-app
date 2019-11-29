@@ -1,0 +1,29 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="row condition">
+      <article class="col-sm-12">
+        <div class="body">
+          <div class="row input-choose">
+            <div class="col-md-2">
+              <marketing model="ctrl.com.date" models="ctrl.newSeYear"></marketing>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <article class="col-sm-12">
+        <header class="header">
+          <span>每日新品状态监控(按类别)</span>
+        </header>
+        <div class="body">
+          <div>
+            <tree-grid table="ctrl.table" key="ctrl.config"></tree-grid>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </section>
+</div>

@@ -1,0 +1,43 @@
+<div class="hs-container top-content-box" ng-init="ctrl.init()">
+  <section>
+    <div class="tab-top-box">
+      <header class="header top">
+        <span>销售异常</span>
+        <span style="float: right">
+          <i class="fa fa-exclamation doorWarn-sale-title"></i>
+          销量下跌商品：最近30天的零售额较上一个周期下跌{{ctrl.title_threshold}}以上
+          <a href="" class="hs-popover-link" uib-popover-template="'tip.html'"
+             popover-placement="bottom-right" popover-trigger="mouseenter"><i class="glyphicon glyphicon-info-sign"></i></a>
+        </span>
+      </header>
+      <div class="tab-top">
+        <uib-tabset active="ctrl.key.active">
+          <uib-tab index="1" heading="按整体" ng-if="!ctrl.key.onlyShowStore">
+            <div ng-if="ctrl.key.active === 1">
+              <sale-warn-all keys="ctrl.key" table-info="ctrl.tableInfo"></sale-warn-all>
+            </div>
+          </uib-tab>
+          <uib-tab index="2" heading="按门店">
+            <div ng-if="ctrl.key.active === 2">
+              <sale-warn-store keys="ctrl.key"></sale-warn-store>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .popover{
+    max-width: 520px;
+  }
+</style>
+<script type="text/ng-template" id="tip.html">
+  <div class="hs-popover-box">
+    <span>同时满足下面2个条件的商品</span>
+    <div>
+      <p>1.上一周期无促销的正常A类品(不含新品)</p>
+      <p>2.该商品的零售额 在对应的小分类中占比 >50% 或者 下降比例大于小分类的下降比例</p>
+    </div>
+  </div>
+</script>

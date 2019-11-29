@@ -1,0 +1,133 @@
+<div class="subpage">
+  <div class="hs-container top-content-box" ng-init="ctrl.init()">
+    <section>
+      <div class="row condition">
+        <article class="col-sm-12">
+          <header class="header top flex-center">
+            <span>供应商结构占比分析</span>
+            <span style="padding-left: 10px;font-size: 15px;">
+              <sup-tip data="ctrl.tip.occupationRatio"></sup-tip>
+            </span>
+          </header>
+          <div class="body">
+            <div class="row input-choose structure">
+              <div class="col-md-2 hs-flex-box">
+                <hs-org-select select="ctrl.searchFilter.date" list="ctrl.OccupationDate" style="width: 100%"></hs-org-select>
+              </div>
+              <div class="col-md-2 hs-flex-box">
+                <span style="padding-right: 10px;font-size: 15px;" class="pctDiff"><sup-tip data="ctrl.tip.occupationRatioDiff"></sup-tip></span>
+                <span>占比差高于：</span>
+                <select class="form-control"
+                        ng-model="ctrl.searchFilter.pctDiff">
+                  <option ng-value=y.value ng-repeat="y in ctrl.OccupationRatio">{{y.name}}</option>
+                </select>
+              </div>
+
+              <div class="col-md-2 hs-flex-box" style="width: 282px">
+                <label>
+                  <input type="checkbox" ng-model="ctrl.searchFilter.pctHs.checked" class="checkbox"/>
+                  <span></span>
+                </label>
+                <span style="padding-right: 10px;font-size: 15px;"><sup-tip data="ctrl.tip.occupationRatioHsSmallClass"></sup-tip></span>
+                <span>占比华商小类高于：</span>
+                <select class="form-control"
+                        ng-model="ctrl.searchFilter.pctHs.value" ng-disabled="!ctrl.searchFilter.pctHs.checked">
+                  <option ng-value=y.value ng-repeat="y in ctrl.OccupationRatio">{{y.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px" ng-show="ctrl.showSearchRes">
+              <search-result-box keys="ctrl.sortCom"></search-result-box>
+            </div>
+
+            <div class="hs-search-box">
+              <search-show show="ctrl.showSearchRes"></search-show>
+              <hs-search search="ctrl.search()" finish="ctrl.back.finish"></hs-search>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row">
+        <article class="col-sm-12">
+          <uib-tabset active="ctrl.key.active">
+            <uib-tab index="1" heading="按树形结构" select="ctrl.select()">
+              <div ng-if="ctrl.key.active === 1">
+                <structural-tree param="ctrl.commonParam" keys="ctrl.keys"></structural-tree>
+              </div>
+            </uib-tab>
+            <uib-tab index="2" heading="按供应商/小类" select="ctrl.select()">
+              <div ng-if="ctrl.key.active === 2">
+                <structural-chart-table param="ctrl.commonParam" keys="ctrl.keys"></structural-chart-table>
+              </div>
+            </uib-tab>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+<style>
+  .structure .col-md-2 {
+    position: unset;
+  }
+
+  .hs-flex-box {
+    display: flex;
+    align-items: center;
+  }
+  /**
+    checkbox和input控件组合时候的样式
+   */
+  .combine-input-box {
+    display: flex;
+    align-items: center;
+    width: auto !important;
+    min-width: 200px;
+  }
+
+  .hs-flex-box > label,
+  .combine-input-box > label {
+    position: relative;
+    top: 2px;
+  }
+
+  .hs-flex-box > .select,
+  .combine-input-box > .select {
+    margin: 0 5px;
+    width: 96px;
+  }
+
+  .hs-flex-box > .input-number,
+  .combine-input-box > .input-number {
+    width: 60px;
+    margin: 0 5px;
+  }
+
+  .hs-flex-box > .unit {
+    width: 27px;
+  }
+
+  .hs-flex-box span{
+    word-break: keep-all;
+  }
+
+  .checkbox-box {
+    max-width: 500px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .checkbox-box > .checkbox-single {
+    margin: 3px 0;
+    min-width: 120px;
+  }
+
+  .pctDiff .popover {
+    min-width: 440px !important;
+  }
+
+  .pctDiff .tip {
+    max-width: 440px !important;
+  }
+</style>

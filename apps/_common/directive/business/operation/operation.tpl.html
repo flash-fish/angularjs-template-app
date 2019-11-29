@@ -1,0 +1,7 @@
+<div ng-init="$ctrl.init()">
+  <select type="text" class="form-control hover-pointer" style="width:100%;"
+          ng-model="$ctrl.operation"
+          ng-options="sto as sto.businessOperationName for sto in $ctrl.operationList"
+          ng-disabled="$ctrl.isInit">
+  </select>
+</div>

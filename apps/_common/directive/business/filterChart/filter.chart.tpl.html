@@ -1,0 +1,5 @@
+<div class="filter-box" ng-init="ctrl.init()" ng-hide="ctrl.hideSelect">
+  <select class="form-control select" ng-model="ctrl.selected" ng-disabled="!ctrl.check"
+          ng-options="item as item.name for item in ctrl.selections">
+  </select>
+</div>

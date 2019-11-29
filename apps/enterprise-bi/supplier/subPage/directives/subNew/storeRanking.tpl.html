@@ -1,0 +1,48 @@
+<div class="hs-container" ng-init="ctrl.init()">
+  <div class="row">
+    <article class="col-md-12 ">
+      <header class="header top">
+        <div class="home-model" style="width: 160px">
+          <marketing model="ctrl.model_pie" models="ctrl.CommonCon.dateStyle"></marketing>
+        </div>
+      </header>
+      <header class="header">
+        <span>合计</span>
+      </header>
+      <div class="body hs-subSupply">
+        <div class="row">
+          <div class="col-md-2" ng-repeat="list in ctrl.initTemp">
+            <p class="area-value-one">
+              <span>
+                <img src="styles\img\icon\sale.png" ng-if="list.isSale"/>
+                <img src="styles\img\icon\inv.png" ng-if="!list.isSale"/>
+              </span>
+              <span>{{list.name}}</span>
+              <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.notstartingSku" popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 5">
+                <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+              <a style="position: relative; cursor: pointer" uib-popover-html="ctrl.eliminationRate" popover-trigger="mouseenter" popover-placement='bottom-left' ng-if="list.prompt === 6">
+                <i style="color: #007ADB;" class="glyphicon glyphicon-info-sign"></i></a>
+            </p>
+            <p class="area-value-two" title="{{list.curr}}">
+              {{list.option}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="row">
+    <article class="col-md-12">
+      <header class="header">
+        <span>新品状态</span>
+      </header>
+      <div class="body popover-hover " ng-if="ctrl.param">
+        <table datatable dt-options="ctrl.option" dt-columns="ctrl.column"
+               dt-instance="ctrl.instance"
+               class="table table-trend hs-table" width="100%">
+        </table>
+      </div>
+    </article>
+  </div>
+</div>

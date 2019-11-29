@@ -1,0 +1,6 @@
+<div class="chart-toggle-box" title="{{ctrl.title}}" ng-init="ctrl.init()" ng-show="ctrl.firstHaveLine || ctrl.secondHaveLine">
+  <div ng-class="{active: ctrl.active}" ng-click="ctrl.toggle()"
+       ng-mouseup="ctrl.up()" ng-mousedown="ctrl.down()">
+    <img ng-src="./styles/img/icon/{{ctrl.image}}">
+  </div>
+</div>

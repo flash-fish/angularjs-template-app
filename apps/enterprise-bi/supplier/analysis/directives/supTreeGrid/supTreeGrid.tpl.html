@@ -1,0 +1,24 @@
+<style>
+  .DTFC_ScrollWrapper{
+    overflow: hidden !important;
+    display: inline-block;
+  }
+  .hs-popover-box>a{
+    line-height:17px !important;
+    font-size: 13px;
+  }
+</style>
+<div ng-init="ctrl.init()">
+  <!--<div class="circle-loading-box" ng-show="!ctrl.key.finish">-->
+  <!--<div class="circle-loading"></div>-->
+  <!--<div class="font-loading">loading...</div>-->
+  <!--</div>-->
+  <div class="tree-grid-box" ng-style="{opacity: ctrl.key.finish ? 1 : 0}">
+    <div id="treeGrid"></div>
+    <empty-table show="ctrl.empty"></empty-table>
+  </div>
+  <!--指标达成 chart-->
+  <index-chart params="ctrl.indexConfig" cur="ctrl.indexCurRow" show="ctrl.show"></index-chart>
+
+</div>
+

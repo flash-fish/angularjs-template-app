@@ -1,0 +1,1103 @@
+/**
+  定义一些模块的样式
+ */
+
+/**
+  共通样式
+ */
+.common_show {
+  display: block;
+}
+
+.common_hide {
+  display: none;
+}
+
+.opacity_show {
+  opacity: 1;
+}
+
+.opacity_hide {
+  opacity: 0;
+}
+
+.top-1 {
+  z-index: 110;
+}
+
+.top-2 {
+  z-index: 109;
+}
+
+.hs-btn-lg {
+  width: 100px;
+}
+
+/**
+  颜色规则
+ */
+.hs-red {
+  color: #EA5B66;
+}
+
+.hs-orange {
+  color: #FF9600;
+}
+
+.hs-blue {
+  color: #007ADB;
+}
+
+.hs-blueLight {
+  color: #26A5FF;
+}
+
+.hs-green {
+  color: #05BC90;
+}
+
+.glyphicon-info-sign {
+  color: #007ADB;
+}
+
+/**
+  根据设计的样式  覆盖掉一些bootstrap样式
+ */
+.btn-default, .btn-default:focus {
+  color: #404040;
+  background-color: #fff;
+  border-color: #E6E6E6;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+  background-color: #007ADB;
+  border-color: #007ADB;
+  border-radius: 2px;
+  color: #fff;
+}
+
+.btn-default:hover {
+  color: #080808;
+  background-color: #E6E6E6;
+}
+
+.sub-main {
+  margin-left: 165px;
+  z-index: auto;
+}
+
+/* popover */
+.popover {
+  max-width: 350px;
+}
+
+/**
+  共通的search-box的样式
+ */
+.condition-box {
+  height: 100%;
+  border: 1px solid #ccc;
+}
+
+.condition-box > .condition-content {
+  height: 100%;
+  overflow: hidden;
+  line-height: 27px;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 27px;
+  padding: 0 6px;
+  float: left;
+  width: 90%;
+}
+
+.label_true .condition-box > .condition-content {
+  min-height: 26px;
+}
+
+.condition-box > .condition-content:hover {
+  cursor: pointer;
+  height: auto;
+  line-height: 27px;
+  background: #fff;
+  white-space: normal !important;
+  border: 1px solid #0c7cd5;
+}
+
+.condition-box .condition-name {
+  color: #999;
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  font-size: 13px;
+}
+
+.condition-box .condition-del {
+  float: left;
+  width: 10%;
+  height: 100%;
+  text-align: center;
+  line-height: 26px;
+  /*border: 1px solid #ccc;*/
+  /*border-left: none;*/
+}
+
+.condition-box .condition-del:hover {
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #999;
+  background-color: #bdbdbd;
+}
+
+.condition-box > .add-width:hover {
+  width: 300px;
+  position: relative;
+  z-index: 2000;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #0c7cd5;
+}
+
+/**
+  页面最外层 content
+ */
+.top-content-box {
+  /*padding-bottom: 20px;*/
+}
+
+.new-home {
+  background-color: #eaedf1;
+}
+
+.year-now {
+  font-size: 13px;
+}
+
+.supplier-self {
+  color: #0a7ffa;
+}
+
+.supplier-avg {
+  color: #00a300;
+}
+
+/**
+  定制样式 页面整体布局样式
+ */
+
+.hs-container {
+  background: #eaedf1 !important;
+}
+
+.hs-container .tab-top-box {
+  background: #fff;
+}
+
+.hs-container .tab-top-box > .header {
+  padding: 20px;
+}
+
+.hs-container .tab-top-box .tab-top > div > ul.nav-tabs {
+  margin-left: 20px;
+}
+
+.hs-container > section > .top-tab-box {
+  margin-top: 10px !important;
+}
+
+.hs-container > section > .top-tab-box .nav-tabs {
+  padding-left: 20px;
+}
+
+.hs-container.top-content-box > section > .row {
+  padding: 10px 20px;
+}
+
+.hs-container section > .row.condition {
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+.hs-container section > .row.condition > article {
+  border-bottom: 0;
+}
+
+.hs-container section > .row > article {
+  padding: 10px 0 5px 0;
+}
+
+.hs-container section > .row,
+.hs-container > .row {
+  margin: 0;
+  padding: 0 0 10px 0;
+  background: #fff;
+}
+
+.hs-container section > .row > article,
+.hs-container > .row > article {
+  padding: 0;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.hs-container section > .row:last-child > article,
+.hs-container > .row:last-child > article {
+  border-bottom: 0;
+}
+
+.hs-container section .header.top {
+  margin-bottom: 16px;
+  background-color: transparent;
+  line-height: unset;
+  height: 20px;
+  z-index: 100;
+}
+
+.hs-container section .header > .tip-info {
+  font-size: 11px;
+  margin-left: 11px;
+  color: #999;
+}
+
+.hs-container section .header > .tip-info::before {
+  display: none;
+}
+
+.hs-container section .header > div.header-right {
+  max-width: 200px;
+  float: right;
+}
+
+.hs-container section .header .setting-box {
+  max-width: 180px;
+  float: right;
+}
+
+.hs-container section .header {
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  z-index: 99;
+}
+
+.hs-container section .header > .companyPopover {
+  width: 800px;
+}
+
+.hs-container section .header > span:nth-child(1) {
+  font-size: 16px;
+}
+
+.hs-container section .header.top > span:first-child:before {
+  display: inline-block;
+  content: "";
+  width: 3px;
+  height: 15px;
+  background: #007ADB;
+  margin-right: 7px;
+  position: relative;
+  top: 2px;
+}
+
+.hs-container section .header > span:nth-child(1):before {
+  display: inline-block;
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  margin-right: 7px;
+  position: relative;
+  top: -2px;
+  border: 2px solid #007ADB;
+  border-radius: 22px;
+}
+
+.hs-container section .header > .download {
+  float: right;
+  padding-right: 10px;
+  font-size: 13px;
+}
+
+.hs-container section .header > .download > i {
+  padding-left: 5px;
+}
+
+.hs-container section .body {
+  width: 100%;
+  position: relative;
+}
+
+/**
+  搜索框统一样式
+ */
+.body > .row:last-child {
+  margin-bottom: 0;
+}
+
+.input-choose.row {
+  max-width: 810px;
+  margin-left: -10px;
+  margin-right: -6px;
+}
+
+.input-choose .input-group {
+  padding-left: 12px;
+  display: inline-table;
+}
+
+.input-choose > div {
+  padding: 0;
+  margin: 7px 10px;
+}
+
+.input-choose > .col-md-2 {
+  width: 220px;
+  height: 29px;
+}
+
+.input-choose > .col-md-2:hover {
+  z-index: 200;
+}
+
+.input-choose .need {
+  border: 1px solid red;
+}
+
+.input-choose .need:hover {
+  border: 1px solid red;
+}
+
+.homeSearch > div {
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+/**
+  查询按钮共通样式
+ */
+.hs-search-box {
+  width: 100%;
+  margin-top: 15px;
+  text-align: right;
+}
+
+/**
+  指标设定按钮样式
+ */
+.setting-box .setting-btn {
+  width: 80px;
+  height: 29px;
+  background: rgba(0, 122, 219, 0.05);
+  border: 1px solid rgba(0, 122, 219, 0.50);
+  border-radius: 2px;
+  color: #007ADB;
+  margin-left: 5px !important;
+}
+
+.setting-box .setting-btn:hover {
+  background: rgba(0, 122, 219, 0.50);
+  color: #fff;
+}
+
+/**
+  按钮相关
+ */
+.btn {
+  height: 29px;
+  padding-bottom: 6px;
+  line-height: 7px;
+}
+
+/* 概况头部左侧蓝色标题*/
+.hs-container section .header-title-right {
+
+  margin-left: 20px;
+  color: deepskyblue;
+  font-size: 13px;
+}
+
+.hs-container section .borderSet {
+  border: 1px solid #ccc;
+}
+
+/*组件 hs new select*/
+.new-select .custom-select {
+  font-size: 13px;
+  position: absolute;
+  color: #999;
+  left: 10px;
+  top: 6px;
+}
+
+.new-select select {
+  font-size: 13px;
+  height: 29px;
+  line-height: 29px;
+  padding-left: 50px;
+  border: 1px solid #ccc;
+}
+
+/*带有蓝点的二级菜单*/
+.sub-title:before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: #007ADB;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.sub-title {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.sub-content {
+  margin: 7px 9px 20px 9px;
+}
+
+/*组件selectModule*/
+.select-module {
+  margin-right: 10px;
+  float: left;
+}
+
+.select-module div {
+  width: 54px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  font-size: 10px;
+  color: #808080;
+  float: left;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.select-module div.active .line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #007adb;
+  left: 0;
+  top: 0;
+}
+
+/*多选select*/
+.multiple-select .chosen-drop {
+  display: block;
+}
+
+.multiple-select .chosen-container {
+  width: 100% !important;
+  z-index: 100;
+}
+
+.multiple-select .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+  color: #999 !important;
+}
+
+.multiple-select .chosen-container-multi .chosen-choices {
+  padding: 0 10px !important;
+}
+
+.multiple-select .chosen-container .chosen-results li {
+  padding: 5px 10px !important;
+}
+
+/*快捷选择*/
+.shotcut-select > span {
+  float: left;
+  display: table;
+  vertical-align: middle;
+}
+
+.shotcut-select .tip {
+  padding-right: 20px;
+  display: table;
+  margin-top: 2px;
+}
+
+.shotcut-select .tip i {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.supplier-area-value-one {
+  font-size: 15px;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.supplier-area-value-two {
+  font-family: Microsoft YaHei, serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0a7ffa;
+  margin-top: 3px;
+}
+
+.supplier-area-value-two-supplier {
+  font-family: Microsoft YaHei, serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #00a300;
+  margin-top: 3px;
+}
+
+.supplier-area-value-three {
+  margin-top: 5px;
+  color: #A9A9A9;
+  font-size: 13px;
+}
+
+.supplier-info-three-line-div {
+  width: 100%;
+  height: 120px
+}
+
+.supplier-info-four-line-div {
+  width: 100%;
+  height: 105px;
+}
+
+.supplier-info-stock-line-div {
+  width: 100%;
+  height: 150px;
+}
+
+.sub-profit > div {
+
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.sub-all-show > div {
+
+  padding: 0px;
+}
+
+.supplier-info-three-line-div-margin {
+
+}
+
+.supplier-info-two-line-div-margin {
+
+  min-width: 130px;
+
+}
+
+.supplier-info-one-title {
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+.supplier-info-two-p {
+
+}
+
+.supplier-info-three-p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.supplier-info-four-p {
+  margin-top: 10px;
+  min-width: 120px;
+}
+
+.supplier-item-Title {
+  color: #A9A9A9;
+  font-size: 13px;
+}
+
+.supplier-margin-left {
+
+  margin-left: 7px;
+}
+
+/*
+首页样式
+ */
+
+.home-common-p {
+  font-size: 15px;
+  color: black;
+}
+
+.home-blue {
+  color: dodgerblue;
+}
+
+.home-store-p {
+  font-size: 15px;
+  color: black;
+  line-height: 60px;
+}
+
+.home-back {
+  font-size: 15px;
+  color: black;
+  line-height: 60px;
+}
+
+.home-row-margin-bottom {
+  margin-bottom: 15px;
+}
+
+.home-container-header {
+  height: 60px;
+  line-height: 60px;
+  position: relative;
+  z-index: 99;
+  font-size: 16px;
+  margin-left: 23px;
+}
+
+.new-item-header {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  z-index: 99;
+  font-size: 16px;
+}
+
+.supply-sub-header {
+  height: 60px;
+  line-height: 60px;
+  position: relative;
+  font-size: 16px;
+}
+
+.home-a {
+  font-size: 15px;
+  float: right;
+  margin-right: 15px;
+
+}
+
+.home-gray-p {
+  font-size: 13px;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  color: #808080;
+}
+
+.home-big-number {
+
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: black;
+  line-height: 30px;
+  height: 30px;
+}
+
+.home-big-red-number {
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: #EA5B66;
+  line-height: 30px;
+  height: 30px;
+}
+
+.home-yoy {
+  min-width: 120px;
+  color: #A9A9A9;
+  margin-top: 5px;
+}
+
+.home-margin-left {
+  margin-left: 10px;
+}
+
+.home-sale > div {
+  padding-right: 0px;
+}
+
+.home-margin-top {
+  margin-top: 10px;
+}
+
+.home-margin-right {
+  margin-right: 10px;
+}
+
+.home-item-Title {
+  color: black;
+  font-size: 13px;
+}
+
+.home-item-Title-height {
+  height: 17px;
+  line-height: 17px;
+}
+
+.home-core-day-height {
+  height: 150px;
+}
+
+.home-core-month-height {
+  height: 150px;
+}
+
+.home-line {
+  background-color: #CCCCCC;
+  height: 1px;
+  margin-top: 15px;
+}
+
+.home-select-day-big {
+  height: 347px;
+}
+
+.home-select-month-big {
+  height: 257px;
+}
+
+.home-select-day {
+
+  height: 150px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.home-select-month {
+  height: 105px;
+  border-bottom: 1px solid #CCCCCC;
+
+}
+
+.home-select-right {
+  border-right: 1px solid #CCCCCC;
+}
+
+.home-select-day-under {
+  height: 195px;
+}
+
+.home-select-month-under {
+  height: 150px;
+}
+
+.home-select {
+  border-color: blue;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+}
+
+.home-unSelect {
+}
+
+.home-progress-index {
+  background-color: #afc6f4;
+  height: 30px;
+  width: 60%;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.home-progress-index-finish {
+  background-color: #5082e4;
+  height: 30px;
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+.home-progress-sale {
+  background-color: #F5F5F5;
+  height: 20px;
+  width: 282px;
+  margin-top: 5px;
+}
+
+.home-progress-sale-left {
+  background-color: #EA5B66;
+  height: 20px;
+  float: left;
+}
+
+.home-progress-sale-right {
+  background-color: #FFBC00;
+  height: 20px;
+  float: right;
+}
+
+.home-progress-sale-left-right {
+  background-color: #007ADB;
+  height: 20px;
+  float: left;
+}
+
+.home-progress-sale-right-right {
+  background-color: #05BC90;
+  height: 20px;
+  float: right;
+}
+
+.home-block {
+  width: 90px;
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  float: right;
+
+}
+
+.home-data {
+  background-color: white;
+}
+
+.home-infor {
+  background-color: white;
+  width: 297px;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x:hidden;
+}
+
+.home-data-block {
+  width: 290px;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.home-infor-block {
+  width: 275px;
+  margin-right: 15px;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #CCCCCC;
+
+}
+
+.home-increase-width {
+  max-width: 315px;
+  width: 315px;
+}
+
+.all-more {
+  float: right;
+  font-size: 15px;
+  margin-right: 15px
+
+}
+
+.home-table-font {
+  font-size: 11px;
+  height: 30px;
+  line-height: 30px;
+  color: #808080;
+
+}
+
+.home-i {
+  color: #007adb;
+  margin-right: 5px;
+}
+
+.home-index-all {
+
+  height: 200px;
+}
+
+.home-select-other {
+
+  height: 150px;
+}
+
+.home > div {
+
+  padding: 0px;
+}
+
+.home-round {
+  height: 7px;
+  width: 7px;
+  margin-right: 2px
+}
+
+.home-have-line {
+  border-bottom: 1px solid #CCCCCC
+}
+
+.home-image-true {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 82px;
+  right: 35px;
+}
+
+.home-blue-block {
+
+}
+
+.home-blue-block > div {
+  padding: 0px;
+}
+
+.newItem_border_right {
+  border-right: 1px solid #CCCCCC
+}
+
+.sub-sale > div {
+
+  padding-right: 0px;
+}
+
+.blue-line {
+  width: 3px;
+  height: 10px;
+  margin-right: 8px;
+  float: left;
+  margin-top: 12px;
+}
+
+.home-blue-line {
+  width: 3px;
+  height: 10px;
+  margin-right: 8px;
+  float: left;
+  margin-top: 1px;
+}
+
+.home-chart-i {
+  display: block;
+  line-height: 12px;
+}
+
+/**
+  子tab样式
+ */
+.hs-sub-tab-box .nav-tabs {
+  border: 0;
+}
+
+.hs-sub-tab-box .nav-tabs > li {
+  margin-right: 15px;
+}
+
+.hs-sub-tab-box .nav-tabs > li > a {
+  font-size: 11px;
+  color: #808080;
+  width: 80px;
+  height: 24px;
+  line-height: 22px;
+  padding: 0;
+  text-align: center;
+  border: 1px solid #E6E6E6;
+  border-radius: 2px;
+}
+
+.hs-sub-tab-box .nav-tabs > li > a:hover {
+  background: #F8F8F8;
+}
+
+.hs-sub-tab-box .nav-tabs > li.active > a {
+  box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;
+  -moz-box-shadow: 0 0 0 transparent;
+  margin-top: 0 !important;
+  background: rgba(0, 122, 219, 0.05);
+  border: 1px solid rgba(0, 122, 219, 0.50) !important;
+  color: #007ADB;
+}
+
+/**
+  chosen select覆盖chosen原本样式
+*/
+.select-chosen .chosen-drop {
+  display: block;
+}
+
+.select-chosen .chosen-container-single .chosen-single {
+  background: unset;
+  background-color: #fff;
+  border-radius: 0;
+  border-color: #ccc;
+  -webkit-box-shadow: unset;
+  -moz-box-shadow: unset;
+  box-shadow: unset;
+}
+
+.supplier-under-padding-left {
+  padding-left: 20px;
+}
+
+
+/**
+  flex
+ */
+
+.hs-flex-box {
+  display: flex;
+  align-items: center;
+}
+
+/**
+  checkbox和input控件组合时候的样式
+ */
+.combine-input-box {
+  display: flex;
+  align-items: center;
+  width: auto !important;
+  min-width: 200px;
+}
+
+.hs-flex-box > label,
+.combine-input-box > label {
+  position: relative;
+  top: 2px;
+}
+
+.hs-flex-box > .select,
+.combine-input-box > .select {
+  margin: 0 5px;
+  width: 96px;
+}
+.hs-flex-box > .input-number,
+.combine-input-box > .input-number {
+  width: 60px;
+  margin: 0 5px;
+}
+
+.hs-flex-box > .unit {
+  width: 27px;
+}
+
+.checkbox-box {
+  max-width: 500px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.checkbox-box > .checkbox-single {
+  margin: 3px 0;
+  min-width: 120px;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-baseline {
+  display: flex;
+  align-items: baseline;
+}
+
+.graphic-style {
+  height: 370px;
+}
